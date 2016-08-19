@@ -24,8 +24,8 @@
 <?php } ?>
 
 <div class="clearfix"></div>
+<?php if( is_user_logged_in() ){ ?>
 <footer>
-
 	<!-- <div id="footer-gradient-header-pro"></div> -->
 
 	<?php if (get_theme_mod( 'footer_logo_upload', get_template_directory_uri() . '/images/logo.png' )) : ?>
@@ -51,6 +51,7 @@
 		</div><!-- close #copyright -->
 	<?php endif; ?>
 </footer>
+<?php } ?>
 <?php wp_footer(); ?>
 </body>
 </html>

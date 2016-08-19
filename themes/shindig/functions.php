@@ -25,23 +25,23 @@ if ( ! function_exists( 'progression_setup' ) ):
  * @since progression 1.0
  */
 
-	
+
 function progression_setup() {
-	
+
 	if(function_exists( 'set_revslider_as_theme' )){
 		add_action( 'init', 'pro_ezio_custom_slider_rev' );
 		function pro_ezio_custom_slider_rev() { set_revslider_as_theme(); }
 	}
-	
+
 	// Post Thumbnails
 	add_theme_support('post-thumbnails');
-	
+
 	add_image_size('progression-header-bg', 1400, 550, true); // Masonry Gallery Image Size
 	add_image_size('progression-blog', 800, 450, true); // Blog Index
 	add_image_size('progression-blog-single', 1150, 550, true); // Blog Index
 	add_image_size('progression-gallery', 800, 800, true ); // Gallery (cropped)
-	
-	
+
+
 	// Custom Gallery Functions
 	add_filter('image_size_names_choose', 'progression_image_sizes');
 	function progression_image_sizes($sizes) {
@@ -51,9 +51,9 @@ function progression_setup() {
 	$newsizes = array_merge($sizes, $addsizes);
 		return $newsizes;
 	}
-	
+
 	add_theme_support( 'title-tag' );
-	
+
 	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
@@ -66,25 +66,25 @@ function progression_setup() {
 	 * Add default posts and comments RSS feed links to head
 	 */
 	add_theme_support( 'automatic-feed-links' );
-	
+
 	// Include widgets
 	require( get_template_directory() . '/widgets/widgets.php' );
-	
+
 	/**
 	 * Enable support for Post Formats
 	 */
 	add_theme_support( 'post-formats', array( 'gallery', 'video', 'audio', 'link' ) );
-	
+
 	/**
 	 * This theme uses wp_nav_menu() in one location.
 	 */
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'progression' ),
 	) );
-	
-	
-	
-	
+
+
+
+
 }
 endif; // progression_setup
 add_action( 'after_setup_theme', 'progression_setup' );
@@ -100,7 +100,7 @@ add_filter('loop_shop_per_page', create_function('$cols', 'return get_theme_mod(
 /* WooCommerce Related Products */
 function woo_related_products_limit() {
   global $product;
-	$col_count_progression = get_theme_mod('shop_col_progression', '3'); 
+	$col_count_progression = get_theme_mod('shop_col_progression', '3');
 	$args = array(
 		'post_type'        		=> 'product',
 		'no_found_rows'    		=> 1,
@@ -132,7 +132,7 @@ function progression_widgets_init() {
 		'before_title' => '<h5 class="widget-title">',
 		'after_title' => '</h5>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Shop Sidebar', 'progression' ),
 		'id' => 'sidebar-shop',
@@ -152,7 +152,7 @@ function progression_widgets_init() {
 		'before_title' => '<h3 class="title-homepage">',
 		'after_title' => '</h3>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Home: Widgets on all Pages', 'progression' ),
 		'id' => 'homepage-all-widgets',
@@ -162,7 +162,7 @@ function progression_widgets_init() {
 		'before_title' => '<h3 class="title-homepage">',
 		'after_title' => '</h3>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => __( 'Footer Widgets', 'progression' ),
 		'description' => __( 'Footer widgets', 'progression' ),
@@ -180,16 +180,22 @@ add_action( 'widgets_init', 'progression_widgets_init' );
  * Enqueue scripts and styles
  */
 function progression_scripts() {
+    $scripts_location = '/js/dist/scripts.min.js';
+
+    if(SCRIPT_DEBUG){
+        $scripts_location = '/js/build/scripts.js';
+    }
+
 	wp_enqueue_style( 'progression-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css', array( 'progression-style' ) );
+	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom-styles.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic|Khula:400,300,600|Hind:500,600,700', array( 'progression-style' ) );
 
-	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/libs/modernizr-2.6.2.min.js', false, '20120206', false );
-	wp_enqueue_script( 'plugins', get_template_directory_uri() . '/js/plugins.js', array( 'jquery' ), '20120206', true );
-	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), '20120206', true );
+	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/src/libs/modernizr-2.6.2.min.js', false, '20120206', false );
+	wp_enqueue_script( 'scripts', get_template_directory_uri() . $scripts_location, array( 'jquery' ), '20120206', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) { wp_enqueue_script( 'comment-reply' ); }
-	
+
 }
 add_action( 'wp_enqueue_scripts', 'progression_scripts' );
 
@@ -205,14 +211,13 @@ function pro_mobile_menu_insert()
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		'use strict';
-		$('.sf-menu').mobileMenu({ defaultText: '<?php _e( "Navigate to...", "progression" ); ?>', className: 'select-menu', subMenuDash: '&ndash;&ndash;' });
 		<?php if (get_theme_mod( 'footer_bg_upload', get_template_directory_uri() . '/images/footer-bg.jpg' )) : ?>
 		$("footer").backstretch([ "<?php echo get_theme_mod( 'footer_bg_upload', get_template_directory_uri() . '/images/footer-bg.jpg' ); ?>" ],{ fade: 750, centeredY:true, });
 		<?php endif; ?>
 		<?php if (is_post_type_archive('schedule')) : ?>
 			$('#schedule-content-progression').children('li:not(.<?php $member_group_terms = get_terms( 'schedule_day' ); ?><?php $count = 1; $count_2 = 1; foreach ( $member_group_terms as $member_group_term ) { $member_group_query = new WP_Query( array( 'post_type' => 'schedule','posts_per_page' => '1','tax_query' => array(  array( 'taxonomy' => 'schedule_day', 'field' => 'slug', 'terms' => array( $member_group_term->slug ), 'operator' => 'IN' ) ) )  ); ?><?php if($count == 1): ?><?php echo $member_group_term->slug; ?><?php endif; ?><?php $count ++; $count_2++; $member_group_query = null; wp_reset_postdata(); } ?>)').hide();
 		<?php endif; ?>
-	}); 
+	});
 	</script>
     <?php
 }
@@ -246,11 +251,11 @@ require get_template_directory() . '/tgm-plugin-activation/plugin-activation.php
 
 
 // define the woocommerce_after_single_product callback
-function action_woocommerce_after_single_product(  ) 
+function action_woocommerce_after_single_product(  )
 {
 	echo 'hey from functions';
 };
-        
+
 // add the action
 add_action( 'woocommerce_product_after_variable_attributes', 'action_woocommerce_after_single_product', 10, 0 );
 
@@ -346,6 +351,6 @@ function sendinvoice($orderid)
 {
     $email = new WC_Email_Customer_Invoice();
     $email->trigger($orderid);
-}   
+}
 
 add_action('woocommerce_order_status_completed_notification','sendinvoice');

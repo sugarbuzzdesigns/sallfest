@@ -19,7 +19,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	
+
 <header>
 	<!-- <?php if (get_theme_mod( 'fixed_nav_pro', '1' )) : ?><div id="fixed-nav-pro"><?php endif; ?> -->
 	<?php if (get_theme_mod( 'nav_reposition_pro' )) : ?>
@@ -35,3 +35,7 @@
 		<div id="gradient-header-pro"></div>
 	<?php else: ?>
 	<?php endif; ?>
+	<div class="width-container">
+		<img id="home-logo" class="logo" src="http://www.sallfest.com/wp-content/uploads/2015/09/Shine_Logo.png" alt="">
+	</div>
+</header>
