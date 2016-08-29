@@ -24,7 +24,9 @@ footer {
 }
 
 #cvhn-homepage-widget .width-container {
+	background-color: rgba(255, 255, 255, 0.9);
 	padding: 20px;
+	border-radius: 4px;
 }
 
 #cvhn-homepage-widget .width-container p:last-child {
@@ -33,6 +35,7 @@ footer {
 
 .cvhn-logo {
 	float: left;
+	margin-right: 15px;
 }
 
 .width-container {
@@ -128,12 +131,14 @@ footer {
 	padding-top: 0;
 }
 
-#about .width-container .readmore {
+#about .width-container .readmore,
+.width-container .donate {
 	text-align: center;
 	padding-bottom: 20px;
 }
 
-#about .width-container .readmore span {
+#about .width-container .readmore span,
+.width-container .donate span {
 	text-decoration: none;
 	line-height: 1;
 	cursor: pointer;
@@ -156,6 +161,18 @@ footer {
 	border: 2px solid #29b0d1;
 	color: #29b0d1;
 }
+
+.width-container .donate span {
+	background-color: #061d3d;
+	color: #fff;
+	border: #061d3d;
+}
+
+.width-container .donate span a {
+	color: #fff;
+	font-size: 24px;
+}
+
 
 #about .width-container .hide {
 	display: none;
