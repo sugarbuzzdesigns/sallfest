@@ -9,7 +9,7 @@
  */
 ?>
 
-<?php if( is_user_logged_in() ){ ?>
+<?php if( /*is_user_logged_in()*/ true ){ ?>
 
 <?php if( is_page_template('homepage.php') ): ?>
 	<?php if ( is_active_sidebar( 'homepage-widgets' ) ) : ?>
@@ -24,7 +24,7 @@
 <?php } ?>
 
 <div class="clearfix"></div>
-<?php if( is_user_logged_in() ){ ?>
+
 <footer>
 	<!-- <div id="footer-gradient-header-pro"></div> -->
 
@@ -51,7 +51,7 @@
 		</div><!-- close #copyright -->
 	<?php endif; ?>
 </footer>
-<?php } ?>
+
 <?php wp_footer(); ?>
 </body>
 </html>
