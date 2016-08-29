@@ -4,8 +4,9 @@
 }
 
 body {
-	background: rgba(6, 29, 61, 0.9) url(http://www.sallfest.com/wp-content/uploads/2015/09/texture-bg.jpg) no-repeat fixed;
-	background-size: 100%;
+	background: rgba(6, 29, 61, 0.9) url(../images/SALLFest2016-1450x800_web.jpg) no-repeat fixed;
+	background-size: cover;
+	background-position: center;
 }
 
 #home-logo {
@@ -13,8 +14,25 @@ body {
 	padding-bottom: 20px;
 }
 
+.brigade-shield {
+	margin-bottom: 40px;
+}
+
 footer {
 	background-color: #061d3d;
+	margin-top: 40px;
+}
+
+#cvhn-homepage-widget .width-container {
+	padding: 20px;
+}
+
+#cvhn-homepage-widget .width-container p:last-child {
+	margin-bottom: 0;
+}
+
+.cvhn-logo {
+	float: left;
 }
 
 .width-container {
@@ -22,14 +40,26 @@ footer {
 	padding-bottom: 0;
 }
 
-.widget .dark .width-container {
+.widget .dark .width-container,
+.widget.dark .width-container {
 	background-color: rgba(6, 29, 61, 0.9);
 	color: #fff;
 }
 
-.widget .dark .width-container h1 {
+.widget .dark .width-container h1,
+.widget.dark .width-container h1 {
 	color: #fff;
 	text-align: center;
+}
+
+.widget .light .width-container,
+.widget .light.width-container {
+	background-color: #fff;
+}
+
+.widget .light .width-container h1,
+.widget .light.width-container h1 {
+	color: #000;
 }
 
 #pyre_homepage_booking-widget .width-container p,
