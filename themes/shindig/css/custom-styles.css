@@ -132,7 +132,7 @@ footer {
 }
 
 #pyre_homepage_media-widget-product-feat-2 .products .woocommerce-container-pro {
-	min-height: 480px;
+	min-height: 510px;
 }
 
 body #taxonomy_navigation_pro a:hover,
@@ -140,26 +140,18 @@ body #taxonomy_navigation_pro .current-cat a {
 	background: #26afd1;
 }
 
-// .video-container {
-// 	position:relative;
-// 	padding-bottom:56.25%;
-// 	padding-top:30px;
-// 	height:0;
-// 	overflow:hidden;
-// }
+	.woocommerce-image-index {
 
-// .video-container iframe, .video-container object, .video-container embed {
-// 	position:absolute;
-// 	top:0;
-// 	left:0;
-// 	width:100%;
-// 	height:100%;
-// }
+	}
 
 #about .width-container .readmore,
 .width-container .donate {
 	text-align: center;
 	padding-bottom: 20px;
+}
+
+.woocommerce ul.products li.product a img {
+	margin-bottom: 0;
 }
 
 #about .width-container .readmore span,

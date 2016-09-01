@@ -61,8 +61,10 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 
 	<div class="woocommerce-container-pro">
 		<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
-
-		<?php if(get_post_meta($post->ID, 'progression_external_link', true)): ?><a href="<?php echo esc_url( get_post_meta($post->ID, 'progression_external_link', true) );?>" target="_blank"><?php else: ?><a href="<?php the_permalink(); ?>"><?php endif; ?>
+		<?php if(get_post_meta($post->ID, 'progression_external_link', true)): ?>
+		<a href="<?php echo esc_url( get_post_meta($post->ID, 'progression_external_link', true) );?>" target="_blank">
+			<?php else: ?>
+		<a href="<?php the_permalink(); ?>"><?php endif; ?>
 
 			<div class="woocommerce-image-index">
 				<?php
@@ -88,8 +90,8 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 				do_action( 'woocommerce_after_shop_loop_item_title' );
 			?>
 
-			<div class="short-description-pro"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></div>
 
+			<div class="short-description-pro"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></div>
 		</a>
 
 
