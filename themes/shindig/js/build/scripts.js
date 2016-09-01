@@ -1125,4 +1125,6 @@ jQuery(document).ready(function($) {
 
 	$('.sf-menu').mobileMenu({ defaultText: '"Navigate to...", "progression"', className: 'select-menu', subMenuDash: '&ndash;&ndash;' });
 
+	$('#taxonomy_navigation_pro .saturday').click();
+
 });
