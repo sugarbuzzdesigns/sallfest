@@ -41,6 +41,17 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 	$slug = get_post_field( 'post_name', get_post() );
 ?>
 
+<style type="text/css">
+	#friday-sallfest-kickoff-free-show {
+		pointer-events: none;
+		cursor: default;
+	}
+
+	#friday-sallfest-kickoff-free-show .button {
+		display: none;
+	}
+</style>
+
 <li id="<?php echo $slug; ?>" class="product column-<?php echo get_theme_mod('shop_col_progression', '3'); ?> <?php
 	if ( $woocommerce_loop['loop'] % $woocommerce_loop['columns'] == 0 )
 		echo 'last';

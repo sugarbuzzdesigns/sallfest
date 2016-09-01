@@ -175,4 +175,8 @@ jQuery(document).ready(function($) {
 
 	$('#taxonomy_navigation_pro .saturday').click();
 
+	$('#friday-sallfest-kickoff-free-show').on('click', function(e){
+		e.preventDefault();
+	});
+
 });
