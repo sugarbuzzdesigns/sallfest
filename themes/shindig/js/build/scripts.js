@@ -1045,72 +1045,76 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	console.log(a);
-
 	// Load in the first track
 	var audio = a[0],
 		first = $('ol a').data('src');
 
 	$('ol li').first().addClass('playing');
-	audio.load(first);
-	var trackTitle = $('ol a').first().text();
-	var buySongLink = $('ol a').first().data('buy-link');
-	var trackPoster = $('ol a').first().data('poster');
 
-	$('.buy-song').attr('href', buySongLink);
-	$('.poster').attr('src', trackPoster);
+	if(typeof audio === 'undefined'){
+		console.log('no audio');
+	} else {
+		audio.load(first);
 
-	$('.audiojs h2').text(trackTitle);
+		var trackTitle = $('ol a').first().text();
+		var buySongLink = $('ol a').first().data('buy-link');
+		var trackPoster = $('ol a').first().data('poster');
 
-	// Load in a track on click
-	$('ol li').click(function(e) {
-		e.preventDefault();
-		if($(this).is('.coming-soon')){
-			return;
-		}
-		var id = $(this).find('a').data('song-id');
-		var trackTitle = $(this).text();
+		$('.buy-song').attr('href', buySongLink);
+		$('.poster').attr('src', trackPoster);
 
-		$('#' + id).addClass('active').siblings().removeClass('active');
-
-		$(this).addClass('playing').siblings().removeClass('playing');
-		audio.load($('a', this).attr('data-src'));
 		$('.audiojs h2').text(trackTitle);
-		audio.play();
-	});
-	// Keyboard shortcuts
-	$(document).keydown(function(e) {
-		var unicode = e.charCode ? e.charCode : e.keyCode;
-		// right arrow
-		if (unicode == 39) {
-			var next = $('li.playing').next();
-		if (!next.length) next = $('ol li').first();
-			next.click();
-		// back arrow
-		} else if (unicode == 37) {
-			var prev = $('li.playing').prev();
-		if (!prev.length) prev = $('ol li').last();
-			prev.click();
-		// spacebar
-		} else if (unicode == 32) {
-			audio.playPause();
-		}
-	});
 
-	$('.info ul li').click(function(){
-		if ($(this).is('.active')) {return;};
-		$(this).toggleClass('active').siblings().toggleClass('active');
+		// Load in a track on click
+		$('ol li').click(function(e) {
+			e.preventDefault();
+			if($(this).is('.coming-soon')){
+				return;
+			}
+			var id = $(this).find('a').data('song-id');
+			var trackTitle = $(this).text();
+
+			$('#' + id).addClass('active').siblings().removeClass('active');
+
+			$(this).addClass('playing').siblings().removeClass('playing');
+			audio.load($('a', this).attr('data-src'));
+			$('.audiojs h2').text(trackTitle);
+			audio.play();
+		});
+		// Keyboard shortcuts
+		$(document).keydown(function(e) {
+			var unicode = e.charCode ? e.charCode : e.keyCode;
+			// right arrow
+			if (unicode == 39) {
+				var next = $('li.playing').next();
+			if (!next.length) next = $('ol li').first();
+				next.click();
+			// back arrow
+			} else if (unicode == 37) {
+				var prev = $('li.playing').prev();
+			if (!prev.length) prev = $('ol li').last();
+				prev.click();
+			// spacebar
+			} else if (unicode == 32) {
+				audio.playPause();
+			}
+		});
+
+		$('.info ul li').click(function(){
+			if ($(this).is('.active')) {return;};
+			$(this).toggleClass('active').siblings().toggleClass('active');
 
 
-		var cat = $(this).data('info-toggle');
-		if (cat === 'lyrics') {
-			$('.song-extras .active .lyrics').addClass('selected');
-			$('.song-extras .active .about').removeClass('selected');
-		} else {
-			$('.song-extras .active .about').addClass('selected');
-			$('.song-extras .active .lyrics').removeClass('selected');
-		}
-	});
+			var cat = $(this).data('info-toggle');
+			if (cat === 'lyrics') {
+				$('.song-extras .active .lyrics').addClass('selected');
+				$('.song-extras .active .about').removeClass('selected');
+			} else {
+				$('.song-extras .active .about').addClass('selected');
+				$('.song-extras .active .lyrics').removeClass('selected');
+			}
+		});
+	}
 
 	// Homepage read more link
 	$('.readmore').click(function(){
