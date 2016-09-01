@@ -1442,7 +1442,6 @@ function progression_customize_css()
 	#sidebar h5 { border-bottom:2px solid <?php echo get_theme_mod('sidebar_header_border_progression', '#29b0d1'); ?>; }
 	#content-container-pro, .container-blog, #post-nav-progression, body #main .gallery-caption, body .homepage-widget-blog .gallery-caption, .image-navigation. .container-sponsor, .woocommerce-container-pro, .container-single-pro, body #main  .woocommerce-tabs .tabs li, .single-container-reviews-pro { background:<?php echo get_theme_mod('container_bg_pro', '#ffffff'); ?>; }
 	.sf-menu ul { background:<?php echo get_theme_mod('pro_sub_nav_bg', '#29b0d1'); ?>; }
-	body #taxonomy_navigation_pro a, body #taxonomy_navigation_pro ul { background:transparent; }
 	body #taxonomy_navigation_pro li {background: #061d3d;}
 	body #taxonomy_navigation_pro li.current-cat, body #taxonomy_navigation_pro li:hover { background:<?php echo get_theme_mod('schedule_nav_hvr_bg_pro', '#1fa1c9'); ?>; }
 	.sf-menu a {color:<?php echo get_theme_mod('navigation_menu_color', '#e1e4e7'); ?>; }

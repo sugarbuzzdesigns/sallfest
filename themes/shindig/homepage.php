@@ -32,5 +32,15 @@
 	<?php } else { ?>
 		<?php include 'inc/coming-soon-home.php'; ?>
 	<?php } ?>
+		<div id="recap" class="widget homepage-widget-blog">
+			<div class="dark">
+				<div class="width-container">
+					<h1 class="home-widget">SALLFEST RECAP 2015</h1>
+					<div class="video-container">
+						<iframe src="https://www.youtube.com/embed/_xvoG0GGTxk" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
 
 <?php get_footer(); ?>
