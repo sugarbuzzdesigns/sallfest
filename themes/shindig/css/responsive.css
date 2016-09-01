@@ -155,6 +155,54 @@ img {
 		margin-bottom: 10px;
 	}
 
+	body.home {
+		font-size: 12px;
+		background: rgba(6, 29, 61, 0.9);
+	}
+
+	body .gallery-item {
+		width: 100% !important;
+	}
+
+	header {
+	    background: url('../images/SALL_mobile_backgroundweb.jpg');
+	    background-size: cover;
+	    background-position: center;
+	}
+
+	#cvhn-homepage-widget {
+		margin-top: 0;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	#cvhn-homepage-widget.widget .width-container {
+		border-radius: 0;
+	}
+
+	#pyre_homepage_booking-widget .width-container .inner,
+	#pyre_homepage_schedule-widget .width-container .inner {
+		width: 100%;
+	}
+
+	body footer {
+		margin-top: 0;
+		padding-bottom: 0;
+	}
+
+	body #taxonomy_navigation_pro ul li {
+		display: block;
+		border: none;
+	}
+
+	#about {
+		padding-bottom: 0;
+	}
+
+	#recap {
+		padding-top: 0;
+	}
+
 	/* Font Sizes */
 	#page-title h1 {
 		font-size: 40px;
