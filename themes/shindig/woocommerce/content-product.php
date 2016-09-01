@@ -37,7 +37,11 @@ if ( 0 == ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] || 1 
 if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 	$classes[] = 'last';
 ?>
-<li class="product column-<?php echo get_theme_mod('shop_col_progression', '3'); ?> <?php
+<?php
+	$slug = get_post_field( 'post_name', get_post() );
+?>
+
+<li id="<?php echo $slug; ?>" class="product column-<?php echo get_theme_mod('shop_col_progression', '3'); ?> <?php
 	if ( $woocommerce_loop['loop'] % $woocommerce_loop['columns'] == 0 )
 		echo 'last';
 	elseif ( ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] == 0 )
@@ -62,7 +66,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 			</div>
 
 			<h3 class="product-title-index-pro"><?php the_title(); ?></h3>
-			
+
 			<?php
 				/**
 				 * woocommerce_after_shop_loop_item_title hook
@@ -72,14 +76,14 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 				 */
 				do_action( 'woocommerce_after_shop_loop_item_title' );
 			?>
-			
+
 			<div class="short-description-pro"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></div>
 
 		</a>
-		
-		
+
+
 		<?php if(get_post_meta($post->ID, 'progression_external_link', true)): ?>
-		
+
 		<a href="<?php echo esc_url( get_post_meta($post->ID, 'progression_external_link', true) );?>" rel="nofollow" class="button" target="_blank"><?php _e( 'Purchase Tickets', 'progression' ); ?></a>
 		<?php else: ?>
 		<?php
@@ -89,7 +93,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 			 *
 			 * @hooked woocommerce_template_loop_add_to_cart - 10
 			 */
-			do_action( 'woocommerce_after_shop_loop_item' ); 
+			do_action( 'woocommerce_after_shop_loop_item' );
 
 		?>
 		<?php endif; ?>
