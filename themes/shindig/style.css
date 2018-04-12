@@ -1778,8 +1778,6 @@ footer #logo-footer a:hover img {
 }
 
 #footer-gradient-header-pro {
-	height: 200px;
-	margin-bottom: -120px;
 	position: relative;
 	z-index: 0;
 }
@@ -2802,21 +2800,14 @@ ul.timeline-archive-pro h2 a:hover {
 
 .schedule-position-pro {
 	position: absolute;
-	bottom: -1px;
+	bottom: 0;
 	width: 100%;
-	background: #000000;
-	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 59%, rgba(0, 0, 0, 1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(59%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, 1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 59%, rgba(0, 0, 0, 1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 59%, rgba(0, 0, 0, 1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 59%, rgba(0, 0, 0, 1) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 59%, rgba(0, 0, 0, 1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0); /* IE6-9 */
+	background: rgba(0,0,0,0.5);
 }
 
 .schedule-text-pro {
-	padding: 20px 25px 20px 25px;
-	color: #999999;
+	padding: 10px 15px 5px 15px;
+	color: #d2d2d2;
 	font-weight: 300;
 }
 
@@ -2852,7 +2843,7 @@ body #taxonomy_navigation_pro a {
 	padding: 15px;
 	text-transform: uppercase;
 	display: block;
-	background: #0d2a53;
+	background: #e79266;
 }
 
 body #taxonomy_navigation_pro ul {
@@ -2937,8 +2928,6 @@ ul#schedule-content-progression  li.schedule4column-pro {
 
 .woocommerce-container-pro {
 	background: #ffffff;
-	border-top: 1px solid rgba(0, 0, 0, 0.06);
-	border-left: 1px solid rgba(0, 0, 0, 0.06);
 	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.12);
 	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.12);
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.12);
@@ -2946,6 +2935,21 @@ ul#schedule-content-progression  li.schedule4column-pro {
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 	text-align: center;
+	padding-bottom: 10px;
+}
+
+.woocommerce ul.products li.product .price {
+	font-size: 1.157em;
+}
+
+a,
+.comments-pro-blog,
+body #main ul li.product .amount,
+body #main .entry-summary .amount,
+.star-rating,
+body .main-text-widgetpro ul li.product .amount,
+body .main-text-widgetpro .entry-summary .amount {
+
 }
 
 body #main h3.product-title-index-pro,

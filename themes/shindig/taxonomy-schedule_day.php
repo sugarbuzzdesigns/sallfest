@@ -19,15 +19,15 @@ get_header(); ?>
 
 <div id="main">
 	<div class="width-container">
-			
-			
+
+
 			<div id="schedule-container-pro">
-				
-				<?php echo category_description(); ?> 
-				
+
+				<?php echo category_description(); ?>
+
 				<?php
 				$terms = get_terms( 'schedule_day' );
-				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ): 
+				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ):
 				//list terms in a given taxonomy using wp_list_categories (also useful as a widget if using a PHP Code plugin)
 
 				$taxonomy     = 'schedule_day';
@@ -55,13 +55,13 @@ get_header(); ?>
 					<div class="clearfix"></div>
 				</div>
 				<?php endif; ?>
-				
+
 				<?php
 				/* Start the Loop */
 				$count = 1;
 				$count_2 = 1;
 				?>
-				<?php 
+				<?php
 				while ( have_posts() ) : the_post();
 					$col_count_progression = get_theme_mod('schedule_col_pro', '3');
 					if($count >= 1+$col_count_progression) { $count = 1; }
@@ -75,9 +75,9 @@ get_header(); ?>
 				<?php show_pagination_links( ); ?>
 				<div class="clearfix"></div>
 			</div><!-- close #schedule-container-pro -->
-				
+
 	<div class="clearfix"></div>
 	</div><!-- close .width-container -->
 </div><!-- close #main -->
-	
+
 <?php get_footer(); ?>

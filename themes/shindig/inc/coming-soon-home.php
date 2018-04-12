@@ -3,7 +3,7 @@
 		display: block;
 		height: 100%;
 		width: 100%;
-		background-image: url(http://www.sallfest.com/wp-content/uploads/2016/04/SALLFest-1450x800.png);
+		background-image: url(http://www.sallfest.com/wp-content/uploads/2017/06/2017SALLFest-NoLineup-FbProfile.png);
 		background-position: 50%;
 		background-size: cover;
 		position: absolute;
@@ -49,15 +49,15 @@
 	}
 
 	#coming-soon-banner {
-		background-image: url(http://www.sallfest.com/wp-content/uploads/2016/04/SALLFest2016-Poster-Web-mobile.jpg);
+		background-image: url(http://www.sallfest.com/wp-content/uploads/2017/06/2017SALLFest-NoLineup-FbProfile.png);
 	}
 }
 </style>
 
-<a href="https://www.youtube.com/watch?v=_xvoG0GGTxk" id="coming-soon-banner" target="_blank"></a>
+<!-- <a href="https://www.youtube.com/watch?v=_xvoG0GGTxk" id="coming-soon-banner" target="_blank"></a> -->
 
-<div id="coming-soon-content">
+<!-- <div id="coming-soon-content">
 	<h1>COMING SOON!</h1>
 	<div></div>
 	<a href="https://www.youtube.com/watch?v=_xvoG0GGTxk">Click here to experience SALLFEST</a>
-</div>
+</div> -->

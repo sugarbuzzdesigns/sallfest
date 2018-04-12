@@ -2,18 +2,18 @@
 Contributors: seriousplugins
 Tags: WooCommerce, order, complete, virtual, autocomplete
 Donate link: http://cl.ly/2C2W181j1G2g
-Tested up to: 4.4.2
-Stable tag: 1.1.3
+Tested up to: 4.6.1
+Stable tag: 1.1.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Would you buy twice from a website that does not give you instanctly access to the product you purchased? Why would you want that for your customer?
+Would you buy twice from a website that does not give you instantly access to the product you purchased? And as a seller, why would you want to complicate the life of your customer?
 
 == Description ==
-WooCommerce by design instantly completes only orders containing "Downloadable" products upon payment. Products that are "only" virtual will have to wait for a manual approval from the shop manager. Installing this plugin you will have the opportunity to extend WooCommerce with a new option to automatically complete orders:
+By design, WooCommerce instantly completes only orders containing "Downloadable" products, upon payment. Orders of virtual products must wait for a manual approval from the shop manager. Installing this plugin you will have the opportunity to let WooCommerce process orders automatically if the payment is complete:
    
-* Paid orders of virtual products only: orders containing "Virtual" products only will be turned to "Completed" upon successful payment.  
-* All paid orders of any product: orders of any product will be turned to "Completed" upon successful payment.  
+* Paid orders of virtual products only: orders containing "Virtual" products only will be completed upon successful payment.  
+* All paid orders of any product: orders of any product (even physical) will be turned to "Completed" upon successful payment.  
 * All orders (!): each and every order will turn to "Completed" irrespective of the payment status.   
       
 Please be aware that the third mode allows the customer to access the product immediately before the payment is completed.    
@@ -23,6 +23,7 @@ Please be aware that the third mode allows the customer to access the product im
 1. Activate the plugin through the \'Plugins\' menu in WordPress     
 1. Navigate to WooCommerce > Settings > Extra Options in your Dashboard
 1. Select the desired mode    
+1. Activate Payment Data Transfer from your seller preferences on PayPal and copy the identity token that will appear into WooCommerce > Settings > Checkout > PayPal > PayPal Identity Token.
 
 == Frequently Asked Questions ==
 = The plugin is not working =
@@ -38,6 +39,9 @@ Please watch this video if you don't know how to properly configure PayPal on Wo
 = No dude, not working yet! =
 Please deactivate my plugin (or select mode "Off"), test with a product marked as "virtual" and "downloadable". If it still doesn\'t work, then there\'s something wrong in your WooCommerce configuration or in your payment gateway. If it does work, please log an issue on the [support page](http://www.seriousplugins.com/woocommerce-autocomplete-orders/support/)!    
 
+= SSL Error =
+An update that PayPal rolled out a few months ago introduced this issue in WooCommerce for many users. Please follow this thread and the recommendation enclosed: https://wordpress.org/support/topic/ssl-error-for-paypal/
+
 == Screenshots ==
 1. Set the products as "Virtual" products
 2. In your PayPal account browse "Seller preferences" under "Selling Tools"
@@ -48,6 +52,10 @@ Please deactivate my plugin (or select mode "Off"), test with a product marked a
 7. Pick the mode that suits you best
 
 == Changelog ==
+
+= 1.1.4 =
+* Minor changes.
+* Translations updated.
 
 = 1.1.3 =
 * Minor fixes.

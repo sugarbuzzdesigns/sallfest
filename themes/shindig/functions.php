@@ -354,3 +354,96 @@ function sendinvoice($orderid)
 }
 
 add_action('woocommerce_order_status_completed_notification','sendinvoice');
+
+
+
+
+function generatewp_quickedit_custom_posts_columns( $posts_columns ) {
+	$posts_columns['generatewp_venue_name'] = __( 'Venue Name', 'generatewp' );
+	return $posts_columns;
+}
+add_filter( 'manage_schedule_posts_columns', 'generatewp_quickedit_custom_posts_columns' );
+
+function generatewp_quickedit_custom_column_display( $column_name, $post_id ) {
+	$venue_name = get_post_meta( $post_id, 'progression_schedule_additional_info', true );
+
+	?>
+		<div class="venue-name"><?php echo $venue_name; ?></div>
+	<?php
+}
+
+add_action( 'manage_schedule_posts_custom_column', 'generatewp_quickedit_custom_column_display', 10, 2 );
+
+function generatewp_quickedit_fields( $column_name, $post_type ) {
+	$venue_name = get_post_meta( $post_id, 'progression_schedule_additional_info', true );
+	?>
+	<fieldset class="inline-edit-col-right">
+			<div class="inline-edit-col">
+					<label>
+							<span class="title"><?php esc_html_e( 'Venue Name', 'generatewp' ); ?></span>
+							<span class="input-text-wrap">
+									<input type="text" name="generatewp_venue_name" class="generatewpedittime" value="">
+							</span>
+					</label>
+			</div>
+	</fieldset>
+	<?php
+}
+add_action( 'quick_edit_custom_box', 'generatewp_quickedit_fields', 10, 2 );
+
+function generatewp_quickedit_save_post( $post_id, $post ) {
+	// if called by autosave, then bail here
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+			return;
+
+	// if this "post" post type?
+	if ( $post->post_type != 'schedule' )
+			return;
+
+	// does this user have permissions?
+	 if ( ! current_user_can( 'edit_post', $post_id ) )
+			 return;
+
+	// update!
+	if ( isset( $_POST['generatewp_venue_name'] ) ) {
+			update_post_meta( $post_id, 'progression_schedule_additional_info', $_POST['generatewp_venue_name'] );
+	}
+}
+add_action( 'save_post', 'generatewp_quickedit_save_post', 10, 2 );
+
+
+function generatewp_quickedit_javascript() {
+	$current_screen = get_current_screen();
+	if ( $current_screen->id != 'edit-post' || $current_screen->post_type != 'schedule' )
+			return;
+
+	// Ensure jQuery library loads
+	wp_enqueue_script( 'jquery' );
+	?>
+	<script type="text/javascript">
+			jQuery( function( $ ) {
+					$( '#the-list' ).on( 'click', 'a.editinline', function( e ) {
+							e.preventDefault();
+							var editTime = $(this).data( 'edit-time' );
+							inlineEditPost.revert();
+							$( '.generatewpedittime' ).val( editTime ? editTime : '' );
+					});
+			});
+	</script>
+	<?php
+}
+add_action( 'admin_print_footer_scripts-edit.php', 'generatewp_quickedit_javascript' );
+
+function generatewp_quickedit_set_data( $actions, $post ) {
+	$found_value = get_post_meta( $post->ID, 'progression_schedule_additional_info', true );
+
+	if ( $found_value ) {
+			if ( isset( $actions['inline hide-if-no-js'] ) ) {
+					$new_attribute = sprintf( 'data-edit-time="%s"', esc_attr( $found_value ) );
+					$actions['inline hide-if-no-js'] = str_replace( 'class=', "$new_attribute class=", $actions['inline hide-if-no-js'] );
+			}
+	}
+
+	return $actions;
+}
+add_filter('post_row_actions', 'generatewp_quickedit_set_data', 10, 2);
