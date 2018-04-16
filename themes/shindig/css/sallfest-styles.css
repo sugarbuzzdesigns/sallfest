@@ -37,7 +37,7 @@ body.home {
 .tab-content {
   padding: 0 20px 20px;
 }
-.tab-content p {
+.tab-content p:last-child {
   margin-bottom: 0;
 }
 
@@ -97,7 +97,18 @@ div.product-addon {
   display: none;
 }
 
+body .homepage-widget-blog .width-container .columns-3 li.product {
+  background: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
 
+.woocommerce ul.products li.product .woocommerce-loop-category__title,
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.woocommerce ul.products li.product h3 {
+  font-size: 2em;
+}
 
 
 .woocommerce #respond input#submit.alt.disabled,
