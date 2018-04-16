@@ -422,6 +422,10 @@ img {
 	padding: 0;
 }
 
+.stretch {
+	width: 100%;
+}
+
 .about-read-more {
 	display: none;
 }

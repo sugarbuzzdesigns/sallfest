@@ -9,20 +9,25 @@
 
 	<?php get_header(); ?>
 
-		<div class="clearfix"></div>
-
-		<?php //while(have_posts()): the_post(); ?>
-		<?php //if($post->post_content=="") : ?><?php //else : ?>
-		<div id="about" class="widget homepage-widget-blog">
-			<div id="homepage-content-container" class="dark">
+		<div class="stretch">
+			<div class="stretch__bg background-image--home">
+			<img class="logo--home" src="<?php echo get_template_directory_uri(); ?>/images/SALLatSEA_Logo_web.png" alt="">
+			</div>
 			<div class="width-container">
-				<div class="read-more-container">
-					<!-- <h1 class="home-widget">ABOUT SALLFEST</h1> -->
-					<?php //the_content(); ?>
-				</div>
-				<div class='clearfix'></div>
-			</div>
-			</div>
 		</div>
-		<?php //endif; endwhile; ?>
+
+		<div class="width-container">
+
+		<?php if( is_page_template('homepage.php') ): ?>
+			<?php if ( is_active_sidebar( 'homepage-widgets' ) ) : ?>
+				<?php dynamic_sidebar( 'homepage-widgets' ); ?>
+			<?php endif; ?>
+		<?php endif; ?>
+
+		<?php if ( is_active_sidebar( 'homepage-all-widgets' ) ) : ?>
+			<?php dynamic_sidebar( 'homepage-all-widgets' ); ?>
+		<?php endif; ?>
+
+		</div>
+
 	<?php get_footer(); ?>

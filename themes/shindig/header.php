@@ -20,7 +20,3 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <body <?php body_class(); ?>>
-
-<div class="width-container">
-	<img style="margin: 0 auto; display: block;" id="home-logo" class="logo" src="<?php echo get_template_directory_uri(); ?>/images/SALL2018-STD-Square-websafe.jpg" alt="">
-</div>

@@ -189,6 +189,7 @@ function progression_scripts() {
 	wp_enqueue_style( 'progression-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom-styles.css', array( 'progression-style' ) );
+	wp_enqueue_style( 'sallfest', get_template_directory_uri() . '/css/sallfest-styles.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic|Khula:400,300,600|Hind:500,600,700', array( 'progression-style' ) );
 
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/src/libs/modernizr-2.6.2.min.js', false, '20120206', false );
@@ -447,3 +448,57 @@ function generatewp_quickedit_set_data( $actions, $post ) {
 	return $actions;
 }
 add_filter('post_row_actions', 'generatewp_quickedit_set_data', 10, 2);
+
+function show_woo_cart() {
+	global $woocommerce;
+
+	// get cart quantity
+	$qty = $woocommerce->cart->get_cart_contents_count();
+
+	// get cart total
+	$total = $woocommerce->cart->get_cart_total();
+
+	// get cart url
+	$cart_url = wc_get_cart_url();
+
+	// if multiple products in cart
+	if($qty>1)
+				echo '<a class="cart-contents fa fa-shopping-cart" href="'.$cart_url.'"><span>'.$qty.'</span></a>';
+
+	// if single product in cart
+	if($qty==1)
+				echo '<a class="cart-contents fa fa-shopping-cart" href="'.$cart_url.'"><span>1</span></a>';
+}
+
+add_filter( 'wc_cart_fragments_params', function( $params ) {
+	if( false === $params ) {
+			$params = array( 'wc_ajax_url' => '/' );
+	}
+	return $params;
+}, 20 );
+
+
+// check for empty-cart get param to clear the cart
+add_action( 'init', 'woocommerce_clear_cart_url' );
+function woocommerce_clear_cart_url() {
+  global $woocommerce;
+
+	if ( isset( $_GET['empty-cart'] ) ) {
+		$woocommerce->cart->empty_cart();
+	}
+}
+
+/** Add "Price" before the price */
+add_filter('woocommerce_get_price_html','price_text');
+
+function price_text($price) {
+	?>
+
+	<div class="price price-disclaimer">
+		<p><strong>*All prices include $100 room deposit.</strong></p>
+	</div>
+
+	<?php
+
+	return $price;
+}

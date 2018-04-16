@@ -1,0 +1,144 @@
+body {
+  background-color: #28a9c2;
+}
+
+body.home {
+  background-image: url(../images/SALL2018_Splash_Wide_web.jpg);
+  background-position: top center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* Home Styles */
+.logo--home {
+  max-width: 520px;
+  margin: 0 auto;
+  display: block;
+  padding: 50px 0;
+}
+
+#about {
+  background: rgba(113, 153, 165, 0.9);
+}
+
+
+
+/* Woocommerce - Shop Header */
+.shop-header {
+  height: 50px;
+  background-color: #1b4a79;
+  margin-bottom: 20px;
+}
+
+
+
+/* Woocommerce - Product Page */
+.width-container__product-page {
+  background-color: #fff;
+}
+
+.woocommerce-variation-add-to-cart {
+  display: flex;
+}
+
+.woocommerce div.product form.cart {
+  margin-bottom: 0;
+}
+
+.woocommerce div.product form.cart div.quantity,
+.woocommerce div.product form.cart .button {
+  float: none;
+}
+
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover {
+  background-color: #33608c;
+}
+
+.woocommerce .quantity .qty {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+h3.addon-name {
+  padding: 0;
+  margin-top: 20px;
+}
+
+abbr[title] {
+  border: 0;
+  text-decoration: none;
+}
+
+th, td {
+  padding: .4em;
+}
+
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  font-size: 2.15em;
+}
+
+div.product-addon {
+  margin: 40px 0 1em;
+}
+
+.addon-options-wrap .form-row:nth-child(n+2) {
+  display: none;
+}
+
+
+
+
+.woocommerce #respond input#submit.alt.disabled,
+.woocommerce #respond input#submit.alt.disabled:hover,
+.woocommerce #respond input#submit.alt:disabled,
+.woocommerce #respond input#submit.alt:disabled:hover,
+.woocommerce #respond input#submit.alt:disabled[disabled],
+.woocommerce #respond input#submit.alt:disabled[disabled]:hover,
+.woocommerce a.button.alt.disabled,
+.woocommerce a.button.alt.disabled:hover,
+.woocommerce a.button.alt:disabled,
+.woocommerce a.button.alt:disabled:hover,
+.woocommerce a.button.alt:disabled[disabled],
+.woocommerce a.button.alt:disabled[disabled]:hover,
+.woocommerce button.button.alt.disabled,
+.woocommerce button.button.alt.disabled:hover,
+.woocommerce button.button.alt:disabled,
+.woocommerce button.button.alt:disabled:hover,
+.woocommerce button.button.alt:disabled[disabled],
+.woocommerce button.button.alt:disabled[disabled]:hover,
+.woocommerce input.button.alt.disabled,
+.woocommerce input.button.alt.disabled:hover,
+.woocommerce input.button.alt:disabled,
+.woocommerce input.button.alt:disabled:hover,
+.woocommerce input.button.alt:disabled[disabled],
+.woocommerce input.button.alt:disabled[disabled]:hover {
+  background-color: #6478a4;
+  color: #fff
+}
+
+.woocommerce #respond input#submit.alt,.woocommerce a.button.alt,.woocommerce button.button.alt,.woocommerce input.button.alt {
+  background-color: #1b4a79;
+  color: #fff;
+  -webkit-font-smoothing: antialiased
+}
+
+.woocommerce-Price-amount {
+  font-size: 2em;
+  color: #389867;
+}
+
+.single-product-main-content {
+  padding: 20px;
+}
+
+.woocommerce-Tabs-panel h2 {
+  padding: 0 20px;
+}
+
+.woocommerce table.shop_attributes td p {
+  padding: 8px 10px;
+}

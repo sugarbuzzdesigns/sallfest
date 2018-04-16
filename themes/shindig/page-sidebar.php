@@ -25,9 +25,9 @@ get_header(); ?>
 				<?php get_template_part( 'content', 'page' ); ?>
 			<?php endwhile; // end of the loop. ?>
 		</div><!-- close #content-left-container -->
-		
+
 		<?php get_sidebar(); ?>
-		
+
 		<div class="clearfix"></div>
 	</div><!-- close .width-container -->
 </div><!-- close #main -->

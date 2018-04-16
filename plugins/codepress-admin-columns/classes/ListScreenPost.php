@@ -54,18 +54,10 @@ abstract class AC_ListScreenPost extends AC_ListScreenWP {
 	}
 
 	/**
-	 * @return array
-	 */
-	public function get_default_orderby() {
-		return array( 'date', true );
-	}
-
-	/**
 	 * Register post specific columns
 	 */
 	protected function register_column_types() {
 		$this->register_column_type( new AC_Column_CustomField );
-		$this->register_column_type( new AC_Column_Menu );
 		$this->register_column_type( new AC_Column_Actions );
 	}
 

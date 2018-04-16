@@ -3,16 +3,6 @@
 	width: 100%;
 }
 
-body {
-	background: #e6e3d1;
-	background-position: center;
-	background-size: cover;
-}
-
-#home-logo {
-	width: 100%;
-}
-
 .date h2 {
 	font-family: 'Montserrat';
 	font-size: 38px;
@@ -68,7 +58,7 @@ footer .social-ico {
 .widget .dark .width-container,
 .widget.dark .width-container {
 	color: #fff;
-	background-color: #7199a5;
+	background: rgba(113, 153, 165, 0.9);
 }
 
 .widget .dark .width-container h1,

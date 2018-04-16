@@ -9,7 +9,56 @@
 jQuery(document).ready(function($) {
 	 'use strict';
 
+	if($('body.single-product').length){
+		var $variationsForm = $('.variations_form');
+		var quantityInput = $('.quantity input[type="number"]');
+		var firstNameInput = $('.addon-options-wrap .form-row[class*="-name"]');
+		var nameInputs = [
+			firstNameInput
+		];
 
+		quantityInput.on('change', function() {
+			var $this = $(this);
+			var ticketNumber = $this.val();
+			var arr = [1, 2, 3];
+
+			firstNameInput.removeClass('required').hide();
+
+			for(var index = 0; index < ticketNumber; index++) {
+				firstNameInput.eq(index).show().addClass('required');
+			}
+		});
+
+		$variationsForm.on('submit', function(evt) {
+			var validInputs = validateInputs($('.addon-options-wrap .form-row.required'));
+
+			if(validInputs){
+				return true;
+			} else {
+				alert('Enter a full name for each ticket');
+				return false;
+			}
+		});
+
+		function validateInputs(inputs){
+			var valid = false;
+			var invalidInputs = [];
+
+			inputs.each(function(i, input) {
+				if(!$(input).find('input').val()){
+					invalidInputs.push(input);
+				}
+			});
+
+			if(invalidInputs.length){
+				valid = false;
+			} else {
+				valid = true;
+			}
+
+			return valid;
+		}
+	};
 /*
 =============================================== 01. MENU ACTIVATION  ===============================================
 */
@@ -100,7 +149,7 @@ jQuery(document).ready(function($) {
 	$('ol li').first().addClass('playing');
 
 	if(typeof audio === 'undefined'){
-		console.log('no audio');
+		// console.log('no audio');
 	} else {
 		audio.load(first);
 
@@ -178,5 +227,4 @@ jQuery(document).ready(function($) {
 	$('#friday-sallfest-kickoff-free-show').on('click', function(e){
 		e.preventDefault();
 	});
-
 });
