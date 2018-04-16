@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
 			firstNameInput
 		];
 
-		quantityInput.on('change', function() {
+		quantityInput.on('change, keyup', function() {
 			var $this = $(this);
 			var ticketNumber = $this.val();
 			var arr = [1, 2, 3];

@@ -118,7 +118,7 @@ class Pyre_schedule_Blog_Media_Widget extends WP_Widget {
 					$featured_posts_count = count($featured_posts);
 				?>
 
-				<?php if(count($featured_posts_count) > 0) : ?>
+				<?php if($featured_posts_count == 0) : ?>
 					<h2 class="no-artists-headline">More information coming soon.</h2>
 				<?php endif; ?>
 
