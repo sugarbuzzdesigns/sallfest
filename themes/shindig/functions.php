@@ -490,18 +490,43 @@ function woocommerce_clear_cart_url() {
 }
 
 /** Add "Price" before the price */
-add_filter('woocommerce_get_price_html','price_text');
+// add_filter('woocommerce_variable_price_html', 'price_text');
 
-function price_text($price) {
+function price_text($price, $product) {
+	var_dump( $product );
 	?>
 
-	<div class="price price-disclaimer">
-		<p><strong>*All prices include $100 room deposit.</strong></p>
+
+	<div>
+		<?php echo $price; ?>
 	</div>
 
 	<?php
-
-	return $price;
 }
 
 add_filter('post_row_actions', 'generatewp_quickedit_set_data', 10, 2);
+
+
+add_filter('woocommerce_variable_price_html', 'custom_variation_price', 10, 2);
+
+function custom_variation_price( $price, $product ) { ?>
+
+	<div class="price price-disclaimer">
+		<p><strong>*All prices include $100 per person room deposit</strong></p>
+	</div>
+
+<?php
+		 $price = '';
+
+		if ( !$product->min_variation_price || $product->min_variation_price !== $product->max_variation_price ) {
+
+			$price .= '<div><p class="from">' . _x('Early Bird Price: ', 'min_price', 'woocommerce') . ' </p>';
+			$price .= woocommerce_price($product->get_variation_price( 'min', true ));
+			$price .= '</div>';
+			$price .= '<div><p class="from">' . _x('Regular Price: ', 'min_price', 'woocommerce') . ' </p>';
+			$price .= woocommerce_price($product->get_variation_regular_price( 'min', true ));
+			$price .= '</div>';
+		}
+
+     return $price;
+}
