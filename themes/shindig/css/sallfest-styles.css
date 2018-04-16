@@ -21,6 +21,11 @@ body.home {
   background: rgba(113, 153, 165, 0.9);
 }
 
+/* Homepage Scheulde Styles */
+.no-artists-headline {
+  margin: 0 auto;
+  text-align: center;
+}
 
 
 /* Woocommerce - Shop Header */

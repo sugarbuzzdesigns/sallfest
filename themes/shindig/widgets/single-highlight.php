@@ -113,7 +113,19 @@ class Pyre_Latest_Foot_Featured_Media_Widget extends WP_Widget {
 	function form($instance)
 	{
 
-		$defaults = array('title' => 'HEADLINE', 'summary_text' => 'EXAMPLE SUB-HEADLINE', 'link_text' => 'Learn more', 'link_link' => '#', 'widget_bg' => '#f2f2f4', 'widget_image_left_pro' => '', 'link_icon' => 'fa-map-marker', 'widget_bg_img' => '', 'checkbox_pro' => 'off', 'main_text_pro' => '[recent_products per_page="3" columns="3"]');
+		$defaults = array(
+			'title' => 'HEADLINE',
+			'summary_text' => 'EXAMPLE SUB-HEADLINE',
+			'link_text' => 'Learn more',
+			'link_link' => '#',
+			'widget_bg' => '#f2f2f4',
+			'widget_image_left_pro' => '',
+			'link_icon' => 'fa-map-marker',
+			'widget_bg_img' => '',
+			'checkbox_pro' => 'off',
+			'main_text_pro' => '[recent_products per_page="3" columns="3"]'
+		);
+
 		$instance = wp_parse_args((array) $instance, $defaults); ?>
 
 		<script type='text/javascript'>

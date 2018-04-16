@@ -109,19 +109,21 @@ class Pyre_schedule_Blog_Media_Widget extends WP_Widget {
 					</ul>
 					<div class="clearfix"></div>
 				</div><!-- c lose #taxonomy_navigation_pro -->
+				<?php
+					$args = array(
+						'posts_per_page' => 65,
+						'post_type' => 'schedule' );
+
+					$featured_posts = query_posts($args);  //was get_posts before i thought of pagination
+					$featured_posts_count = count($featured_posts);
+				?>
+
+				<?php if(count($featured_posts_count) > 0) : ?>
+					<h2 class="no-artists-headline">More information coming soon.</h2>
+				<?php endif; ?>
 
 					<ul id="schedule-content-progression">
 						<?php
-
-
-							$args = array(
-										'posts_per_page' => 65,
-										'post_type' => 'schedule' );
-
-						$featured_posts = query_posts($args);  //was get_posts before i thought of pagination
-									//print_r($featured_posts);
-									//print_r($wp_query);
-									//echo '<br /> -- '.$wp_query->max_num_pages.' <br />';
 									if($featured_posts):
 										foreach($featured_posts as $post):
 							$col_count_progression = get_theme_mod('schedule_col_pro', '3');

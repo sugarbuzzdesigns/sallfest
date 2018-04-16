@@ -497,7 +497,6 @@ function price_text($price) {
 
 	<div class="price price-disclaimer">
 		<p><strong>*All prices include $100 room deposit.</strong></p>
-
 	</div>
 
 	<?php
