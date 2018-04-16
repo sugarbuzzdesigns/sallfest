@@ -33,6 +33,14 @@ body.home {
 
 
 /* Woocommerce - Product Page */
+/* tabs */
+.tab-content {
+  padding: 0 20px 20px;
+}
+.tab-content p {
+  margin-bottom: 0;
+}
+
 .width-container__product-page {
   background-color: #fff;
 }
