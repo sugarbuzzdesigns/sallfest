@@ -4,29 +4,46 @@
 }
 
 body {
-	background: rgba(6, 29, 61, 0.9) url(../images/SALLFest2016-1450x800_web.jpg) no-repeat fixed;
-	background-size: cover;
+	background: #e6e3d1;
 	background-position: center;
+	background-size: cover;
 }
 
 #home-logo {
-	width: 80%;
-	padding-bottom: 20px;
+	width: 100%;
+}
+
+.date h2 {
+	font-family: 'Montserrat';
+	font-size: 38px;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
 }
 
 .brigade-shield {
-	margin-bottom: 40px;
+	margin-bottom: 0;
 }
 
 footer {
-	background-color: #061d3d;
 	margin-top: 40px;
+	padding: 0;
+	background-color: #253e46;
+}
+
+footer .widget-container-footer {
+	margin-bottom: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+footer .social-ico {
+	display: none;
 }
 
 #cvhn-homepage-widget .width-container {
-	background-color: rgba(255, 255, 255, 0.9);
 	padding: 20px;
 	border-radius: 4px;
+	background-color: rgba(255, 255, 255, .9);
 }
 
 #cvhn-homepage-widget .width-container p:last-child {
@@ -39,19 +56,25 @@ footer {
 }
 
 .width-container {
-	padding: 20px;
+	padding: 0;
+}
+
+.width-container .width-container {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .widget .dark .width-container,
 .widget.dark .width-container {
-	background-color: rgba(6, 29, 61, 0.9);
 	color: #fff;
+	background-color: #7199a5;
 }
 
 .widget .dark .width-container h1,
 .widget.dark .width-container h1 {
-	color: #fff;
 	text-align: center;
+	color: #fff;
 }
 
 .widget .light .width-container,
@@ -76,8 +99,8 @@ footer {
 
 #pyre_homepage_booking-widget,
 #pyre_homepage_schedule-widget {
-	color: #fff;
 	text-align: center;
+	color: #fff;
 }
 
 #pyre_homepage_booking-widget .inner,
@@ -92,10 +115,10 @@ footer {
 }
 
 #pyre_homepage_schedule-widget .col-2 {
-	width: 48%;
-	float: left;
-	margin-right: 4%;
 	font-size: 1.3em;
+	float: left;
+	width: 48%;
+	margin-right: 4%;
 }
 
 #pyre_homepage_schedule-widget .col-2 p {
@@ -107,7 +130,7 @@ footer {
 }
 
 #pyre_homepage_schedule-widget .col-2 .time {
-	font-size: 0.8em;
+	font-size: .8em;
 }
 
 #pyre_homepage_schedule-widget .col-2:nth-child(2) {
@@ -121,6 +144,18 @@ footer {
 
 .woocommerce-checkout #main {
 	background-color: #fff;
+}
+
+.wcpgsk-extend-price-data {
+	display: block;
+	color: #535353;
+}
+
+.sale-price {
+	color: #26afd1;
+}
+
+.reg-price {
 }
 
 #pyre_homepage_media-widget-map-feat-3 {
@@ -137,17 +172,21 @@ footer {
 
 body #taxonomy_navigation_pro a:hover,
 body #taxonomy_navigation_pro .current-cat a {
-	background: #26afd1;
+	background: #de6f5d;
 }
 
-	.woocommerce-image-index {
-
-	}
+.woocommerce-image-index {
+}
 
 #about .width-container .readmore,
-.width-container .donate {
-	text-align: center;
+.width-container .donate,
+.width-container .buy-tickets {
 	padding-bottom: 20px;
+	text-align: center;
+}
+
+.width-container .buy-tickets {
+	padding-bottom: 0;
 }
 
 .woocommerce ul.products li.product a img {
@@ -155,39 +194,50 @@ body #taxonomy_navigation_pro .current-cat a {
 }
 
 #about .width-container .readmore span,
-.width-container .donate span {
-	text-decoration: none;
-	line-height: 1;
-	cursor: pointer;
-	display: inline-block;
-	width: auto;
-	margin: 0px 0px 6px 0px;
-	text-shadow: none !important;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	text-transform: uppercase;
-	border: none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+.width-container .donate span,
+.width-container .buy-tickets .button {
 	font-size: 90%;
 	font-weight: 600;
+	line-height: 1;
+	display: inline-block;
+	width: auto;
+	margin: 0 0 6px 0;
 	padding: 15px 22px;
-	background: #ffffff;
-	border: 2px solid #29b0d1;
+	cursor: pointer;
+	text-decoration: none;
+	text-transform: uppercase;
 	color: #29b0d1;
+	border: none;
+	border: 2px solid #29b0d1;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+	        border-radius: 3px;
+	background: #fff;
+	-webkit-box-shadow: none;
+	   -moz-box-shadow: none;
+	        box-shadow: none;
+	text-shadow: none !important;
 }
 
-.width-container .donate span {
-	background-color: #061d3d;
+.width-container .donate span,
+.width-container .buy-tickets .button {
 	color: #fff;
 	border: #061d3d;
+	background-color: #061d3d;
+
+	-webkit-font-smoothing: antialiased;
+}
+
+.width-container .buy-tickets .button {
+	font-size: 35px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.5);
 }
 
 .width-container .donate span a {
-	color: #fff;
 	font-size: 24px;
+	color: #fff;
+
+	-webkit-font-smoothing: antialiased;
 }
 
 
@@ -201,8 +251,8 @@ body #taxonomy_navigation_pro .current-cat a {
 }
 
 #pyre_homepage_media-widget-map-feat-3 img {
-	width: 200px;
 	display: block;
+	width: 200px;
 	margin: 20px 0;
 }
 
@@ -211,8 +261,8 @@ body #taxonomy_navigation_pro .current-cat a {
 }
 
 .ticket-info h3 {
-	color: #fff;
 	margin: 0 10px 5px;
+	color: #fff;
 }
 
 .ticket-info .product-title-index-pro {
@@ -226,20 +276,20 @@ body #taxonomy_navigation_pro .current-cat a {
 
 
 ol {
-	padding: 0px;
-	margin: 0px;
+	font-size: .9em;
+	margin: 0;
+	padding: 0;
 	list-style: decimal-leading-zero inside;
 	color: #ccc;
 	border-top: 1px solid #ccc;
-	font-size: 0.9em;
 }
 
 ol li {
 	position: relative;
-	margin: 0px;
+	margin: 0;
 	padding: 9px 2px 10px;
-	border-bottom: 1px solid #ccc;
 	cursor: pointer;
+	border-bottom: 1px solid #ccc;
 }
 
 ol li:last-child {
@@ -248,8 +298,8 @@ ol li:last-child {
 
 ol li a {
 	display: block;
+	padding: 0 0 0 20px;
 	text-indent: -3.3ex;
-	padding: 0px 0px 0px 20px;
 }
 
 li.playing {
@@ -266,13 +316,14 @@ li.playing a {
 }
 
 .audiojs {
-	width: 100%;
-	background: #404040;
-	overflow: hidden;
 	font-family: monospace;
 	font-size: 12px;
-	-o-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	width: 100%;
+	background: #404040;
+	   box-shadow: 1px 1px 8px rgba(0, 0, 0, .3);
+
+	-o-box-shadow: 1px 1px 8px rgba(0, 0, 0, .3);
 }
 
 .playlist .coming-soon {
@@ -286,7 +337,7 @@ li.playing a {
 
 .audiojs p {
 	display: none;
-	margin: 0px !important;
+	margin: 0 !important;
 	cursor: pointer;
 }
 
@@ -296,76 +347,77 @@ li.playing a {
 
 .audiojs .scrubber {
 	position: relative;
+	overflow: hidden;
 	width: 100%;
-	background: #5a5a5a;
 	height: 24px;
 	margin: 0;
-	border-left: 0px;
-	border-bottom: 0px;
-	overflow: hidden;
+	border-bottom: 0;
+	border-left: 0;
+	background: #5a5a5a;
 }
 
 .audiojs .progress {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	height: 24px;
-	width: 0px;
-	background: #F7E082;
 	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 24px;
+	background: #f7e082;
 }
 
 .audiojs .loaded {
 	position: absolute;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
+	width: 0;
 	height: 24px;
-	width: 0px;
-	background: #7E7E7E;
+	background: #7e7e7e;
 }
 
 .audiojs .time {
 	font-size: 1.6em;
 	line-height: 36px;
 	color: #ddd;
-	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
 .audiojs .time em {
-	padding: 0px 2px 0px 0px;
-	color: #f9f9f9;
 	font-style: normal;
+	padding: 0 2px 0 0;
+	color: #f9f9f9;
 }
 
 .audiojs .time strong {
-	padding: 0px 0px 0px 2px;
 	font-weight: normal;
+	padding: 0 0 0 2px;
 }
 
 .audiojs .error-message {
-	float: left;
-	display: none;
-	margin: 0px 10px;
-	height: 36px;
-	width: 400px;
-	overflow: hidden;
 	line-height: 36px;
+	display: none;
+	float: left;
+	overflow: hidden;
+	width: 400px;
+	height: 36px;
+	margin: 0 10px;
 	white-space: nowrap;
+	        text-overflow: ellipsis;
 	color: #fff;
-	text-overflow: ellipsis;
-	-o-text-overflow: ellipsis;
+
+	     -o-text-overflow: ellipsis;
 	-icab-text-overflow: ellipsis;
 	-khtml-text-overflow: ellipsis;
-	-moz-text-overflow: ellipsis;
+	   -moz-text-overflow: ellipsis;
 	-webkit-text-overflow: ellipsis;
 }
 
 .audiojs .error-message a {
-	color: #eee;
-	text-decoration: none;
 	padding-bottom: 1px;
-	border-bottom: 1px solid #999;
 	white-space: wrap;
+	text-decoration: none;
+	color: #eee;
+	border-bottom: 1px solid #999;
 }
 
 .navigation {
@@ -373,33 +425,33 @@ li.playing a {
 }
 
 .navigation div {
-	display: inline-block;
-	vertical-align: middle;
 	position: relative;
+	display: inline-block;
 	cursor: pointer;
+	vertical-align: middle;
 }
 
 .audiojs .play-pause {
-	margin: 0px;
-	overflow: hidden;
 	font-size: 2.5em;
 	position: relative;
 	z-index: 1;
-	border: solid 3px #404040;
-	background-color: #5A5A5A;
-	height: 60px;
+	overflow: hidden;
 	width: 60px;
+	height: 60px;
+	margin: 0;
+	border: solid 3px #404040;
 	border-radius: 50%;
+	background-color: #5a5a5a;
 }
 
 .audiojs .play-pause .fa-play,
 .audiojs .play-pause .fa-pause {
 	position: absolute;
-	left: 55%;
 	top: 50%;
+	left: 55%;
 	display: block;
 	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 }
 
 .audiojs .play-pause .fa-pause {
@@ -417,7 +469,7 @@ li.playing a {
 	top: 50%;
 	left: 8px;
 	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
+	        transform: translateY(-50%);
 }
 
 .audiojs .prev.disabled,
@@ -426,23 +478,23 @@ li.playing a {
 }
 
 .audiojs .next span {
-	left: auto;
 	right: 8px;
+	left: auto;
 }
 
 .audiojs .next,
 .audiojs .prev {
 	font-size: 1.5em;
-	height: 40px;
 	width: 40px;
-	background-color: #5A5A5A;
-	border-radius: 50%;
+	height: 40px;
 	margin-right: -15px;
+	border-radius: 50%;
+	background-color: #5a5a5a;
 }
 
 .audiojs .next {
-	margin-left: -15px;
 	margin-right: auto;
+	margin-left: -15px;
 }
 
 .audiojs .error {
@@ -489,8 +541,8 @@ li.playing a {
 }
 
 .audiojs .info {
-	text-align: center;
 	margin-top: 20px;
+	text-align: center;
 }
 
 .audiojs .info ul {
@@ -498,15 +550,15 @@ li.playing a {
 }
 
 .audiojs .button.buy-song {
-	padding: 5px 12px;
 	margin: 0;
+	padding: 5px 12px;
 }
 
 .audiojs ul li {
 	display: inline-block;
-	color: #fff;
-	cursor: pointer;
 	padding-left: 10px;
+	cursor: pointer;
+	color: #fff;
 }
 
 .audiojs ul li.active {
@@ -514,31 +566,31 @@ li.playing a {
 }
 
 .audiojs ul li:first-child {
-	border-right: solid 1px #5F5F5F;
 	padding-right: 10px;
 	padding-left: 0;
+	border-right: solid 1px #5f5f5f;
 }
 
 .audiojs h2 {
+	font-size: 1.5em;
+	width: 100%;
+	margin: 0 0 15px 0;
 	text-transform: none;
 	color: #fff;
 	text-shadow: none;
-	margin: 0 0 15px 0;
-	font-size: 1.5em;
-	width: 100%;
 }
 
 .entry-content .song {
 	font-family: monospace;
-	padding: 12px 15px 10px 15px;
 	display: none;
+	padding: 12px 15px 10px 15px;
 }
 
 .entry-content .song h3 {
+	font-size: 2em;
+	font-weight: bold;
 	margin-top: -10px;
 	margin-bottom: 20px;
-	font-weight: bold;
-	font-size: 2em;
 }
 
 .entry-content .song div {
@@ -556,8 +608,8 @@ li.playing a {
 .entry-content .song .about p {
 	line-height: 25px;
 	margin-top: -2px;
+	    word-break: keep-all;
 	-ms-word-break: keep-all;
-	word-break: keep-all;
 }
 
 .entry-content .song p {
@@ -567,7 +619,7 @@ li.playing a {
 .entry-content .song p span {
 	font-size: 13px;
 	display: block;
-	margin-bottom: 0.5em;
+	margin-bottom: .5em;
+	    word-break: keep-all;
 	-ms-word-break: keep-all;
-	word-break: keep-all;
 }

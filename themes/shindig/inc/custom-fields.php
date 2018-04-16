@@ -25,7 +25,7 @@ function add_custom_meta_boxes() {
     );
     dev7_add_meta_box( $meta_box );
 
-	
+
     $meta_box2 = array(
         'id'         => 'progression_post_settings', // Meta box ID
         'title'      => __('Post Settings', 'progression'), // Meta box title
@@ -50,9 +50,9 @@ function add_custom_meta_boxes() {
         )
     );
     dev7_add_meta_box( $meta_box2 );
-	
-	
-	
+
+
+
     $meta_box3 = array(
         'id'         => 'progression_schedule_settings', // Meta box ID
         'title'      => __('Schedule Settings', 'progression'), // Meta box title
@@ -68,6 +68,13 @@ function add_custom_meta_boxes() {
                 'std' => ''
             ),
             array(
+                'id' => 'progression_schedule_additional_info',
+                'name' => __('Schedule Additional Info', 'progression'),
+                'desc' => __('<br>Add-in more content for the schedule (Ex: At Venue XYZ)', 'progression'),
+                'type' => 'text',
+                'std' => ''
+            ),
+            array(
                 'id' => 'progression_external_link',
                 'name' => __('External Link', 'progression'),
                 'desc' => __('<br>Make your post link to another page', 'progression'),
@@ -77,8 +84,8 @@ function add_custom_meta_boxes() {
         )
     );
     dev7_add_meta_box( $meta_box3 );
-	
-	
+
+
     $meta_box4 = array(
         'id'         => 'progression_sponsor_settings', // Meta box ID
         'title'      => __('Sponsor Settings', 'progression'), // Meta box title
@@ -96,9 +103,9 @@ function add_custom_meta_boxes() {
         )
     );
     dev7_add_meta_box( $meta_box4 );
-	
-	
-	
+
+
+
     $meta_box5 = array(
         'id'         => 'progression_timeline_settings', // Meta box ID
         'title'      => __('Timeline Settings', 'progression'), // Meta box title
@@ -123,7 +130,7 @@ function add_custom_meta_boxes() {
         )
     );
     dev7_add_meta_box( $meta_box5 );
-	
+
     $meta_box6 = array(
         'id'         => 'progression_shop_settings', // Meta box ID
         'title'      => __('Custom Settings', 'progression'), // Meta box title
@@ -141,7 +148,7 @@ function add_custom_meta_boxes() {
         )
     );
     dev7_add_meta_box( $meta_box6 );
-	
+
 }
 add_action( 'dev7_meta_boxes', 'add_custom_meta_boxes' );
 ?>
