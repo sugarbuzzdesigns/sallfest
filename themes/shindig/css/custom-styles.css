@@ -3,6 +3,16 @@
 	width: 100%;
 }
 
+body {
+	background: #e6e3d1;
+	background-position: center;
+	background-size: cover;
+}
+
+#home-logo {
+	width: 100%;
+}
+
 .date h2 {
 	font-family: 'Montserrat';
 	font-size: 38px;

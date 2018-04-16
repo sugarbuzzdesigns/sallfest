@@ -447,6 +447,7 @@ function generatewp_quickedit_set_data( $actions, $post ) {
 
 	return $actions;
 }
+
 add_filter('post_row_actions', 'generatewp_quickedit_set_data', 10, 2);
 
 function show_woo_cart() {
@@ -502,3 +503,5 @@ function price_text($price) {
 
 	return $price;
 }
+
+add_filter('post_row_actions', 'generatewp_quickedit_set_data', 10, 2);

@@ -8,26 +8,33 @@
 ?>
 
 	<?php get_header(); ?>
-
-		<div class="stretch">
-			<div class="stretch__bg background-image--home">
-			<img class="logo--home" src="<?php echo get_template_directory_uri(); ?>/images/SALLatSEA_Logo_web.png" alt="">
-			</div>
+	 	<?php if ( !is_user_logged_in() ) : ?>
 			<div class="width-container">
-		</div>
+				<img style="margin: 0 auto; display: block;" id="home-logo" class="logo" src="<?php echo get_template_directory_uri(); ?>/images/SALL2018-STD-Square-websafe.jpg" alt="">
+			</div>
+		<?php else : ?>
 
-		<div class="width-container">
+			<div class="stretch">
+				<div class="stretch__bg background-image--home">
+				<img class="logo--home" src="<?php echo get_template_directory_uri(); ?>/images/SALLatSEA_Logo_web.png" alt="">
+				</div>
+				<div class="width-container">
+			</div>
 
-		<?php if( is_page_template('homepage.php') ): ?>
-			<?php if ( is_active_sidebar( 'homepage-widgets' ) ) : ?>
-				<?php dynamic_sidebar( 'homepage-widgets' ); ?>
+			<div class="width-container">
+
+
+			<?php if( is_page_template('homepage.php') ): ?>
+				<?php if ( is_active_sidebar( 'homepage-widgets' ) ) : ?>
+					<?php dynamic_sidebar( 'homepage-widgets' ); ?>
+				<?php endif; ?>
 			<?php endif; ?>
-		<?php endif; ?>
 
-		<?php if ( is_active_sidebar( 'homepage-all-widgets' ) ) : ?>
-			<?php dynamic_sidebar( 'homepage-all-widgets' ); ?>
-		<?php endif; ?>
+			<?php if ( is_active_sidebar( 'homepage-all-widgets' ) ) : ?>
+				<?php dynamic_sidebar( 'homepage-all-widgets' ); ?>
+			<?php endif; ?>
 
-		</div>
+			</div>
+		<?php endif; ?>
 
 	<?php get_footer(); ?>

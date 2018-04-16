@@ -407,21 +407,23 @@ abstract class AC_ListScreen {
 	 */
 	public function register_column_type( AC_Column $column ) {
 		if ( ! $column->get_type() ) {
-			return;
+			return false;
 		}
 
 		$column->set_list_screen( $this );
 
 		if ( ! $column->is_valid() ) {
-			return;
+			return false;
 		}
 
 		// Skip the custom registered columns which are marked 'original' but are not available for this list screen
 		if ( $column->is_original() && ! in_array( $column->get_type(), array_keys( $this->get_original_columns() ) ) ) {
-			return;
+			return false;
 		}
 
 		$this->column_types[ $column->get_type() ] = $column;
+
+		return true;
 	}
 
 	/**
@@ -468,7 +470,6 @@ abstract class AC_ListScreen {
 	 * Available column types
 	 */
 	private function set_column_types() {
-		$this->column_types = array();
 
 		// Register default columns
 		foreach ( $this->get_original_columns() as $type => $label ) {
@@ -503,6 +504,9 @@ abstract class AC_ListScreen {
 		 * @param AC_ListScreen $this
 		 */
 		do_action( 'ac/column_types', $this );
+
+		// For backwards compatibility
+		do_action( 'acp/column_types', $this );
 	}
 
 	/**
@@ -822,6 +826,17 @@ abstract class AC_ListScreen {
 	 * @return array
 	 */
 	public function get_default_column_headers() {
+		return array();
+	}
+
+	/**
+	 * Get the default sortable column. The format is: 'orderby' or [ 'orderby', true ]
+	 *
+	 * The second format will make the initial sorting order be descending
+	 *
+	 * @return array [ $column_name, $descending ]
+	 */
+	public function get_default_orderby() {
 		return array();
 	}
 
