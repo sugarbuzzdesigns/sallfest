@@ -78,6 +78,11 @@ body.home {
   margin-bottom: 20px;
 }
 
+#support-video {
+  display: block;
+  margin: 40px auto 0;
+}
+
 .ship-images {
   margin: 0 0 20px 0;
   padding: 0;
