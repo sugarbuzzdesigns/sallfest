@@ -24,6 +24,7 @@ wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
 
+<p><strong>*Each ticket includes $100 deposit</strong><br><strong>**no refunds offered on SALLFEST tickets 90 days prior to the event</strong></p>
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
