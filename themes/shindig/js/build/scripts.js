@@ -961,6 +961,8 @@ $.fn.mobileMenu = function(options) {
 jQuery(document).ready(function($) {
 	 'use strict';
 
+	window.$ = jQuery;
+
 	if($('body.single-product').length){
 		var $variationsForm = $('.variations_form');
 		var quantityInput = $('.quantity input[type="number"]');
@@ -983,11 +985,12 @@ jQuery(document).ready(function($) {
 
 		$variationsForm.on('submit', function(evt) {
 			var validInputs = validateInputs($('.addon-options-wrap .form-row.required'));
+			var message = getValidationMessage(validateInputs);
 
 			if(validInputs){
 				return true;
 			} else {
-				alert('Enter a full name for each ticket');
+				alert(message);
 				return false;
 			}
 		});
@@ -1002,6 +1005,10 @@ jQuery(document).ready(function($) {
 				}
 			});
 
+			if(Number($('.quantity input[type="number"]').val()) > 1 && $('.product-addon textarea').val().length === 0) {
+				console.log('need to add some sizes');
+			}
+
 			if(invalidInputs.length){
 				valid = false;
 			} else {
@@ -1009,6 +1016,10 @@ jQuery(document).ready(function($) {
 			}
 
 			return valid;
+		}
+
+		function getValidationMessage(inputs) {
+
 		}
 	};
 /*

@@ -81,6 +81,18 @@ body.home {
   }
 }
 
+h3.addon-name {
+  margin: 0;
+}
+
+.addon-name abbr {
+  display: none;
+}
+
+.addon-name::after {
+  content: '*';
+}
+
 /* Woocommerce - Shop Header */
 .shop-header {
   height: 50px;
