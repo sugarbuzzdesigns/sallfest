@@ -21,6 +21,7 @@
 </head>
 <body <?php body_class(); ?>>
 
-<div class="shop-header">
-  <?php show_woo_cart(); ?>
-</div>
+<!-- <div class="shop-header"> -->
+	<?php //wp_nav_menu( array('theme_location' => 'primary', 'depth' => 4, 'menu_class' => 'sf-menu', 'fallback_cb' => false ) ); ?><?php if ( has_nav_menu( 'primary' ) ):  ?><?php else: ?><span class="nav-pro-span"><?php _e( 'Insert Navigation under Appearance > Menus', 'progression' ); ?></span><?php endif; ?><div class="clearfix"></div>
+  <?php //show_woo_cart(); ?>
+<!-- </div> -->

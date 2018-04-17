@@ -489,21 +489,6 @@ function woocommerce_clear_cart_url() {
 	}
 }
 
-/** Add "Price" before the price */
-// add_filter('woocommerce_variable_price_html', 'price_text');
-
-function price_text($price, $product) {
-	var_dump( $product );
-	?>
-
-
-	<div>
-		<?php echo $price; ?>
-	</div>
-
-	<?php
-}
-
 add_filter('post_row_actions', 'generatewp_quickedit_set_data', 10, 2);
 
 
@@ -540,3 +525,16 @@ function vs_change_sale_content($content, $post, $product){
    $content = '<span class="onsale">'.__( 'Early Bird', 'woocommerce' ).'</span>';
    return $content;
 }
+
+
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+
+    unset( $tabs['reviews'] ); 			// Remove the reviews tab
+    unset( $tabs['additional_information'] );  	// Remove the additional information tab
+
+    return $tabs;
+}
+
+show_admin_bar( false );

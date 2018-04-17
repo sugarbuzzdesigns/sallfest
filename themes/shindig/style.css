@@ -239,7 +239,8 @@ select,
 textarea {
 	font-size: 100%;
 	margin: 0;
-	vertical-align: baseline
+	vertical-align: baseline;
+	border-color: #e3e3e3;
 }
 
 button,
