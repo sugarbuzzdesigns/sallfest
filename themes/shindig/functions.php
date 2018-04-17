@@ -517,16 +517,26 @@ function custom_variation_price( $price, $product ) { ?>
 
 <?php
 		 $price = '';
+		 $productPageClass = is_product() ? 'price-product-page' : 'price-product-list-page';
 
 		if ( !$product->min_variation_price || $product->min_variation_price !== $product->max_variation_price ) {
 
-			$price .= '<div><p class="from">' . _x('Early Bird Price: ', 'min_price', 'woocommerce') . ' </p>';
+			$price .= '<div class="'. $productPageClass .'">';
+			$price .= '<div class="early-bird-pricing"><p class="from">' . _x('Early Bird Price', 'min_price', 'woocommerce') . ' </p>';
 			$price .= woocommerce_price($product->get_variation_price( 'min', true ));
 			$price .= '</div>';
-			$price .= '<div><p class="from">' . _x('Regular Price: ', 'min_price', 'woocommerce') . ' </p>';
+			$price .= '<div class="regular-pricing"><p class="from">' . _x('Regular Price', 'min_price', 'woocommerce') . ' </p>';
 			$price .= woocommerce_price($product->get_variation_regular_price( 'min', true ));
+			$price .= '</div>';
 			$price .= '</div>';
 		}
 
      return $price;
+}
+
+add_filter('woocommerce_sale_flash', 'vs_change_sale_content', 10, 3);
+
+function vs_change_sale_content($content, $post, $product){
+   $content = '<span class="onsale">'.__( 'Early Bird', 'woocommerce' ).'</span>';
+   return $content;
 }

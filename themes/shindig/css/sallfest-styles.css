@@ -37,6 +37,39 @@ body.home {
   display: none !important;
 }
 
+.early-bird-pricing {
+  background: #f3f3f3;
+  padding: 20px 10px 10px;
+  margin-bottom: 20px;
+}
+
+.early-bird-pricing .from {
+  font-size: .95em !important;
+}
+
+.price-product-page .early-bird-pricing {
+  padding: 10px 10px 10px;
+}
+
+.price-product-page .early-bird-pricing p.from,
+.price-product-page .regular-pricing p.from {
+  margin: 0;
+}
+
+.woocommerce ul.products li.product .price .from {
+  color: #989898;
+}
+
+.regular-pricing .amount {
+  font-size: 1.5em !important;
+  color: #7b7b7b !important;
+}
+
+.woocommerce span.onsale {
+  border-radius: 0;
+  padding: 5px 10px;
+  border: solid 1px #55943b;
+}
 
 /* Woocommerce - Shop Header */
 .shop-header {
