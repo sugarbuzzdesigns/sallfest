@@ -71,6 +71,16 @@ body.home {
   border: solid 1px #55943b;
 }
 
+@media only screen and (max-width: 768px) {
+  .logo--home {
+    max-width: 520px;
+    margin: 0 auto;
+    display: block;
+    padding: 50px 0;
+    width: 40%;
+  }
+}
+
 /* Woocommerce - Shop Header */
 .shop-header {
   height: 50px;
