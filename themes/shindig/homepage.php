@@ -8,7 +8,7 @@
 ?>
 
 	<?php get_header(); ?>
-		 <?php if ( !is_user_logged_in() ) : ?>
+		 <?php if ( false ) : ?>
 		 	<?php echo do_shortcode('[ssf id=1198128905]'); ?>
 
 			<div class="width-container">
