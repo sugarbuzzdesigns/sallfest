@@ -96,7 +96,9 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wr
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
 // Display 24 products per page. Goes in functions.php
-add_filter('loop_shop_per_page', create_function('$cols', 'return get_theme_mod( "shop_pagination_pro" );;'));
+add_filter('loop_shop_per_page', function($cols) {
+	return get_theme_mod( "shop_pagination_pro" );
+});
 /* WooCommerce Related Products */
 function woo_related_products_limit() {
   global $product;
@@ -248,7 +250,13 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Plugin Activiation
  */
+require get_template_directory() . '/inc/shop-report-page.php';
+
+/**
+ * Load Plugin Activiation
+ */
 require get_template_directory() . '/tgm-plugin-activation/plugin-activation.php';
+
 
 
 // define the woocommerce_after_single_product callback
@@ -538,3 +546,15 @@ function woo_remove_product_tabs( $tabs ) {
 }
 
 show_admin_bar( false );
+
+function wc_empty_cart_redirect_url() {
+	return '/';
+}
+add_filter( 'woocommerce_return_to_shop_redirect', 'wc_empty_cart_redirect_url' );
+
+add_action( 'woocommerce_before_shop_loop_item_title', function() {
+	global $product;
+	if ( !$product->is_in_stock() ) {
+			echo '<span class="soldout">Sold out</span>';
+	}
+});

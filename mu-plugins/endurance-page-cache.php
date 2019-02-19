@@ -2,7 +2,7 @@
 /*
 Plugin Name: Endurance Page Cache
 Description: This cache plugin is primarily for cache purging of the additional layers of cache that may be available on your hosting account.
-Version: 1.1
+Version: 1.3
 Author: Mike Hansen
 Author URI: https://www.mikehansen.me/
 License: GPLv2 or later
@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 // Do not access file directly!
 if ( ! defined( 'WPINC' ) ) { die; }
 
-define( 'EPC_VERSION', 1.1 );
+define( 'EPC_VERSION', 1.3 );
 
 if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 	class Endurance_Page_Cache {
@@ -25,7 +25,7 @@ if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 			$this->force_purge = false;
 			$this->cache_level = get_option( 'endurance_cache_level', 2 );
 			$this->cache_dir = WP_CONTENT_DIR . '/endurance-page-cache';
-			$this->cache_exempt = array( 'wp-admin', '.', 'checkout', 'cart', 'wp-json', '%', '=', '@', '&', ':', ';' );
+			$this->cache_exempt = array( 'wp-admin', '.', 'checkout', 'cart', rest_get_url_prefix(), '%', '=', '@', '&', ':', ';' );
 		}
 
 		function hooks() {
@@ -66,7 +66,7 @@ if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 		}
 
 		function admin_toolbar( $wp_admin_bar ) {
-			if ( current_user_can( 'manage_options' ) ) {
+			if ( current_user_can( 'manage_options' ) && $this->is_enabled() ) {
 				$args = array(
 					'id'    => 'epc_purge_menu',
 					'title' => 'Caching',
@@ -152,17 +152,99 @@ if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 		}
 
 		function option_handler( $option, $old_value, $new_value ) {
-			$exempt_options = array( '_transient', 'cron', 'session', 'sync', 'schedul', 'user_hit_count', 'jetpack_protect', 'rewrite_rules', 'tribe_last', 'wordfence', 'traffic', 'stats' );
-			foreach ( $exempt_options as $exempt_option ) {
-				if ( false !== strpos( $option, $exempt_option ) ) {
-					return;
+			// No need to process if nothing was updated
+			if ( $old_value === $new_value ) {
+				return false;
+			}
+
+			$option_name = str_replace( '-', '_', strtolower( $option ) );
+
+			$exempt_if_equals = array(
+				'active_plugins'    => true,
+				'html_type'         => true,
+				'fs_accounts'       => true,
+				'rewrite_rules'     => true,
+				'uninstall_plugins' => true,
+				'wp_user_roles'     => true,
+			);
+
+			// If we have an exact match, we can just stop here.
+			if ( array_key_exists( $option, $exempt_if_equals ) ) {
+				return false;
+			}
+
+			$force_if_contains = array(
+				'html',
+			);
+
+			$exempt_if_contains = array(
+				'_404s',
+				'_active',
+				'_activated',
+				'_activation',
+				'_attempts',
+				'_available',
+				'_blacklist',
+				'_cache_validator',
+				'_checksum',
+				'_config',
+				'_count',
+				'_dectivated',
+				'_disable',
+				'_enable',
+				'_errors',
+				'_inactive',
+				'_installed',
+				'_key',
+				'_last_',
+				'_license',
+				'_log',
+				'_mode',
+				'_options',
+				'_pageviews',
+				'_redirects',
+				'_rules',
+				'_schedule',
+				'_session',
+				'_settings',
+				'_stats',
+				'_status',
+				'_statistics',
+				'_supports',
+				'_sync',
+				'_task',
+				'_time',
+				'_token',
+				'_traffic',
+				'_transient',
+				'_version',
+				'_views',
+				'_whitelist',
+				'cron',
+				'nonce',
+			);
+
+			$force_purge = false;
+
+			foreach ( $force_if_contains as $slug ) {
+				if ( false !== strpos( $option_name, $slug ) ) {
+					$force_purge = true;
+					break;
 				}
 			}
 
-			if ( $old_value !== $new_value ) {
-				$this->purge_trigger = 'option_update_' . $option;
-				$this->purge_all();
+			if ( ! $force_purge ) {
+				foreach ( $exempt_if_contains as $slug ) {
+					if ( false !== strpos( $option_name, $slug ) ) {
+						return false;
+					}
+				}
 			}
+
+			$this->purge_trigger = 'option_update_' . $option;
+			$this->purge_all();
+
+			return true;
 		}
 
 		function comment( $comment_id, $comment_approved = null ) {
@@ -281,17 +363,22 @@ if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 			}
 			$siteurl = get_option( 'siteurl' );
 			$uri = str_replace( $siteurl, 'http://127.0.0.1:8080', $uri );
+			$urihttps = str_replace( $siteurl, 'https://127.0.0.1:8443', $uri );
 
 			$trigger = ( isset( $this->purge_trigger ) && ! is_null( $this->purge_trigger ) ) ? $this->purge_trigger : current_action();
 
 			$args = array(
 				'method' => 'PURGE',
+				'timeout' => '5',
+				'sslverify' => false,
 				'headers' => array(
 					'host'   => str_replace( array( 'http://', 'https://' ), '', $siteurl ),
 				),
 				'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url() .'; EPC/v' . EPC_VERSION . '/' . $trigger,
 			);
 			wp_remote_request( $uri, $args );
+			wp_remote_request( $urihttps, $args );
+
 			if ( 'http://127.0.0.1:8080/.*' == $uri ) {
 				$this->purge_cdn();
 			}
@@ -414,20 +501,20 @@ if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 			$base = parse_url( trailingslashit( get_option( 'home' ) ), PHP_URL_PATH );
 			$cache_url = $base . str_replace( get_option( 'home' ), '', WP_CONTENT_URL . '/endurance-page-cache' );
 			$cache_url = str_replace( '//', '/', $cache_url );
-			$additions = 'Header set X-Endurance-Cache-Level "' . $this->cache_level . '"' . "\n";
+			$additions = "<ifModule mod_headers.c>\n" . 'Header set X-Endurance-Cache-Level "' . $this->cache_level . '"' . "\n</ifModule>\n";
 
 			if ( false === strpos( __DIR__, 'public_html' ) ) {
 				$additions .= 'Options -Indexes ' . "\n" . '
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteBase ' . $base . '
-	RewriteRule ^' . $cache_url . '/ - [L]
-	RewriteCond %{REQUEST_METHOD} !POST
-	RewriteCond %{QUERY_STRING} !.*=.*
-	RewriteCond %{HTTP_COOKIE} !(wordpress_test_cookie|comment_author|wp\-postpass|wordpress_logged_in|wptouch_switch_toggle|wp_woocommerce_session_) [NC]
-	RewriteCond %{DOCUMENT_ROOT}' . $cache_url . '/$1/_index.html -f
-	RewriteRule ^(.*)$ ' . $cache_url . '/$1/_index.html [L]
-</IfModule>' . "\n";
+				<IfModule mod_rewrite.c>
+					RewriteEngine On
+					RewriteBase ' . $base . '
+					RewriteRule ^' . $cache_url . '/ - [L]
+					RewriteCond %{REQUEST_METHOD} !POST
+					RewriteCond %{QUERY_STRING} !.*=.*
+					RewriteCond %{HTTP_COOKIE} !(wordpress_test_cookie|comment_author|wp\-postpass|wordpress_logged_in|wptouch_switch_toggle|wp_woocommerce_session_) [NC]
+					RewriteCond %{DOCUMENT_ROOT}' . $cache_url . '/$1/_index.html -f
+					RewriteRule ^(.*)$ ' . $cache_url . '/$1/_index.html [L]
+				</IfModule>' . "\n";
 			}
 			return $additions . $rules;
 		}
@@ -636,6 +723,10 @@ if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 						'text/html'       => '0 seconds',
 						'default'         => '10 minutes',
 					);
+					break;
+
+				default:
+					$new_expirations = array();
 					break;
 			}
 			$expirations = wp_parse_args( $new_expirations, $original_expirations );

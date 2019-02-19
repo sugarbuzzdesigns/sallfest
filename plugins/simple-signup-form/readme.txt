@@ -3,7 +3,7 @@ Contributors: Pantherius
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=6H6YHMQG8JJ5J&lc=USD&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: sign up, social signup, subscription, subscribe form, signup form, signup popup, subscription popup, subscription form, google plus
 Requires at least: 4.0
-Tested up to: 4.9.1
+Tested up to: 4.9.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,7 +12,7 @@ Build simple and effective Subscription Form with Visual Builder.
 
 == Description ==
 
-[Demo](http://pantherius.com/free-jquery-wordpress-signup-form/) | [jQuery Popup Form](http://codecanyon.net/item/simple-subscription-popupjquery-email-signup-form/7301421?ref=pantherius)
+[Demo](http://pantherius.com/free-jquery-wordpress-signup-form/) | [jQuery Popup Form](https://codecanyon.net/item/simple-subscription-popupjquery-email-signup-form/7301421?ref=pantherius) | [WordPress Survey](https://codecanyon.net/item/modal-survey-wordpress-poll-survey-quiz-plugin/6533863?ref=pantherius)
 
  You'll get the subscription datas to your email address, therefore you can easily add it to your email manager software or mail list.
  Simple Signup Form is a powerful marketing solution to design your own signup form and put it to all or just some specified pages / posts. The visitors can subscribe with one single click using the Google Plus Signup option.
@@ -122,6 +122,9 @@ First, you need to get your Google Client ID and API Key. You can find it on: ht
 Initial Release
 
 == Changelog ==
+
+= 1.6.3.5 =
+* Code optimization
 
 = 1.6.3.1 =
 * Code optimization

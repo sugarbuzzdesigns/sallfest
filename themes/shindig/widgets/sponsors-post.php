@@ -8,7 +8,7 @@ function pyre_home_service_load_widgets()
 
 class Pyre_service_Blog_Media_Widget extends WP_Widget {
 	
-	function Pyre_service_Blog_Media_Widget()
+	function __construct()
 	{
 		$widget_ops = array('classname' => 'pyre_homepage_testimonails', 'description' => 'Latest Sponsors posts');
 
