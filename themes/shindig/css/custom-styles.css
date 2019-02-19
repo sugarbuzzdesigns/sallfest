@@ -616,10 +616,54 @@ li.playing a {
 	margin: 0 0 2.3em;
 }
 
+.woocommerce ul.products li.product a {
+	display: block;
+}
+
 .entry-content .song p span {
 	font-size: 13px;
 	display: block;
 	margin-bottom: .5em;
 	    word-break: keep-all;
 	-ms-word-break: keep-all;
+}
+
+
+.post-525 .onsale {
+	display: none;
+}
+
+.home .product .soldout {
+	  min-height: 3.236em;
+    min-width: 3.236em;
+    padding: .202em;
+    font-size: 1em;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    line-height: 3.236;
+    top: 0;
+    right: 0;
+    left: auto;
+    margin: -.5em -.5em 0 0;
+    color: #fff;
+    font-size: .857em;
+		z-index: 9;
+		padding: 5px 10px;
+
+	margin: -.5em -.5em 0 0;
+	background: #cc4f4f;
+	border: solid 1px #d24343;
+	color: #fff;
+}
+
+.product.outofstock .woocommerce-Price-amount,
+.product.outofstock .regular-pricing {
+	text-decoration: line-through;;
+}
+
+.product.outofstock .button.product_type_variable {
+	opacity: 0.4;
+	pointer-events: none;
+	cursor: not-allowed;
 }
