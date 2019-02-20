@@ -286,7 +286,7 @@ function custom_woocommerce_product_add_to_cart_text() {
 
 	global $product;
 
-	$product_type = $product->product_type;
+	$product_type = $product->get_type();
 
 	switch ( $product_type ) {
 
@@ -511,15 +511,17 @@ function custom_variation_price( $price, $product ) { ?>
 <?php
 		 $price = '';
 		 $productPageClass = is_product() ? 'price-product-page' : 'price-product-list-page';
+		 $variation_min_price = $product->get_variation_price('min');
+		 $variation_max_price = $product->get_variation_price('max');
 
-		if ( !$product->min_variation_price || $product->min_variation_price !== $product->max_variation_price ) {
+		if ( !$variation_min_price || $variation_min_price !== $variation_max_price ) {
 
 			$price .= '<div class="'. $productPageClass .'">';
 			$price .= '<div class="early-bird-pricing"><p class="from">' . _x('Early Bird Price', 'min_price', 'woocommerce') . ' </p>';
-			$price .= woocommerce_price($product->get_variation_price( 'min', true ));
+			$price .= wc_price($product->get_variation_price( 'min', true ));
 			$price .= '</div>';
 			$price .= '<div class="regular-pricing"><p class="from">' . _x('Regular Price', 'min_price', 'woocommerce') . ' </p>';
-			$price .= woocommerce_price($product->get_variation_regular_price( 'min', true ));
+			$price .= wc_price($product->get_variation_regular_price( 'min', true ));
 			$price .= '</div>';
 			$price .= '</div>';
 		}
@@ -552,9 +554,10 @@ function wc_empty_cart_redirect_url() {
 }
 add_filter( 'woocommerce_return_to_shop_redirect', 'wc_empty_cart_redirect_url' );
 
-add_action( 'woocommerce_before_shop_loop_item_title', function() {
-	global $product;
-	if ( !$product->is_in_stock() ) {
-			echo '<span class="soldout">Sold out</span>';
-	}
-});
+// add badge when tickets are sold out
+// add_action( 'woocommerce_before_shop_loop_item_title', function() {
+// 	global $product;
+// 	if ( !$product->is_in_stock() ) {
+// 			echo '<span class="soldout">Sold out</span>';
+// 	}
+// });

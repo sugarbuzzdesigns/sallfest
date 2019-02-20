@@ -145,6 +145,14 @@ footer .social-ico {
 	background-color: #fff;
 }
 
+p.demo_store.woocommerce-store-notice {
+	background-color: rgba(16, 69, 140, 0.4)
+}
+
+.woocommerce-demo-store {
+	padding-top: 30px;
+}
+
 .wcpgsk-extend-price-data {
 	display: block;
 	color: #535353;
