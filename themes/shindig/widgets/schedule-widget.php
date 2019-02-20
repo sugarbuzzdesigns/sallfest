@@ -64,7 +64,7 @@ class Pyre_schedule_Blog_Media_Widget extends WP_Widget {
 		<?php endif; ?>
 
 		<div class="<?php echo esc_attr(  $args['widget_id'] ); ?> <?php if($checkbox_pro): ?>light-fonts-pro<?php endif; ?> homepage-widget-blog dark">
-			<div class="width-container" <?php if($widget_bg): ?>style="background-color:<?php echo esc_attr( $widget_bg ); ?>;"<?php endif; ?>>
+			<div class="width-container">
 				<?php if($summary_text): ?>
 						<div class="summary-text-pro"><?php echo esc_attr( $summary_text ); ?></div>
 				<?php endif; ?>
@@ -225,12 +225,6 @@ class Pyre_schedule_Blog_Media_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('link_icon'); ?>"><?php _e( 'Button Icon', 'progression' ); ?>:</label>
 			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('link_icon'); ?>" name="<?php echo $this->get_field_name('link_icon'); ?>" value="<?php echo $instance['link_icon']; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('widget_bg'); ?>"><?php _e( 'Widget Background Color', 'progression' ); ?>:</label>
-			<br>
-			<input class="my-color-picker-blog" id="<?php echo $this->get_field_id('widget_bg'); ?>" name="<?php echo $this->get_field_name('widget_bg'); ?>" value="<?php echo $instance['widget_bg']; ?>" />
 		</p>
 
 		<p>

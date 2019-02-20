@@ -479,7 +479,7 @@ function show_woo_cart() {
 				echo '<a class="cart-contents fa fa-shopping-cart" href="'.$cart_url.'"><span>1</span></a>';
 }
 
-add_filter( 'wc_cart_fragments_params', function( $params ) {
+add_filter( 'woocommerce_get_script_data', function( $params ) {
 	if( false === $params ) {
 			$params = array( 'wc_ajax_url' => '/' );
 	}

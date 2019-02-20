@@ -59,7 +59,7 @@ class Pyre_Latest_Map_Featured_Media_Widget extends WP_Widget {
 
 		 ?>
 		<div id="wrapper" class="width-container light">
-			<div class="footer-map-home <?php echo esc_attr(  $args['widget_id'] ); ?><?php if($checkbox_pro): ?> light-fonts-pro<?php endif; ?>" <?php if($widget_bg): ?>style="background-color:<?php echo esc_attr( $widget_bg ); ?>;"<?php endif; ?>>
+			<div class="footer-map-home <?php echo esc_attr(  $args['widget_id'] ); ?><?php if($checkbox_pro): ?> light-fonts-pro<?php endif; ?>">
 				<div id="map-embed-pro"><?php if($map_text): ?><?php echo do_shortcode( $map_text ); ?><?php endif; ?></div>
 				<div id="map-text-pro">
 					<?php if($title): ?><h1 class="home-widget"><?php echo esc_attr( $title ); ?></h1><?php endif; ?>
