@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class Password extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_Password extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string
@@ -24,7 +23,7 @@ class Password extends Settings\Column
 			               'text' => __( 'Plain text', 'codepress-admin-column' ),
 		               ) );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Display format', 'codepress-admin-columns' ),
 			'setting' => $select,
 		) );

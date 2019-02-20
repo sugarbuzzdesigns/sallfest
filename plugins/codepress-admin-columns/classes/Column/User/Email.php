@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\User;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 3.0
  */
-class Email extends Column {
+class AC_Column_User_Email extends AC_Column {
 
 	public function __construct() {
 		$this->set_original( true );

@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) OR exit;
  * Plugin URI: https://wordpress.org/plugins/simple-signup-form
  * Description: Easily add and manage signup forms
  * Author: Pantherius
- * Version: 1.6.3.5
+ * Version: 1.6.3.1
  * Author URI: http://pantherius.com
  */
  
@@ -68,7 +68,7 @@ if ( ! class_exists( 'simple_signup_form' ) ) {
 			  $charset_collate .= " COLLATE {$wpdb->collate}";
 			}
 			//creating custom tables
-			$sql = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . 'simple_subscription_popup' . " (
+			$sql = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . 'simple_subscription_popup'." (
 			  id varchar(255) NOT NULL,
 			  name varchar(255) NOT NULL,
 			  options text NOT NULL,

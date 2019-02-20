@@ -1,14 +1,15 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Depth of the current page (number of ancestors + 1)
+ *
  * @since 2.3.4
  */
-class Depth extends Column {
+class AC_Column_Post_Depth extends AC_Column  {
 
 	public function __construct() {
 		$this->set_type( 'column-depth' );

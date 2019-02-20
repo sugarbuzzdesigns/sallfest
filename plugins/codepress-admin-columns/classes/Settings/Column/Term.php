@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class Term extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_Term extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string
@@ -30,7 +29,7 @@ class Term extends Settings\Column
 				'id'   => __( 'ID' ),
 			) );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Display', 'codepress-admin-columns' ),
 			'setting' => $setting,
 		) );
@@ -57,6 +56,8 @@ class Term extends Settings\Column
 	}
 
 	public function format( $value, $original_value ) {
+
+		// For ACP_Column_Taxonomy_Parent
 		$term_id = $value;
 
 		switch ( $this->get_term_property() ) {

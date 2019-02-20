@@ -1,10 +1,10 @@
 <?php
 
-namespace AC\Helper;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use DOMDocument;
-
-class Html {
+class AC_Helper_Html {
 
 	/**
 	 * @param string $key
@@ -36,7 +36,6 @@ class Html {
 	/**
 	 * @param string $url
 	 * @param string $label
-	 * @param array  $attributes
 	 *
 	 * @return string|false HTML Anchor element
 	 */
@@ -94,9 +93,8 @@ class Html {
 	}
 
 	/**
-	 * @param       $label
-	 * @param       $tooltip
-	 * @param array $attributes
+	 * @param $label
+	 * @param $tooltip
 	 *
 	 * @return string
 	 */
@@ -122,14 +120,14 @@ class Html {
 		if ( $contents ) : ?>
 			<a class="ac-toggle-box-link" href="#"><?php echo $label; ?></a>
 			<div class="ac-toggle-box-contents"><?php echo $contents; ?></div>
-		<?php
+			<?php
 		else :
 			echo $label;
 		endif;
 	}
 
 	/**
-	 * Display a toggle box which trigger an ajax event on click. The ajax callback calls AC\Column::get_ajax_value.
+	 * Display a toggle box which trigger an ajax event on click. The ajax callback calls AC_Column::get_ajax_value.
 	 *
 	 * @param int    $id
 	 * @param string $label
@@ -208,7 +206,7 @@ class Html {
 		$links = $dom->getElementsByTagName( 'a' );
 
 		foreach ( $links as $link ) {
-			/** @var \DOMElement $link */
+			/** @var DOMElement $link */
 			$href = $link->getAttribute( 'href' );
 
 			if ( 0 === strpos( $href, '#' ) ) {
@@ -251,9 +249,7 @@ class Html {
 	/**
 	 * Display indicator icon in the column settings header
 	 *
-	 * @param      $class
-	 * @param      $id
-	 * @param bool $title
+	 * @param string $name
 	 */
 	public function indicator( $class, $id, $title = false ) { ?>
 		<span class="indicator-<?php echo esc_attr( $class ); ?>" data-indicator-id="<?php echo esc_attr( $id ); ?>" title="<?php echo esc_attr( $title ); ?>"></span>
@@ -263,8 +259,7 @@ class Html {
 	/**
 	 * Adds a divider to the implode
 	 *
-	 * @param      $array
-	 * @param bool $divider
+	 * @param $array
 	 *
 	 * @return string
 	 */
@@ -290,8 +285,8 @@ class Html {
 	/**
 	 * Remove attribute from an html tag
 	 *
-	 * @param string $html HTML tag
-	 * @param        $attributes
+	 * @param string       $html      HTML tag
+	 * @param string|array $attribute Attribute: style, class, alt, data etc.
 	 *
 	 * @return mixed
 	 */
@@ -471,7 +466,7 @@ class Html {
 
 	/**
 	 * @param string $value HTML
-	 * @param bool   $removed
+	 * @param int    $removed
 	 *
 	 * @return string
 	 */

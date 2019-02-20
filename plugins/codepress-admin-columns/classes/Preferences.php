@@ -1,8 +1,10 @@
 <?php
 
-namespace AC;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-abstract class Preferences {
+class AC_Preferences {
 
 	/**
 	 * @var int
@@ -10,28 +12,18 @@ abstract class Preferences {
 	private $user_id;
 
 	/**
-	 * The label for this set of preferences
-	 * @var string
-	 */
-	private $label;
-
-	/**
 	 * Preferences of this user
+	 *
 	 * @var array
 	 */
 	protected $data = array();
 
 	/**
-	 * Retrieves data from DB
-	 * return array|false
+	 * The label for this set of preferences
+	 *
+	 * @var string
 	 */
-	abstract protected function load();
-
-	/**
-	 * Stores data to DB
-	 * @return bool
-	 */
-	abstract public function save();
+	protected $label;
 
 	/**
 	 * @param string   $label
@@ -44,8 +36,20 @@ abstract class Preferences {
 
 		$this->user_id = intval( $user_id );
 		$this->label = sanitize_key( (string) $label );
+		$this->load();
+	}
 
-		$data = $this->load();
+	/**
+	 * Return the key used to store and retrieve this preference
+	 *
+	 * @return string
+	 */
+	private function get_key() {
+		return 'ac_preferences_' . $this->label;
+	}
+
+	private function load() {
+		$data = get_user_option( $this->get_key(), $this->user_id );
 
 		if ( is_array( $data ) ) {
 			foreach ( $data as $k => $v ) {
@@ -55,18 +59,10 @@ abstract class Preferences {
 	}
 
 	/**
-	 * Return the key used to store and retrieve this preference
-	 * @return string
+	 * @return bool
 	 */
-	protected function get_key() {
-		return 'ac_preferences_' . $this->label;
-	}
-
-	/**
-	 * @return int
-	 */
-	protected function get_user_id() {
-		return $this->user_id;
+	public function save() {
+		return (bool) update_user_option( $this->user_id, $this->get_key(), $this->data );
 	}
 
 	/**
@@ -120,7 +116,7 @@ abstract class Preferences {
 	}
 
 	/**
-	 * Reset site preferences for all users that match on the current label
+	 * Reset all preferences for all users that match on the current label
 	 */
 	public function reset_for_all_users() {
 		if ( empty( $this->label ) ) {

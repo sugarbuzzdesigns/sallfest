@@ -1,23 +1,30 @@
 <?php
 
-namespace AC;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class PluginInformation {
+class AC_PluginInformation {
 
 	/**
 	 * @var string
 	 */
-	private $basename;
+	private $plugin_dirname;
 
-	public function __construct( $basename ) {
-		$this->basename = $basename;
+	/**
+	 * AC_Helper_Plugin constructor.
+	 *
+	 * @param string $plugin_dirname
+	 */
+	public function __construct( $plugin_dirname ) {
+		$this->plugin_dirname = sanitize_key( $plugin_dirname );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function get_dirname() {
-		return dirname( $this->basename );
+		return $this->plugin_dirname;
 	}
 
 	/**
@@ -31,7 +38,7 @@ class PluginInformation {
 	 * @return bool
 	 */
 	public function is_active() {
-		return is_plugin_active( $this->basename );
+		return is_plugin_active( $this->get_plugin_var( 'Basename' ) );
 	}
 
 	/**
@@ -45,7 +52,7 @@ class PluginInformation {
 	 * @return string Basename
 	 */
 	public function get_basename() {
-		return $this->basename;
+		return $this->get_plugin_var( 'Basename' );
 	}
 
 	/**
@@ -58,14 +65,18 @@ class PluginInformation {
 	/**
 	 * @return array|false
 	 */
-	private function get_plugin_info() {
+	public function get_plugin_info() {
 		$plugins = (array) get_plugins();
 
-		if ( ! array_key_exists( $this->basename, $plugins ) ) {
-			return false;
+		foreach ( $plugins as $basename => $info ) {
+			if ( $this->plugin_dirname === dirname( $basename ) ) {
+				$info['Basename'] = $basename;
+
+				return $info;
+			}
 		}
 
-		return $plugins[ $this->basename ];
+		return false;
 	}
 
 	/**

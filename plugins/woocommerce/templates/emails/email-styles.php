@@ -11,6 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
+ * @author  WooThemes
  * @package WooCommerce/Templates/Emails
  * @version 3.3.0
  */
@@ -20,17 +21,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Load colors.
-$bg        = get_option( 'woocommerce_email_background_color' );
-$body      = get_option( 'woocommerce_email_body_background_color' );
-$base      = get_option( 'woocommerce_email_base_color' );
-$base_text = wc_light_or_dark( $base, '#202020', '#ffffff' );
-$text      = get_option( 'woocommerce_email_text_color' );
+$bg              = get_option( 'woocommerce_email_background_color' );
+$body            = get_option( 'woocommerce_email_body_background_color' );
+$base            = get_option( 'woocommerce_email_base_color' );
+$base_text       = wc_light_or_dark( $base, '#202020', '#ffffff' );
+$text            = get_option( 'woocommerce_email_text_color' );
 
 // Pick a contrasting color for links.
-$link_color = wc_hex_is_light( $base ) ? $base : $base_text;
-
+$link = wc_hex_is_light( $base ) ? $base : $base_text;
 if ( wc_hex_is_light( $body ) ) {
-	$link_color = wc_hex_is_light( $base ) ? $base_text : $base;
+	$link = wc_hex_is_light( $base ) ? $base_text : $base;
 }
 
 $bg_darker_10    = wc_hex_darker( $bg, 10 );
@@ -134,11 +134,10 @@ $text_lighter_20 = wc_hex_lighter( $text, 20 );
 .td {
 	color: <?php echo esc_attr( $text_lighter_20 ); ?>;
 	border: 1px solid <?php echo esc_attr( $body_darker_10 ); ?>;
-	vertical-align: middle;
 }
 
 .address {
-	padding: 12px;
+	padding:12px 12px 0;
 	color: <?php echo esc_attr( $text_lighter_20 ); ?>;
 	border: 1px solid <?php echo esc_attr( $body_darker_10 ); ?>;
 }
@@ -191,21 +190,20 @@ h3 {
 }
 
 a {
-	color: <?php echo esc_attr( $link_color ); ?>;
+	color: <?php echo esc_attr( $link ); ?>;
 	font-weight: normal;
 	text-decoration: underline;
 }
 
 img {
 	border: none;
-	display: inline-block;
+	display: inline;
 	font-size: 14px;
 	font-weight: bold;
 	height: auto;
+	line-height: 100%;
 	outline: none;
 	text-decoration: none;
 	text-transform: capitalize;
-	vertical-align: middle;
-	margin-<?php echo is_rtl() ? 'left' : 'right'; ?>: 10px;
 }
 <?php

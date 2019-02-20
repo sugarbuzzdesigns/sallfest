@@ -1,10 +1,10 @@
 <?php
 
-namespace AC\Column\Comment;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Column;
-
-class AuthorIP extends Column {
+class AC_Column_Comment_AuthorIP extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-author_ip' );

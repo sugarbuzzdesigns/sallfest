@@ -1,15 +1,14 @@
 <?php
 
-namespace AC\Settings\Column;
-
-use AC\Settings;
-use AC\View;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 3.0.8
  */
-class Comment extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_Comment extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string
@@ -31,11 +30,11 @@ class Comment extends Settings\Column
 		switch ( $this->get_comment_property_display() ) {
 
 			case 'date' :
-				return array( new Settings\Column\Date( $this->column ) );
+				return array( new AC_Settings_Column_Date( $this->column ) );
 
 				break;
 			case 'comment' :
-				return array( new Settings\Column\StringLimit( $this->column ) );
+				return array( new AC_Settings_Column_StringLimit( $this->column ) );
 
 				break;
 
@@ -98,7 +97,7 @@ class Comment extends Settings\Column
 		               ->set_attribute( 'data-refresh', 'column' )
 		               ->set_options( $this->get_display_options() );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Display', 'codepress-admin-columns' ),
 			'setting' => $select,
 		) );

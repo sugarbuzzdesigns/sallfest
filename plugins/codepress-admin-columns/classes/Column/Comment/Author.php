@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Comment;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class Author extends Column {
+class AC_Column_Comment_Author extends AC_Column {
 
 	public function __construct() {
 		$this->set_original( true );

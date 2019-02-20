@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class Sticky extends Column {
+class AC_Column_Post_Sticky extends AC_Column {
 
 	private $stickies = null;
 

@@ -8,7 +8,7 @@ function pyre_homepage_foot_feat_load_widgets()
 
 class Pyre_Latest_Foot_Featured_Media_Widget extends WP_Widget {
 
-	function __construct()
+	function Pyre_Latest_Foot_Featured_Media_Widget()
 	{
 		$widget_ops = array('classname' => 'pyre_homepage_media-product-feat', 'description' => 'Highlight Widget');
 

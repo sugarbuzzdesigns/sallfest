@@ -1,8 +1,10 @@
 <?php
 
-namespace AC\Helper;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class Post {
+class AC_Helper_Post {
 
 	/**
 	 * @param int $id
@@ -26,7 +28,6 @@ class Post {
 	 * @since 1.0
 	 *
 	 * @param int $post_id Post ID
-	 * @param int $words
 	 *
 	 * @return string Post Excerpt.
 	 */
@@ -94,7 +95,7 @@ class Post {
 	/**
 	 * Get Post Title or Media Filename
 	 *
-	 * @param int|\WP_Post $post
+	 * @param int|WP_Post $post
 	 *
 	 * @return bool|string
 	 */
@@ -115,7 +116,7 @@ class Post {
 	}
 
 	/**
-	 * @param \WP_Post $post Post
+	 * @param WP_Post $post Post
 	 *
 	 * @return false|string Dash icon with tooltip
 	 */

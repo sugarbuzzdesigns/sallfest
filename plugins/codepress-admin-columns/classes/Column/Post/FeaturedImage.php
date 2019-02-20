@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class FeaturedImage extends Column\Meta {
+class AC_Column_Post_FeaturedImage extends AC_Column_Meta {
 
 	public function __construct() {
 		$this->set_type( 'column-featured_image' );
@@ -45,7 +44,7 @@ class FeaturedImage extends Column\Meta {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\Image( $this ) );
+		$this->add_setting( new AC_Settings_Column_Image( $this ) );
 	}
 
 	public function is_valid() {

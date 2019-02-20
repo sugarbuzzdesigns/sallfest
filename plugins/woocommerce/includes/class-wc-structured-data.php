@@ -2,15 +2,17 @@
 /**
  * Structured data's handler and generator using JSON-LD format.
  *
- * @package WooCommerce/Classes
  * @since   3.0.0
  * @version 3.0.0
+ * @package WooCommerce/Classes
  */
 
-defined( 'ABSPATH' ) || exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
- * Structured data class.
+ * WC_Structured_Data class.
  */
 class WC_Structured_Data {
 
@@ -150,7 +152,7 @@ class WC_Structured_Data {
 	 */
 	public function output_structured_data() {
 		$types = $this->get_data_type_for_page();
-		$data  = $this->get_structured_data( $types );
+		$data  = wc_clean( $this->get_structured_data( $types ) );
 
 		if ( $data ) {
 			echo '<script type="application/ld+json">' . wp_json_encode( $data ) . '</script>';
@@ -215,18 +217,14 @@ class WC_Structured_Data {
 
 		if ( '' !== $product->get_price() ) {
 			if ( $product->is_type( 'variable' ) ) {
-				$lowest  = $product->get_variation_price( 'min', false );
-				$highest = $product->get_variation_price( 'max', false );
+				$prices  = $product->get_variation_prices();
+				$lowest  = reset( $prices['price'] );
+				$highest = end( $prices['price'] );
 
 				if ( $lowest === $highest ) {
 					$markup_offer = array(
-						'@type'              => 'Offer',
-						'price'              => wc_format_decimal( $lowest, wc_get_price_decimals() ),
-						'priceSpecification' => array(
-							'price'                 => wc_format_decimal( $lowest, wc_get_price_decimals() ),
-							'priceCurrency'         => $currency,
-							'valueAddedTaxIncluded' => wc_prices_include_tax() ? 'true' : 'false',
-						),
+						'@type' => 'Offer',
+						'price' => wc_format_decimal( $lowest, wc_get_price_decimals() ),
 					);
 				} else {
 					$markup_offer = array(
@@ -237,13 +235,8 @@ class WC_Structured_Data {
 				}
 			} else {
 				$markup_offer = array(
-					'@type'              => 'Offer',
-					'price'              => wc_format_decimal( $product->get_price(), wc_get_price_decimals() ),
-					'priceSpecification' => array(
-						'price'                 => wc_format_decimal( $product->get_price(), wc_get_price_decimals() ),
-						'priceCurrency'         => $currency,
-						'valueAddedTaxIncluded' => wc_prices_include_tax() ? 'true' : 'false',
-					),
+					'@type' => 'Offer',
+					'price' => wc_format_decimal( $product->get_price(), wc_get_price_decimals() ),
 				);
 			}
 
@@ -261,7 +254,7 @@ class WC_Structured_Data {
 			$markup['offers'] = array( apply_filters( 'woocommerce_structured_data_product_offer', $markup_offer, $product ) );
 		}
 
-		if ( $product->get_review_count() && 'yes' === get_option( 'woocommerce_enable_review_rating' ) ) {
+		if ( $product->get_review_count() ) {
 			$markup['aggregateRating'] = array(
 				'@type'       => 'AggregateRating',
 				'ratingValue' => $product->get_average_rating(),
@@ -329,12 +322,6 @@ class WC_Structured_Data {
 		$markup['itemListElement'] = array();
 
 		foreach ( $crumbs as $key => $crumb ) {
-			// Don't add the current page to the breadcrumb list on product pages,
-			// otherwise Google will not recognize both the BreadcrumbList and Product structured data.
-			if ( is_product() && count( $crumbs ) - 1 === $key ) {
-				continue;
-			}
-
 			$markup['itemListElement'][ $key ] = array(
 				'@type'    => 'ListItem',
 				'position' => $key + 1,
@@ -343,7 +330,7 @@ class WC_Structured_Data {
 				),
 			);
 
-			if ( ! empty( $crumb[1] ) ) {
+			if ( ! empty( $crumb[1] ) && count( $crumbs ) !== $key + 1 ) {
 				$markup['itemListElement'][ $key ]['item'] += array( '@id' => $crumb[1] );
 			}
 		}
@@ -448,7 +435,7 @@ class WC_Structured_Data {
 		$markup['priceSpecification'] = array(
 			'price'                 => $order->get_total(),
 			'priceCurrency'         => $order->get_currency(),
-			'valueAddedTaxIncluded' => 'true',
+			'valueAddedTaxIncluded' => true,
 		);
 		$markup['billingAddress']     = array(
 			'@type'           => 'PostalAddress',

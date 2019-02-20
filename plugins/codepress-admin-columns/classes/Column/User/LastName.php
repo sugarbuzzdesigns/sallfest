@@ -1,17 +1,17 @@
 <?php
 
-namespace AC\Column\User;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class LastName extends Column\Meta {
+class AC_Column_User_LastName extends AC_Column_Meta {
 
 	public function __construct() {
 		$this->set_type( 'column-last_name' );
-		$this->set_label( __( 'Last Name', 'codepress-admin-columns' ) );
+		$this->set_label( __( 'Last name', 'codepress-admin-columns' ) );
 	}
 
 	public function get_meta_key() {

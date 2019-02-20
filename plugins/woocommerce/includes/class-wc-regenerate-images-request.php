@@ -101,12 +101,8 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 
 		$log = wc_get_logger();
 
-		$log->info(
-			sprintf(
-				// translators: %s: ID of the attachment.
-				__( 'Regenerating images for attachment ID: %s', 'woocommerce' ),
-				$this->attachment_id
-			),
+		// translators: %s: ID of the attachment.
+		$log->info( sprintf( __( 'Regenerating images for attachment ID: %s', 'woocommerce' ), $this->attachment_id ),
 			array(
 				'source' => 'wc-image-regeneration',
 			)
@@ -206,11 +202,7 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 				$size_data['crop'] = false;
 			}
 
-			$image_sizes = getimagesize( $fullsizepath );
-			if ( false === $image_sizes ) {
-				continue;
-			}
-			list( $orig_w, $orig_h ) = $image_sizes;
+			list( $orig_w, $orig_h ) = getimagesize( $fullsizepath );
 
 			$dimensions = image_resize_dimensions( $orig_w, $orig_h, $size_data['width'], $size_data['height'], $size_data['crop'] );
 
@@ -230,7 +222,6 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 				unset( $sizes[ $size ] );
 			}
 		}
-
 		return $sizes;
 	}
 
@@ -252,8 +243,7 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 	protected function complete() {
 		parent::complete();
 		$log = wc_get_logger();
-		$log->info(
-			__( 'Completed product image regeneration job.', 'woocommerce' ),
+		$log->info( __( 'Completed product image regeneration job.', 'woocommerce' ),
 			array(
 				'source' => 'wc-image-regeneration',
 			)

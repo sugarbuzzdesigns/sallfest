@@ -1,10 +1,10 @@
 <?php
 
-namespace AC\Settings\Form\Element;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC;
-
-class Select extends AC\Form\Element\Select {
+class AC_Settings_Form_Element_Select extends AC_Form_Element_Select {
 
 	protected function render_ajax_message() {
 		return '<div class="msg"></div>';

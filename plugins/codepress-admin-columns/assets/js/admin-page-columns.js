@@ -1,1 +1,954 @@
-!function(e){var t={};function n(i){if(t[i])return t[i].exports;var r=t[i]={i:i,l:!1,exports:{}};return e[i].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=e,n.c=t,n.d=function(e,t,i){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:i})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var i=Object.create(null);if(n.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(i,r,function(t){return e[t]}.bind(null,r));return i},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=69)}([function(e,t,n){var i=n(26)("wks"),r=n(12),o=n(1).Symbol,a="function"==typeof o;(e.exports=function(e){return i[e]||(i[e]=a&&o[e]||(a?o:r)("Symbol."+e))}).store=i},function(e,t){var n=e.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(e,t,n){e.exports=!n(7)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(e,t){e.exports=function(e){return"object"==typeof e?null!==e:"function"==typeof e}},function(e,t,n){"use strict";var i=n(15),r=n(39)(5),o=!0;"find"in[]&&Array(1).find(function(){o=!1}),i(i.P+i.F*o,"Array",{find:function(e){return r(this,e,arguments.length>1?arguments[1]:void 0)}}),n(28)("find")},function(e,t,n){var i=n(6),r=n(20);e.exports=n(2)?function(e,t,n){return i.f(e,t,r(1,n))}:function(e,t,n){return e[t]=n,e}},function(e,t,n){var i=n(9),r=n(32),o=n(33),a=Object.defineProperty;t.f=n(2)?Object.defineProperty:function(e,t,n){if(i(e),t=o(t,!0),i(n),r)try{return a(e,t,n)}catch(e){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(e[t]=n.value),e}},function(e,t){e.exports=function(e){try{return!!e()}catch(e){return!0}}},function(e,t,n){var i=n(1),r=n(5),o=n(11),a=n(12)("src"),u=Function.toString,c=(""+u).split("toString");n(10).inspectSource=function(e){return u.call(e)},(e.exports=function(e,t,n,u){var s="function"==typeof n;s&&(o(n,"name")||r(n,"name",t)),e[t]!==n&&(s&&(o(n,a)||r(n,a,e[t]?""+e[t]:c.join(String(t)))),e===i?e[t]=n:u?e[t]?e[t]=n:r(e,t,n):(delete e[t],r(e,t,n)))})(Function.prototype,"toString",function(){return"function"==typeof this&&this[a]||u.call(this)})},function(e,t,n){var i=n(3);e.exports=function(e){if(!i(e))throw TypeError(e+" is not an object!");return e}},function(e,t){var n=e.exports={version:"2.5.7"};"number"==typeof __e&&(__e=n)},function(e,t){var n={}.hasOwnProperty;e.exports=function(e,t){return n.call(e,t)}},function(e,t){var n=0,i=Math.random();e.exports=function(e){return"Symbol(".concat(void 0===e?"":e,")_",(++n+i).toString(36))}},function(e,t,n){var i=n(38);e.exports=function(e,t,n){if(i(e),void 0===t)return e;switch(n){case 1:return function(n){return e.call(t,n)};case 2:return function(n,i){return e.call(t,n,i)};case 3:return function(n,i,r){return e.call(t,n,i,r)}}return function(){return e.apply(t,arguments)}}},function(e,t,n){for(var i=n(29),r=n(30),o=n(8),a=n(1),u=n(5),c=n(19),s=n(0),l=s("iterator"),f=s("toStringTag"),d=c.Array,h={CSSRuleList:!0,CSSStyleDeclaration:!1,CSSValueList:!1,ClientRectList:!1,DOMRectList:!1,DOMStringList:!1,DOMTokenList:!0,DataTransferItemList:!1,FileList:!1,HTMLAllCollection:!1,HTMLCollection:!1,HTMLFormElement:!1,HTMLSelectElement:!1,MediaList:!0,MimeTypeArray:!1,NamedNodeMap:!1,NodeList:!0,PaintRequestList:!1,Plugin:!1,PluginArray:!1,SVGLengthList:!1,SVGNumberList:!1,SVGPathSegList:!1,SVGPointList:!1,SVGStringList:!1,SVGTransformList:!1,SourceBufferList:!1,StyleSheetList:!0,TextTrackCueList:!1,TextTrackList:!1,TouchList:!1},v=r(h),p=0;p<v.length;p++){var m,g=v[p],y=h[g],b=a[g],_=b&&b.prototype;if(_&&(_[l]||u(_,l,d),_[f]||u(_,f,g),c[g]=d,y))for(m in i)_[m]||o(_,m,i[m],!0)}},function(e,t,n){var i=n(1),r=n(10),o=n(5),a=n(8),u=n(13),c=function(e,t,n){var s,l,f,d,h=e&c.F,v=e&c.G,p=e&c.S,m=e&c.P,g=e&c.B,y=v?i:p?i[t]||(i[t]={}):(i[t]||{}).prototype,b=v?r:r[t]||(r[t]={}),_=b.prototype||(b.prototype={});for(s in v&&(n=t),n)f=((l=!h&&y&&void 0!==y[s])?y:n)[s],d=g&&l?u(f,i):m&&"function"==typeof f?u(Function.call,f):f,y&&a(y,s,f,e&c.U),b[s]!=f&&o(b,s,d),m&&_[s]!=f&&(_[s]=f)};i.core=r,c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,e.exports=c},function(e,t){var n={}.toString;e.exports=function(e){return n.call(e).slice(8,-1)}},function(e,t,n){var i=n(18);e.exports=function(e){return Object(i(e))}},function(e,t){e.exports=function(e){if(void 0==e)throw TypeError("Can't call method on  "+e);return e}},function(e,t){e.exports={}},function(e,t){e.exports=function(e,t){return{enumerable:!(1&e),configurable:!(2&e),writable:!(4&e),value:t}}},function(e,t,n){var i=n(25),r=Math.min;e.exports=function(e){return e>0?r(i(e),9007199254740991):0}},function(e,t,n){var i=n(24),r=n(18);e.exports=function(e){return i(r(e))}},function(e,t,n){var i=n(3),r=n(1).document,o=i(r)&&i(r.createElement);e.exports=function(e){return o?r.createElement(e):{}}},function(e,t,n){var i=n(16);e.exports=Object("z").propertyIsEnumerable(0)?Object:function(e){return"String"==i(e)?e.split(""):Object(e)}},function(e,t){var n=Math.ceil,i=Math.floor;e.exports=function(e){return isNaN(e=+e)?0:(e>0?i:n)(e)}},function(e,t,n){var i=n(10),r=n(1),o=r["__core-js_shared__"]||(r["__core-js_shared__"]={});(e.exports=function(e,t){return o[e]||(o[e]=void 0!==t?t:{})})("versions",[]).push({version:i.version,mode:n(27)?"pure":"global",copyright:"© 2018 Denis Pushkarev (zloirock.ru)"})},function(e,t){e.exports=!1},function(e,t,n){var i=n(0)("unscopables"),r=Array.prototype;void 0==r[i]&&n(5)(r,i,{}),e.exports=function(e){r[i][e]=!0}},function(e,t,n){"use strict";var i=n(28),r=n(44),o=n(19),a=n(22);e.exports=n(45)(Array,"Array",function(e,t){this._t=a(e),this._i=0,this._k=t},function(){var e=this._t,t=this._k,n=this._i++;return!e||n>=e.length?(this._t=void 0,r(1)):r(0,"keys"==t?n:"values"==t?e[n]:[n,e[n]])},"values"),o.Arguments=o.Array,i("keys"),i("values"),i("entries")},function(e,t,n){var i=n(47),r=n(34);e.exports=Object.keys||function(e){return i(e,r)}},function(e,t,n){var i=n(26)("keys"),r=n(12);e.exports=function(e){return i[e]||(i[e]=r(e))}},function(e,t,n){e.exports=!n(2)&&!n(7)(function(){return 7!=Object.defineProperty(n(23)("div"),"a",{get:function(){return 7}}).a})},function(e,t,n){var i=n(3);e.exports=function(e,t){if(!i(e))return e;var n,r;if(t&&"function"==typeof(n=e.toString)&&!i(r=n.call(e)))return r;if("function"==typeof(n=e.valueOf)&&!i(r=n.call(e)))return r;if(!t&&"function"==typeof(n=e.toString)&&!i(r=n.call(e)))return r;throw TypeError("Can't convert object to primitive value")}},function(e,t){e.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(e,t,n){var i=n(6).f,r=n(11),o=n(0)("toStringTag");e.exports=function(e,t,n){e&&!r(e=n?e:e.prototype,o)&&i(e,o,{configurable:!0,value:t})}},function(e,t,n){"use strict";var i=function(e){return e&&e.__esModule?e:{default:e}}(n(43));function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var o=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.modals=[],this.number=1}return function(e,t,n){t&&r(e.prototype,t),n&&r(e,n)}(e,[{key:"register",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";return t||(t="m"+this.number),this.modals[t]=e,this.number++,e}},{key:"get",value:function(e){return!!this.modals[e]&&this.modals[e]}}],[{key:"init",value:function(){return void 0===AdminColumns.Modals&&(AdminColumns.Modals=new this,AdminColumns.Modals._abstract={modal:i.default}),AdminColumns.Modals}}]),e}();e.exports=o},function(e,t,n){var i=n(6).f,r=Function.prototype,o=/^\s*function ([^ (]*)/;"name"in r||n(2)&&i(r,"name",{configurable:!0,get:function(){try{return(""+this).match(o)[1]}catch(e){return""}}})},function(e,t){e.exports=function(e){if("function"!=typeof e)throw TypeError(e+" is not a function!");return e}},function(e,t,n){var i=n(13),r=n(24),o=n(17),a=n(21),u=n(40);e.exports=function(e,t){var n=1==e,c=2==e,s=3==e,l=4==e,f=6==e,d=5==e||f,h=t||u;return function(t,u,v){for(var p,m,g=o(t),y=r(g),b=i(u,v,3),_=a(y.length),k=0,C=n?h(t,_):c?h(t,0):void 0;_>k;k++)if((d||k in y)&&(m=b(p=y[k],k,g),e))if(n)C[k]=m;else if(m)switch(e){case 3:return!0;case 5:return p;case 6:return k;case 2:C.push(p)}else if(l)return!1;return f?-1:s||l?l:C}}},function(e,t,n){var i=n(41);e.exports=function(e,t){return new(i(e))(t)}},function(e,t,n){var i=n(3),r=n(42),o=n(0)("species");e.exports=function(e){var t;return r(e)&&("function"!=typeof(t=e.constructor)||t!==Array&&!r(t.prototype)||(t=void 0),i(t)&&null===(t=t[o])&&(t=void 0)),void 0===t?Array:t}},function(e,t,n){var i=n(16);e.exports=Array.isArray||function(e){return"Array"==i(e)}},function(e,t,n){"use strict";n(14);var i=function(e){return e&&e.__esModule?e:{default:e}}(n(36));function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var o=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),t&&(this.el=t,this.dialog=t.querySelector(".ac-modal__dialog"),this.initEvents())}return function(e,t,n){t&&r(e.prototype,t),n&&r(e,n)}(e,[{key:"initEvents",value:function(){var t=this,n=this;document.addEventListener("keydown",function(e){var n=event.key;t.isOpen()&&"Escape"===n&&t.close()});var i=this.el.querySelectorAll('[data-dismiss="modal"], .ac-modal__dialog__close');i.length>0&&i.forEach(function(e){e.addEventListener("click",function(e){e.preventDefault(),n.close()})}),this.el.addEventListener("click",function(){n.close()}),this.el.querySelector(".ac-modal__dialog").addEventListener("click",function(e){e.stopPropagation()}),void 0===document.querySelector("body").dataset.ac_modal_init&&(e.initGlobalEvents(),document.querySelector("body").dataset.ac_modal_init=1),this.el.AC_MODAL=n}},{key:"isOpen",value:function(){return this.el.classList.contains("-active")}},{key:"close",value:function(){this.onClose(),this.el.classList.remove("-active")}},{key:"open",value:function(){this.onOpen(),this.el.classList.add("-active")}},{key:"destroy",value:function(){this.el.remove()}},{key:"onClose",value:function(){}},{key:"onOpen",value:function(){}}],[{key:"initGlobalEvents",value:function(){jQuery(document).on("click","[data-ac-open-modal]",function(e){e.preventDefault();var t=e.target.dataset.acOpenModal,n=document.querySelector(t);n&&n.AC_MODAL&&n.AC_MODAL.open()}),jQuery(document).on("click","[data-ac-modal]",function(e){e.preventDefault();var t=jQuery(this).data("ac-modal");i.default.init().get(t)&&i.default.init().get(t).open()})}}]),e}();e.exports=o},function(e,t){e.exports=function(e,t){return{value:t,done:!!e}}},function(e,t,n){"use strict";var i=n(27),r=n(15),o=n(8),a=n(5),u=n(19),c=n(51),s=n(35),l=n(56),f=n(0)("iterator"),d=!([].keys&&"next"in[].keys()),h=function(){return this};e.exports=function(e,t,n,v,p,m,g){c(n,t,v);var y,b,_,k=function(e){if(!d&&e in j)return j[e];switch(e){case"keys":case"values":return function(){return new n(this,e)}}return function(){return new n(this,e)}},C=t+" Iterator",x="values"==p,w=!1,j=e.prototype,S=j[f]||j["@@iterator"]||p&&j[p],E=S||k(p),A=p?x?k("entries"):E:void 0,O="Array"==t&&j.entries||S;if(O&&(_=l(O.call(new e)))!==Object.prototype&&_.next&&(s(_,C,!0),i||"function"==typeof _[f]||a(_,f,h)),x&&S&&"values"!==S.name&&(w=!0,E=function(){return S.call(this)}),i&&!g||!d&&!w&&j[f]||a(j,f,E),u[t]=E,u[C]=h,p)if(y={values:x?E:k("values"),keys:m?E:k("keys"),entries:A},g)for(b in y)b in j||o(j,b,y[b]);else r(r.P+r.F*(d||w),t,y);return y}},function(e,t,n){var i=n(9),r=n(52),o=n(34),a=n(31)("IE_PROTO"),u=function(){},c=function(){var e,t=n(23)("iframe"),i=o.length;for(t.style.display="none",n(55).appendChild(t),t.src="javascript:",(e=t.contentWindow.document).open(),e.write("<script>document.F=Object<\/script>"),e.close(),c=e.F;i--;)delete c.prototype[o[i]];return c()};e.exports=Object.create||function(e,t){var n;return null!==e?(u.prototype=i(e),n=new u,u.prototype=null,n[a]=e):n=c(),void 0===t?n:r(n,t)}},function(e,t,n){var i=n(11),r=n(22),o=n(53)(!1),a=n(31)("IE_PROTO");e.exports=function(e,t){var n,u=r(e),c=0,s=[];for(n in u)n!=a&&i(u,n)&&s.push(n);for(;t.length>c;)i(u,n=t[c++])&&(~o(s,n)||s.push(n));return s}},function(e,t,n){var i=n(17),r=n(30);n(57)("keys",function(){return function(e){return r(i(e))}})},function(e,t,n){n(50)("replace",2,function(e,t,n){return[function(i,r){"use strict";var o=e(this),a=void 0==i?void 0:i[t];return void 0!==a?a.call(i,o,r):n.call(String(o),i,r)},n]})},function(e,t,n){"use strict";var i=n(5),r=n(8),o=n(7),a=n(18),u=n(0);e.exports=function(e,t,n){var c=u(e),s=n(a,c,""[e]),l=s[0],f=s[1];o(function(){var t={};return t[c]=function(){return 7},7!=""[e](t)})&&(r(String.prototype,e,l),i(RegExp.prototype,c,2==t?function(e,t){return f.call(e,this,t)}:function(e){return f.call(e,this)}))}},function(e,t,n){"use strict";var i=n(46),r=n(20),o=n(35),a={};n(5)(a,n(0)("iterator"),function(){return this}),e.exports=function(e,t,n){e.prototype=i(a,{next:r(1,n)}),o(e,t+" Iterator")}},function(e,t,n){var i=n(6),r=n(9),o=n(30);e.exports=n(2)?Object.defineProperties:function(e,t){r(e);for(var n,a=o(t),u=a.length,c=0;u>c;)i.f(e,n=a[c++],t[n]);return e}},function(e,t,n){var i=n(22),r=n(21),o=n(54);e.exports=function(e){return function(t,n,a){var u,c=i(t),s=r(c.length),l=o(a,s);if(e&&n!=n){for(;s>l;)if((u=c[l++])!=u)return!0}else for(;s>l;l++)if((e||l in c)&&c[l]===n)return e||l||0;return!e&&-1}}},function(e,t,n){var i=n(25),r=Math.max,o=Math.min;e.exports=function(e,t){return(e=i(e))<0?r(e+t,0):o(e,t)}},function(e,t,n){var i=n(1).document;e.exports=i&&i.documentElement},function(e,t,n){var i=n(11),r=n(17),o=n(31)("IE_PROTO"),a=Object.prototype;e.exports=Object.getPrototypeOf||function(e){return e=r(e),i(e,o)?e[o]:"function"==typeof e.constructor&&e instanceof e.constructor?e.constructor.prototype:e instanceof Object?a:null}},function(e,t,n){var i=n(15),r=n(10),o=n(7);e.exports=function(e,t){var n=(r.Object||{})[e]||Object[e],a={};a[e]=t(n),i(i.S+i.F*o(function(){n(1)}),"Object",a)}},,,,,,,,,,,,function(e,t,n){e.exports=n(70)},function(e,t,n){"use strict";var i=x(n(71)),r=x(n(36)),o=x(n(73)),a=x(n(43)),u=x(n(74)),c=x(n(75)),s=x(n(76)),l=x(n(77)),f=x(n(78)),d=x(n(79)),h=x(n(80)),v=x(n(81)),p=x(n(82)),m=x(n(83)),g=x(n(84)),y=x(n(85)),b=x(n(86)),_=x(n(87)),k=x(n(88)),C=x(n(89));function x(e){return e&&e.__esModule?e:{default:e}}var w=$=n(90);AC.Column=new o.default,AdminColumns.Column=AC.Column,w(document).on("AC_Form_Loaded",function(){AdminColumns.Column.registerEvent("toggle",s.default).registerEvent("remove",l.default).registerEvent("clone",f.default).registerEvent("refresh",d.default).registerEvent("type_selector",h.default).registerEvent("indicator",v.default).registerEvent("label",p.default.label).registerEvent("label_setting",p.default.setting).registerEvent("addons",m.default).registerSetting("date",b.default).registerSetting("image_size",g.default).registerSetting("pro",_.default).registerSetting("sub_setting_toggle",y.default).registerSetting("width",k.default).registerSetting("label",C.default)}),w(document).ready(function(){AC.Form=new i.default("#cpac .ac-columns form"),r.default.init().register(new a.default(document.querySelector("#ac-modal-pro")),"pro"),(new u.default).init(),new c.default(".sidebox#direct-feedback")})},function(e,t,n){"use strict";n(37),n(4),n(29),n(48),n(14);var i=function(e){return e&&e.__esModule?e:{default:e}}(n(72));function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var o=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.$form=jQuery(t),this.$container=jQuery("#cpac .ac-admin"),this.columns={},jQuery(document).trigger("AC_Form_Loaded"),this.init()}return function(e,t,n){t&&r(e.prototype,t),n&&r(e,n)}(e,[{key:"init",value:function(){this.initColumns(),this.bindFormEvents(),this.bindOrdering(),jQuery(document).trigger("AC_Form_Ready")}},{key:"bindOrdering",value:function(){this.$form.hasClass("ui-sortable")?this.$form.sortable("refresh"):this.$form.sortable({items:".ac-column",handle:".column_sort"})}},{key:"originalColumns",value:function(){var e=this,t=[];return Object.keys(e.columns).forEach(function(n){var i=e.columns[n];i.isOriginal()&&t.push(i.type)}),t}},{key:"bindFormEvents",value:function(){var e=this,t=jQuery(".sidebox a.submit, .column-footer a.submit");t.on("click",function(){t.attr("disabled","disabled"),e.submitForm().always(function(){t.removeAttr("disabled","disabled")})}),e.$container.find(".add_column").on("click",function(){e.addColumn()});var n=jQuery("#cpac .ac-boxes");n.hasClass("disabled")&&n.find(".ac-column").each(function(e,t){jQuery(t).data("column").disable(),jQuery(t).find("input, select").prop("disabled",!0)}),jQuery("a[data-clear-columns]").on("click",function(){e.resetColumns()})}},{key:"initColumns",value:function(){var e=this;e.columns=[],this.$form.find(".ac-column").each(function(){var t=jQuery(this),n=new i.default(t);n.bindEvents(),t.data("column",n),e.columns[n.name]=n})}},{key:"reindexColumns",value:function(){var e=this;e.columns=[],this.$form.find(".ac-column").each(function(){var t=jQuery(this).data("column");e.columns[t.name]=t})}},{key:"resetColumns",value:function(){var e=this;Object.keys(this.columns).forEach(function(t){e.columns[t].destroy()})}},{key:"serialize",value:function(){return this.$form.serialize()}},{key:"submitForm",value:function(){var e=this,t=jQuery.post(ajaxurl,{action:"ac-columns",id:"save",data:this.serialize(),_ajax_nonce:AC._ajax_nonce,list_screen:AC.list_screen,layout:AC.layout,original_columns:AC.original_columns},function(t){t&&(t.success?(e.showMessage(t.data,"updated"),e.$container.addClass("stored")):t.data&&e.showMessage(t.data.message,"notice notice-warning"))},"json");return t.fail(function(e){}),jQuery(document).trigger("AC_Form_AfterUpdate",[e.$container]),t}},{key:"showMessage",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"updated",n=jQuery('<div class="ac-message hidden '+t+'"><p>'+e+"</p></div>");this.$container.find(".ac-message").stop().remove(),this.$container.find(".ac-boxes").before(n),n.slideDown()}},{key:"cloneColumn",value:function(e){return this._addColumnToForm(new i.default(e).clone(),e.hasClass("opened"))}},{key:"addColumn",value:function(){var e=jQuery("#add-new-column-template").find(".ac-column").clone(),t=new i.default(e).create();return this._addColumnToForm(t)}},{key:"removeColumn",value:function(e){this.columns[e]&&(this.columns[e].remove(),delete this.columns[e])}},{key:"_addColumnToForm",value:function(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1];return this.columns[e.name]=e,this.$form.append(e.$el),t&&e.open(),e.$el.hide().slideDown(),jQuery("html, body").animate({scrollTop:e.$el.offset().top-58},300),jQuery(document).trigger("AC_Column_Added",[e]),e}}]),e}();e.exports=o},function(e,t,n){"use strict";function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}n(29),n(48),n(14),n(49),n(4),n(37);var r=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.$el=t,this.el=t[0],this.settings=[],this._type=this.$el.data("type")}return function(e,t,n){t&&i(e.prototype,t),n&&i(e,n)}(e,[{key:"isOriginal",value:function(){return 1===this.$el.data("original")}},{key:"isDisabled",value:function(){return this.$el.hasClass("disabled")}},{key:"disable",value:function(){return this.$el.addClass("disabled"),this}},{key:"enable",value:function(){return this.$el.removeClass("disabled"),this}},{key:"initNewInstance",value:function(){var e="_new_column_"+AC.Column.getNewIncementalName(),t=this.name;return this.$el.find("input, select, label").each(function(n,i){var r=jQuery(i);r.attr("name")&&r.attr("name",r.attr("name").replace("columns[".concat(t,"]"),"columns[".concat(e,"]"))),r.attr("id")&&r.attr("id",r.attr("id").replace("-".concat(t,"-"),"-".concat(e,"-")))}),this.name=e,AC.incremental_column_name++,this}},{key:"bindEvents",value:function(){var e=this;return e.$el.data("column",e),Object.keys(AC.Column.events).forEach(function(t){e.isBound(t)||(AC.Column.events[t](e),e.bind(t))}),this.bindSettings(),jQuery(document).trigger("AC_Column_InitSettings",[e]),this}},{key:"bindSettings",value:function(){var e=this;Object.keys(AC.Column.settings).forEach(function(t){e.isBound(t)||(AC.Column.settings[t](e),e.bind(t))})}},{key:"isBound",value:function(e){return this.$el.data(e)}},{key:"bind",value:function(e){this.$el.data(e,!0)}},{key:"destroy",value:function(){this.$el.remove()}},{key:"remove",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:350,t=this;this.$el.addClass("deleting").animate({opacity:0,height:0},e,function(){t.destroy()})}},{key:"toggle",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:150;this.$el.hasClass("opened")?this.close(e):this.open(e)}},{key:"close",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;this.$el.removeClass("opened").find(".ac-column-body").slideUp(e)}},{key:"open",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;this.$el.addClass("opened").find(".ac-column-body").slideDown(e)}},{key:"showMessage",value:function(e){this.$el.find(".ac-column-setting--type .msg").html(e).show()}},{key:"switchToType",value:function(e){var t=this;return jQuery.ajax({url:ajaxurl,method:"post",dataType:"json",data:{action:"ac-columns",id:"select",type:e,current_original_columns:AC.Form.originalColumns(),original_columns:AC.original_columns,list_screen:AC.list_screen,layout:AC.layout,_ajax_nonce:AC._ajax_nonce},success:function(n){if(!0===n.success){var i=jQuery(n.data);t.$el.replaceWith(i),t.$el=i,t.el=i[0],t._type=e,t.initNewInstance(),t.bindEvents(),t.open(),jQuery(document).trigger("AC_Column_Change",[t])}else t.showMessage(n.data.error)}})}},{key:"refresh",value:function(){var e=this,t=this.$el.find(":input").serializeArray(),n={action:"ac-columns",id:"refresh",_ajax_nonce:AC._ajax_nonce,list_screen:AC.list_screen,layout:AC.layout,column_name:this.name,original_columns:AC.original_columns};return jQuery.each(n,function(e,n){t.push({name:e,value:n})}),jQuery.ajax({type:"post",url:ajaxurl,data:t,success:function(t){if(!0===t.success){var n=jQuery(t.data);e.$el.replaceWith(n),e.$el=n,e.el=n[0],e.bindEvents(),e.open(),jQuery(document).trigger("AC_Column_Refresh",[e])}}})}},{key:"create",value:function(){return this.initNewInstance(),this.bindEvents(),jQuery(document).trigger("AC_Column_Created",[self]),this}},{key:"clone",value:function(){var t=this.$el.clone();t.data("column-name",this.$el.data("column-name"));var n=new e(t);return n.initNewInstance(),n.bindEvents(),n}},{key:"name",get:function(){return this.$el.data("column-name")},set:function(e){this.$el.data("column-name",e)}},{key:"type",get:function(){return this._type},set:function(e){this.$el.data("type",e)}}]),e}();e.exports=r},function(e,t,n){"use strict";function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var r=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.events={},this.settings={},this.incremental_name=0}return function(e,t,n){t&&i(e.prototype,t),n&&i(e,n)}(e,[{key:"registerSetting",value:function(e,t){var n="s_"+e;return this.settings[n]&&console.error("Setting key already exists: "+e),this.settings[n]=t,this}},{key:"registerEvent",value:function(e,t){var n="e_"+e;return this.settings[n]&&console.error("Event key already exists: "+n),this.events[n]=t,this}},{key:"getNewIncementalName",value:function(){var e=this.incremental_name;return this.incremental_name++,e}}]),e}();e.exports=r},function(e,t,n){"use strict";function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var r=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)}return function(e,t,n){t&&i(e.prototype,t),n&&i(e,n)}(e,[{key:"init",value:function(){var e=jQuery;e("#ac_list_screen").on("change",function(){e(".view-link").hide(),e(this).parents("form").submit(),e(this).prop("disabled",!0).next(".spinner").css("display","inline-block")})}}]),e}();e.exports=r},function(e,t,n){"use strict";function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}n(4);var r=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.$el=jQuery(t),this.init()}return function(e,t,n){t&&i(e.prototype,t),n&&i(e,n)}(e,[{key:"init",value:function(){var e=this.$el;e.find("#feedback-choice a.no").click(function(t){t.preventDefault(),e.find("#feedback-choice").slideUp(),e.find("#feedback-support").slideDown()}),e.find("#feedback-choice a.yes").click(function(t){t.preventDefault(),e.find("#feedback-choice").slideUp(),e.find("#feedback-rate").slideDown()})}}]),e}();e.exports=r},function(e,t,n){"use strict";n(4);e.exports=function(e){e.$el.find('[data-toggle="column"]').click(function(t){t.preventDefault(),e.toggle()}).css("cursor","pointer")}},function(e,t,n){"use strict";n(37),n(4);e.exports=function(e){e.$el.find(".remove-button").click(function(t){t.preventDefault(),AC.Form.removeColumn(e.name)})}},function(e,t,n){"use strict";n(4);e.exports=function(e){e.$el.find(".clone-button").click(function(t){t.preventDefault(),e.isOriginal()||AC.Form.cloneColumn(e.$el)})}},function(e,t,n){"use strict";n(4);e.exports=function(e){var t=jQuery;e.$el.find('[data-refresh="column"]').on("change",function(){t(document).trigger("AC.column.prerefresh",e.$el),e.$el.addClass("loading"),setTimeout(function(){e.refresh().always(function(){e.$el.removeClass("loading")})},200)})}},function(e,t,n){"use strict";n(4);e.exports=function(e){var t=jQuery;e.$el.find("select.ac-setting-input_type").change(function(){e.$el.addClass("loading"),e.switchToType(t(this).val()).always(function(){e.$el.removeClass("loading"),AC.Form.reindexColumns()})})}},function(e,t,n){"use strict";n(4);e.exports=function(e){var t=e.$el;t.find(".ac-column-header [data-indicator-toggle]").each(function(){var e=jQuery,n=e(this),i=e(this).data("setting"),r=t.find(".ac-column-setting[data-setting="+i+"]").find(".col-input:first .ac-setting-input:first input[type=radio]");n.unbind("click").on("click",function(i){i.preventDefault(),t.hasClass("disabled")||(n.toggleClass("on"),e(this).hasClass("on")?r.filter("[value=on]").prop("checked",!0).trigger("click").trigger("change"):r.filter("[value=off]").prop("checked",!0).trigger("click").trigger("change"))}),r.on("change",function(){t.hasClass("disabled")||("on"===r.filter(":checked").val()?n.addClass("on"):n.removeClass("on"))})})}},function(e,t,n){"use strict";n(4);e.exports={label:function(e){var t=e.$el;t.find('select[data-label="update"]').change(function(){var e=t.find("input.ac-setting-input_label"),n=jQuery(this).find("option:selected").text();e.val(n),e.trigger("change")}),setTimeout(function(){var e=t.find(".column_label .toggle");jQuery.trim(e.html())&&e.width()<1&&e.html(t.find(".column_type .inner").html())},50)},setting:function(e){var t=e.$el;t.find(".ac-column-setting--label input").bind("keyup change",function(){var e=jQuery(this).val();jQuery(this).closest(".ac-column").find("td.column_label .inner > a.toggle").html(e)}).trigger("change"),t.find(".ac-column-body .col-label .label").hover(function(){jQuery(this).parents(".col-label").find("div.tooltip").show()},function(){jQuery(this).parents(".col-label").find("div.tooltip").hide()})}}},function(e,t,n){"use strict";n(4);e.exports=function(e){var t=jQuery,n=e.$el;n.find("[data-trigger] label").on("click",function(){var e=t(this).closest("td.input").data("trigger"),i=t("input",this).val(),r=n.find('[data-indicator-id="'+e+'"]').removeClass("on");"on"===i&&r.addClass("on");var o=n.find('[data-handle="'+e+'"]').addClass("hide");"on"===i&&o.removeClass("hide")}),n.find("[data-trigger]").each(function(){var e=t(this).data("trigger"),i=n.find('[data-handle="'+e+'"]').addClass("hide");"on"===t("input:checked",this).val()&&i.removeClass("hide")})}},function(e,t,n){"use strict";function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var r=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.column=t,this.setting=t.$el[0].querySelector(".ac-column-setting--image"),this.setting&&(this.field=this.setting.querySelector(".ac-setting-input select"),this.initState(),this.bindEvents())}return function(e,t,n){t&&i(e.prototype,t),n&&i(e,n)}(e,[{key:"getValue",value:function(){return this.field.value}},{key:"bindEvents",value:function(){var e=this;this.field.addEventListener("change",function(t){e.initState()})}},{key:"initState",value:function(){"cpac-custom"===this.getValue()?this.showSubsettings():this.hideSubsettings()}},{key:"hideSubsettings",value:function(){for(var e=this.setting.querySelectorAll(".ac-column-setting"),t=0;t<e.length;++t)e[t].style.display="none"}},{key:"showSubsettings",value:function(){for(var e=this.setting.querySelectorAll(".ac-column-setting"),t=0;t<e.length;++t)e[t].style.display="table"}},{key:"setValue",value:function(e){return this.field.value=e,this.trigger(this.field,"change"),this}},{key:"setWidth",value:function(e){var t=this.setting.querySelector('.ac-column-setting [name*="image_size_w"]');return t.value=e,this.trigger(t,"change"),this}},{key:"setHeight",value:function(e){var t=this.setting.querySelector('.ac-column-setting [name*="image_size_h"]');return t.value=e,this.trigger(t,"change"),this}},{key:"setSize",value:function(e,t){return this.setWidth(e),this.setHeight(t),this}},{key:"trigger",value:function(e,t){return e.dispatchEvent(new Event(t)),this}}]),e}();e.exports=function(e){e.settings.image=new r(e)}},function(e,t,n){"use strict";n(4);e.exports=function(e){var t=jQuery,n={value_show:"on",subfield:".ac-column-setting"};function i(e,t){var i=t.filter(":checked").val(),r=e.find(n.subfield);n.value_show===i?r.show():r.hide()}e.$el.find(".ac-column-setting--filter,.ac-column-setting--sort,.ac-column-setting--edit").each(function(){var e=t(this),n=t(this).find('.ac-setting-input input[type="radio"]');i(e,n),n.on("change",function(){i(e,n)})})}},function(e,t,n){"use strict";n(4);e.exports=function(e){var t=jQuery;e.$el.find(".ac-column-setting--date").each(function(){var e=t(this),n=e.find("input.custom"),i=e.find(".ac-setting-input-date__custom"),r=e.find(".ac-setting-input-date__value"),o=e.find(".ac-setting-input-date__example"),a=e.find("input[type=radio]:checked"),u=e.find(".help-msg");e.find("input[type=radio]").on("change",function(){var e=t(this),n=e.closest("label"),a=n.find("code").text(),c=n.find(".ac-setting-input-date__more").html();a&&i.val(a).trigger("change"),e.hasClass("diff")&&(i.val(""),o.text("")),i.prop("disabled",!0),e.hasClass("custom")&&(e.val(i.val()),i.prop("disabled",!1),u.show()),u.hide(),c&&u.html(c).show(),r.val(e.val())}),i.on("change",function(){o.html('<span class="spinner is-active"></span>'),n.val(i.val());var e=t(this).val();e?(t.ajax({url:ajaxurl,method:"post",data:{action:"date_format",date:e}}).done(function(e){o.text(e)}),r.val(e)):o.text("")}),a.trigger("change"),0===a.length&&n.trigger("click")})}},function(e,t,n){"use strict";n(4);e.exports=function(e){e.$el.find(".ac-column-setting--pro").each(function(){var e=jQuery(this);e.find("input").on("click",function(t){t.preventDefault(),e.find("[data-ac-open-modal]").trigger("click")})})}},function(e,t,n){"use strict";n(49),n(4),jQuery.fn.column_width_slider=function(){var e=jQuery,t=e(this).find(".ac-setting-input-width"),n=t.find(".description input"),i=t.find(".unit-select input").filter(":checked").val(),r=n.val(),o=t.find(".width-slider"),a=e(this).find(".ac-column-header .ac-column-heading-setting--width");"%"===i&&r>100&&(r=100),n.val(r),o.slider({range:"min",min:0,max:"%"===i?100:500,value:r,slide:function(e,t){n.val(t.value),a.trigger("update"),n.trigger("validate")}})};e.exports=function(e){var t=jQuery,n=e.$el;n.find(".ac-column-setting--width").each(function(){n.column_width_slider();var e=n.find(".ac-column-header .ac-column-heading-setting--width");e.on("update",function(){var e=n.find(".ac-setting-input-width .description input").val(),t=n.find(".ac-setting-input-width .description .unit").text();e>0?jQuery(this).text(e+t):jQuery(this).text("")}),n.find(".ac-setting-input-width .unit-select label").on("click",function(){n.find("span.unit").text(t(this).find("input").val()),n.column_width_slider(),e.trigger("update")});var i=n.find(".ac-setting-input-width .description input").on("keyup",function(){n.column_width_slider(),jQuery(this).trigger("validate"),e.trigger("update")}).on("validate",function(){var e=i.val(),n=t.trim(e);jQuery.isNumeric(n)||(n=n.replace(/\D/g,"")),n.length>3&&(n=n.substring(0,3)),n<=0&&(n=""),n!==e&&i.val(n)})})}},function(e,t,n){"use strict";n(14);var i=o(n(36)),r=o(n(43));function o(e){return e&&e.__esModule?e:{default:e}}function a(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var u=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.column=t,this.setting=t.el.querySelector(".ac-column-setting--label"),this.iconpicker=this.setting.querySelector(".-iconpicker"),this.iconpicker&&(this._dashicon=!1,this.modal=i.default.init().register(new r.default(this.setting.querySelector(".-iconpicker"))),this.field=this.setting.querySelector(".ac-setting-input_label"),this.initValue(),this.bindEvents())}return function(e,t,n){t&&a(e.prototype,t),n&&a(e,n)}(e,[{key:"initValue",value:function(){var e=this,t=document.createRange().createContextualFragment(this.getValue()).querySelector(".dashicons");t?t.classList.forEach(function(t){if(-1!==t.indexOf("dashicons-")){var n="."+t,i=e.iconpicker.querySelector(n);i&&(i.parentElement.classList.add("active"),e.setIconSelection(i.parentElement.dataset.dashicon))}}):e.setIconSelection(!1)}},{key:"bindEvents",value:function(){var e=this;this.setting.querySelector(".ac-setting-label-icon").addEventListener("click",function(t){t.preventDefault(),e.modal.open()}),this.setting.querySelector('[data-action="submit"]').addEventListener("click",function(t){t.preventDefault(),e.getIconSelection()&&e.setDashicon(e.getIconSelection()),e.modal.close()}),this.iconpicker.querySelectorAll(".ac-ipicker__icon").forEach(function(t){t.addEventListener("click",function(n){n.preventDefault();var i=this.dataset.dashicon;i&&e.setIconSelection(i),e.setting.querySelectorAll(".ac-ipicker__icon").forEach(function(e){e.classList.remove("active")}),t.classList.add("active")})})}},{key:"getValue",value:function(){return this.field.value}},{key:"setValue",value:function(e){this.field.value=e;var t=new Event("change");this.field.dispatchEvent(t)}},{key:"setIconSelection",value:function(e){var t=this.setting.querySelector(".ac-ipicker__selection");this._dashicon=e,t.innerHTML='<span class="dashicons dashicons-'.concat(e,'"></span>'),t.style.visibility=e?"visible":"hidden"}},{key:"getIconSelection",value:function(){return this._dashicon}},{key:"setDashicon",value:function(e){this.setValue('<span class="dashicons dashicons-'.concat(e,'"></span>'))}}]),e}();e.exports=function(e){e.settings.label=new u(e)}},function(e,t){e.exports=jQuery}]);
+/**
+ * AC variables. Defined in DOM.
+ * @param AC {Object}
+ * @param AC.list_screen {String}
+ * @param AC.layout {String}
+ * @param AC.i81n {String}
+ */
+var AC;
+
+/**
+ * Temporary column name used for form elements.
+ *
+ * @type {number}
+ */
+var incremental_column_name = 0;
+
+/**
+ * DOM ready
+ */
+jQuery( document ).ready( function( $ ) {
+
+	if ( $( '#cpac' ).length === 0 ) {
+		return false;
+	}
+
+	cpac_init( $ );
+	cpac_submit_form( $ );
+	cpac_reset_columns( $ );
+	cpac_menu( $ );
+	cpac_add_column( $ );
+	cpac_sidebar_feedback( $ );
+} );
+
+function ac_show_ajax_message( message, attr_class ) {
+	var msg = jQuery( '<div class="ac-message hidden ' + attr_class + '"><p>' + message + '</p></div>' );
+	jQuery( '.ac-boxes' ).before( msg );
+	msg.slideDown();
+}
+
+/*
+ * Submit Form
+ *
+ * @since 2.0.2
+ */
+function cpac_submit_form( $ ) {
+
+	var $save_buttons = $( '.sidebox a.submit, .column-footer a.submit' );
+
+	$save_buttons.click( function() {
+
+		var $button = $( this );
+		var $container = $button.closest( '.ac-admin' ).addClass( 'saving' );
+		var columns_data = $container.find( '.ac-columns form' ).serialize();
+
+		$save_buttons.attr( 'disabled', 'disabled' );
+
+		// reset
+		$container.find( '.ac-message' ).remove(); // placed by restore button
+
+		var xhr = $.post( ajaxurl, {
+				action : 'ac_columns_save',
+				data : columns_data,
+				_ajax_nonce : AC._ajax_nonce,
+				list_screen : AC.list_screen,
+				layout : AC.layout,
+				original_columns : AC.original_columns
+			},
+
+			// JSON response
+			function( response ) {
+				if ( response ) {
+					if ( response.success ) {
+						ac_show_ajax_message( response.data, 'updated' );
+
+						$container.addClass( 'stored' );
+					}
+
+					// Error message
+					else if ( response.data ) {
+						ac_show_ajax_message( response.data.message, 'notice notice-warning' );
+					}
+				}
+
+				// No response
+				else {
+				}
+
+			}, 'json' );
+
+		// No JSON
+		xhr.fail( function( error ) {
+			// We choose not to notify the user of errors, because the settings will have
+			// been saved correctly despite of PHP notices/errors from plugin or themes.
+		} );
+
+		// Always
+		xhr.always( function() {
+			$save_buttons.removeAttr( 'disabled', 'disabled' );
+			$container.removeClass( 'saving' );
+		} );
+
+		$( document ).trigger( 'cac_update', $container );
+	} );
+}
+
+/*
+ * Add Column
+ *
+ * @since 2.0
+ */
+function cpac_add_column( $ ) {
+
+	$( '.add_column' ).click( function( e ) {
+		e.preventDefault();
+
+		var clone = $( '#add-new-column-template' ).find( '.ac-column' ).clone();
+
+		// increment clone id ( before adding to DOM, otherwise radio buttons will reset )
+		clone.cpac_update_clone_id();
+
+		// Open
+		clone.addClass( 'opened' ).find( '.ac-column-body' ).slideDown( 150, function() {
+			$( 'html, body' ).animate( { scrollTop : clone.offset().top - 58 }, 300 );
+		} );
+
+		// add to DOM
+		$( '.ac-columns form' ).append( clone );
+
+		// TODO: better?
+		clone.column_bind_toggle();
+		clone.column_bind_remove();
+		clone.column_bind_clone();
+		clone.column_bind_events();
+
+		// hook for addons
+		$( document ).trigger( 'column_add', clone );
+	} );
+
+}
+
+/**
+ * @since 2.2.1
+ */
+function cpac_sidebar_feedback( $ ) {
+	var sidebox = $( '.sidebox#direct-feedback' );
+
+	sidebox.find( '#feedback-choice a.no' ).click( function( e ) {
+		e.preventDefault();
+
+		sidebox.find( '#feedback-choice' ).slideUp();
+		sidebox.find( '#feedback-support' ).slideDown();
+	} );
+
+	sidebox.find( '#feedback-choice a.yes' ).click( function( e ) {
+		e.preventDefault();
+
+		sidebox.find( '#feedback-choice' ).slideUp();
+		sidebox.find( '#feedback-rate' ).slideDown();
+	} );
+}
+
+function cpac_init( $ ) {
+
+	var container = $( '.ac-admin' );
+	var boxes = container.find( '.ac-boxes' );
+
+	// Written for PHP Export
+	if ( boxes.hasClass( 'disabled' ) ) {
+		boxes.find( '.ac-column' ).each( function( i, col ) {
+			$( col ).column_bind_toggle();
+			$( col ).find( 'input, select' ).prop( 'disabled', true );
+		} );
+	}
+
+	else {
+		var columns = boxes.find( '.ac-columns' );
+
+		// we start by binding the toggle and remove events.
+		columns.find( '.ac-column' ).each( function( i, col ) {
+			$( col ).column_bind_toggle();
+			$( col ).column_bind_remove();
+			$( col ).column_bind_clone();
+			$( col ).cpac_bind_indicator_events();
+			$( col ).column_onload();
+		} );
+
+		// ordering of columns
+		columns.cpac_bind_ordering();
+	}
+
+	// hook for addons
+	$( document ).trigger( 'cac_menu_change', columns ); // deprecated
+	$( document ).trigger( 'cac_model_ready', container.data( 'type' ) );
+}
+
+/*
+ * Menu
+ *
+ * @since 1.5
+ */
+function cpac_menu( $ ) {
+	$( '#ac_list_screen' ).on( 'change', function() {
+		$( '.view-link' ).hide();
+		$( this ).parents( 'form' ).submit();
+
+		$( this ).prop( 'disabled', true ).next( '.spinner' ).css( 'display', 'inline-block' );
+	} );
+}
+
+/*
+ * Reset columns
+ *
+ * @since 3.0.3
+ */
+function cpac_reset_columns( $ ) {
+	var $container = $( '.ac-admin' );
+
+	$( 'a[data-clear-columns]' ).on( 'click', function() {
+		$container.find( '.ac-column' ).each( function() {
+			$( this ).find( '.remove-button' ).trigger( 'click' );
+		} );
+	} );
+}
+
+/*
+ * jQuery functions
+ *
+ * @since 2.0
+ */
+(function( $ ) {
+
+	/*
+	 * Column: bind toggle events
+	 *
+	 * For performance we bind all other events after the click event.
+	 *
+	 * @since 2.0
+	 */
+	$.fn.column_bind_toggle = function() {
+
+		var $column = $( this );
+		var is_disabled = $column.closest( '.ac-boxes' ).hasClass( 'disabled' );
+
+		$column.find( '[data-toggle="column"]' ).click( function( e ) {
+			e.preventDefault();
+
+			$column.toggleClass( 'opened' ).find( '.ac-column-body' ).slideToggle( 150 );
+
+			if ( is_disabled ) {
+				return;
+			}
+
+			if ( !$column.hasClass( 'events-binded' ) ) {
+				$column.column_bind_events();
+			}
+
+			$column.addClass( 'events-binded' );
+
+			// hook for addons
+			$( document ).trigger( 'column_init', $column );
+		} ).css( 'cursor', 'pointer' );
+	};
+
+	/*
+	 * Column: bind remove events
+	 *
+	 * @since 2.0
+	 */
+	$.fn.column_bind_remove = function() {
+		$( this ).find( '.remove-button' ).click( function( e ) {
+			$( this ).closest( '.ac-column' ).column_remove();
+
+			e.preventDefault();
+		} );
+	};
+
+	/**
+	 * Column: bind clone events
+	 *
+	 * @since 2.3.4
+	 */
+	$.fn.column_bind_clone = function() {
+		$( this ).find( '.clone-button' ).click( function( e ) {
+			e.preventDefault();
+
+			var $clone = $( this ).closest( '.ac-column' ).column_clone();
+
+			if ( typeof $clone !== 'undefined' ) {
+				$clone.removeClass( 'loading' ).hide().slideDown();
+			}
+		} );
+	};
+
+	$.fn.cpac_column_refresh = function() {
+
+		var el = $( this );
+		var select = el.find( '[data-refresh="column"]' );
+		var column_name = $( this ).attr( 'data-column-name' );
+		var opened = el.hasClass( 'opened' );
+
+		// Allow plugins to hook into this event
+		$( document ).trigger( 'pre_column_refresh', el );
+
+		var data = $( this ).find( ':input' ).serializeArray();
+		var request_data = {
+			action : 'ac_column_refresh',
+			_ajax_nonce : AC._ajax_nonce,
+			list_screen : AC.list_screen,
+			layout : AC.layout,
+			column_name : column_name,
+			original_columns : AC.original_columns
+		};
+
+		$.each( request_data, function( name, value ) {
+			data.push( {
+				name : name,
+				value : value
+			} );
+		} );
+
+		// Mark column as loading
+		el.addClass( 'loading' );
+		select.prop( 'disabled', 1 );
+
+		// Fetch new form HTML
+		var xhr = $.post( ajaxurl, data, function( response ) {
+
+			if ( response ) {
+				// Replace current form by new form
+				var newel = $( '<div>' + response.data + '</div>' ).children();
+				el.replaceWith( newel );
+				el = newel;
+
+				// Bind events
+				el.column_bind_toggle();
+				el.column_bind_remove();
+				el.column_bind_clone();
+				el.column_bind_events();
+
+				// Open settings
+				if ( opened ) {
+					el.addClass( 'opened' ).find( '.ac-column-body' ).show();
+				}
+
+				// Allow plugins to hook into this event
+
+				// TODO: change to column_refresh?
+				$( document ).trigger( 'column_change', el );
+			}
+
+			// Do nothing
+			else {
+
+			}
+		}, 'json' );
+
+		xhr.fail( function( error ) {
+			var $msg = el.closest( '.ac-admin' ).find( '.ajax-message' );
+
+			$msg.addClass( 'error' ).find( 'p' ).html( AC.i18n.error );
+			$msg.slideDown();
+
+			el.slideUp( function() { el.remove() } );
+
+			console.log( 'responseText: ' + error.responseText );
+		} );
+
+		xhr.always( function() {
+			// Remove "loading" marking from column
+			el.removeClass( 'loading' );
+			select.prop( 'disabled', false );
+		} );
+	};
+
+	$.fn.column_onload = function() {
+		var column = $( this );
+
+		/** When an label contains an icon or span, the displayed label can appear empty. In this case we show the "type" label. */
+		var column_label = column.find( '.column_label .toggle' );
+		if ( $.trim( column_label.html() ) && column_label.width() < 1 ) {
+			column_label.html( column.find( '.column_type .inner' ).html() );
+		}
+	};
+
+	/*
+	 * Form Events
+	 *
+	 * @since 2.0
+	 */
+	$.fn.column_bind_events = function() {
+		var column = $( this );
+		var container = column.closest( '.ac-admin ' );
+
+		column.column_onload();
+		// Current column type
+		var default_value = column.find( 'select.ac-setting-input_type option:selected' ).val();
+
+		// Type selector
+		column.find( 'select.ac-setting-input_type' ).change( function() {
+			var option = $( 'optgroup', this ).children( ':selected' );
+			var type = option.val();
+			var msg = $( this ).next( '.msg' ).hide();
+			var $select = $( this );
+
+			var current_original_columns = [];
+			container.find( '.ac-column[data-original=1]' ).each( function() {
+				current_original_columns.push( $( this ).data( 'type' ) );
+			} );
+
+			column.addClass( 'loading' );
+
+			$.ajax( {
+				url : ajaxurl,
+				method : 'post',
+				dataType : 'json',
+				data : {
+					action : 'ac_column_select',
+					type : type,
+					current_original_columns : current_original_columns,
+					original_columns : AC.original_columns,
+					list_screen : AC.list_screen,
+					layout : AC.layout,
+					_ajax_nonce : AC._ajax_nonce,
+				}
+			} )
+				.done( function( response ) {
+					if ( response ) {
+
+						if ( response.success ) {
+							var el = column.closest( '.ac-column' );
+
+							// Replace current form by new form
+							var newel = $( '<div>' + response.data + '</div>' ).children();
+							el.replaceWith( newel );
+							el = newel;
+
+							// Bind events
+							el.column_bind_toggle();
+							el.column_bind_remove();
+							el.column_bind_clone();
+							el.column_bind_events();
+
+							// Open settings
+							el.addClass( 'opened' ).find( '.ac-column-body' ).show();
+
+							el.cpac_update_clone_id();
+
+							// Allow plugins to hook into this event
+							$( document ).trigger( 'column_change', el );
+						}
+
+						// Error message
+						else if ( response.data ) {
+							if ( 'message' === response.data.type ) {
+								msg.html( response.data.error ).show();
+
+								// Set to default
+								$select.find( 'option' ).removeAttr( 'selected' );
+								$select.find( 'option[value="' + default_value + '"]' ).attr( 'selected', 'selected' );
+							}
+						}
+					}
+				} )
+
+				.always( function() {
+					column.removeClass( 'loading' );
+				} );
+
+		} );
+
+		/** change label */
+		column.find( '.ac-column-setting--label input' ).bind( 'keyup change', function() {
+			var value = $( this ).val();
+			$( this ).closest( '.ac-column' ).find( 'td.column_label .inner > a.toggle' ).html( value );
+		} );
+
+		/** tooltip */
+		column.find( '.ac-column-body .col-label .label' ).hover( function() {
+			$( this ).parents( '.col-label' ).find( 'div.tooltip' ).show();
+		}, function() {
+			$( this ).parents( '.col-label' ).find( 'div.tooltip' ).hide();
+		} );
+
+		/**
+		 * Populates the main Label with the selected label from the dropdown,
+		 */
+		column.find( 'select[data-label="update"]' ).change( function() {
+			var $label = column.find( 'input.ac-setting-input_label' );
+			var field_label = $( this ).find( 'option:selected' ).text();
+
+			// Set new label
+			$label.val( field_label );
+			$label.trigger( 'change' );
+		} );
+
+		// refresh column and re-bind all events
+		column.find( '[data-refresh="column"]' ).change( function() {
+			column.cpac_column_refresh();
+		} );
+
+		$( document ).trigger( 'init_settings', column );
+	};
+
+	$.fn.column_bind_settings = function() {
+		var $column = $( this );
+
+		$column.find( '.ac-column-setting--image_size' ).cpac_column_setting_image_size();
+		$column.find( '.ac-column-setting--width' ).cpac_column_setting_width();
+	};
+
+	/*
+	 * Column: remove from DOM
+	 *
+	 * @since 2.0
+	 */
+	$.fn.column_remove = function() {
+		$( this ).addClass( 'deleting' ).animate( { opacity : 0, height : 0 }, 350, function() {
+			$( this ).remove();
+		} );
+	};
+
+	/*
+	 * Column: clone
+	 *
+	 * @since 2.3.4
+	 */
+	$.fn.column_clone = function() {
+
+		var column = $( this );
+		var columns = $( this ).closest( 'ac-columns' );
+
+		if ( '1' === column.attr( 'data-original' ) ) {
+
+			var message = AC.i18n.clone.replace( '%s', '<strong>' + column.find( '.column_label .toggle' ).text() + '</strong>' );
+
+			column.addClass( 'opened' ).find( '.ac-column-body' ).slideDown( 150 );
+			column.find( '.ac-setting-input_type' ).next( '.msg' ).html( message ).show();
+
+			return;
+		}
+
+		var clone = $( this ).clone();
+
+		clone.cpac_update_clone_id();
+
+		$( this ).after( clone );
+
+		// rebind events
+		clone.column_bind_toggle();
+		clone.column_bind_remove();
+		clone.column_bind_clone();
+
+		// rebind all other events
+		clone.column_bind_events();
+
+		// reinitialize sortability
+		columns.cpac_bind_ordering();
+
+		// hook for addons
+		$( document ).trigger( 'column_add', clone );
+
+		return clone;
+	};
+
+	/*
+	 * Update clone ID
+	 *
+	 * @since 2.0
+	 */
+	$.fn.cpac_update_clone_id = function() {
+		var $el = $( this );
+		var original_column_name = $el.attr( 'data-column-name' );
+		var temp_column_name = '_new_column_' + incremental_column_name;
+
+		// update input names with clone ID
+		var inputs = $el.find( 'input, select, label' );
+		$( inputs ).each( function( i, v ) {
+
+			// name
+			if ( $( v ).attr( 'name' ) ) {
+				$( v ).attr( 'name', $( v ).attr( 'name' ).replace( 'columns[' + original_column_name + ']', 'columns[' + temp_column_name + ']' ) );
+			}
+
+			// id
+			if ( $( v ).attr( 'id' ) ) {
+				$( v ).attr( 'id', $( v ).attr( 'id' ).replace( '-' + original_column_name + '-', '-' + temp_column_name + '-' ) );
+			}
+
+			// TODO for
+		} );
+
+		$el.attr( 'data-column-name', temp_column_name );
+
+		// increment
+		incremental_column_name++;
+	};
+
+	/*
+	 * Bind events: triggered after column is init, changed or added
+	 *
+	 */
+	$( document ).bind( 'column_init column_change column_add', function( e, column ) {
+		var is_disabled = $( column ).closest( '.ac-boxes' ).hasClass( 'disabled' );
+
+		if ( is_disabled ) {
+			return;
+		}
+
+		$( column ).cpac_bind_column_addon_events();
+		$( column ).cpac_bind_indicator_events();
+	} );
+
+	/*
+	 * Optional Radio Click events
+	 *
+	 */
+	$.fn.cpac_bind_column_addon_events = function() {
+
+		var column = $( this );
+		var inputs = column.find( '[data-trigger] label' );
+
+		inputs.on( 'click', function() {
+
+			var id = $( this ).closest( 'td.input' ).data( 'trigger' );
+			var state = $( 'input', this ).val();
+
+			// Toggle indicator icon
+			var label = column.find( '[data-indicator-id="' + id + '"]' ).removeClass( 'on' );
+			if ( 'on' == state ) {
+				label.addClass( 'on' );
+			}
+
+			// Toggle additional options
+			var additional = column.find( '[data-handle="' + id + '"]' ).addClass( 'hide' );
+			if ( 'on' == state ) {
+				additional.removeClass( 'hide' );
+			}
+		} );
+
+		// On load
+		column.find( '[data-trigger]' ).each( function() {
+
+			var trigger = $( this ).data( 'trigger' );
+
+			// Hide additional column settings
+			var additional = column.find( '[data-handle="' + trigger + '"]' ).addClass( 'hide' );
+			if ( 'on' == $( 'input:checked', this ).val() ) {
+				additional.removeClass( 'hide' );
+			}
+		} );
+	};
+
+	/*
+	 * Indicator Click Events
+	 *
+	 */
+	$.fn.cpac_bind_indicator_events = function() {
+		var $column = $( this );
+		var $indicators = $column.find( '.ac-column-header [data-indicator-toggle]' );
+
+		$indicators.each( function() {
+			var $indicator = $( this );
+			var setting = $( this ).data( 'setting' );
+			var $setting = $column.find( '.ac-column-setting[data-setting=' + setting + ']' );
+			var $input = $setting.find( '.col-input:first .ac-setting-input:first input[type=radio]' );
+
+			$indicator.unbind( 'click' ).on( 'click', function( e ) {
+				e.preventDefault();
+				$indicator.toggleClass( 'on' );
+				if ( $( this ).hasClass( 'on' ) ) {
+					$input.filter( '[value=on]' ).prop( 'checked', true ).trigger( 'click' ).trigger( 'change' );
+				}
+				else {
+					$input.filter( '[value=off]' ).prop( 'checked', true ).trigger( 'click' ).trigger( 'change' );
+				}
+			} );
+
+			$input.on( 'change', function() {
+				var value = $input.filter( ':checked' ).val();
+				if ( 'on' == value ) {
+					$indicator.addClass( 'on' );
+				} else {
+					$indicator.removeClass( 'on' );
+				}
+			} );
+		} );
+
+	};
+
+	/*
+	 * Sortable
+	 *
+	 * @since 1.5
+	 */
+	$.fn.cpac_bind_ordering = function() {
+		$( this ).each( function() {
+			if ( $( this ).hasClass( 'ui-sortable' ) ) {
+				$( this ).sortable( 'refresh' );
+			}
+			else {
+				$( this ).sortable( {
+					items : '.ac-column',
+					handle : '.column_sort'
+				} );
+			}
+		} );
+	};
+
+	// Settings fields: Image _size
+	$.fn.cpac_column_setting_image_size = function() {
+		function initState( $setting, $select ) {
+			if ( 'cpac-custom' == $select.val() ) {
+				$setting.find( '.ac-column-setting' ).show();
+			} else {
+				$setting.find( '.ac-column-setting' ).hide();
+			}
+		}
+
+		$( this ).each( function() {
+			var $setting = $( this );
+			var $select = $( this ).find( '.ac-setting-input select' );
+
+			initState( $setting, $select );
+			$select.on( 'change', function() {
+				initState( $setting, $( this ) );
+			} );
+
+		} );
+	};
+
+	$( document ).on( 'init_settings', function( e, column ) {
+		$( column ).find( '.ac-column-setting--image' ).cpac_column_setting_image_size();
+		$( column ).find( '.ac-column-setting--images' ).cpac_column_setting_image_size();
+	} );
+
+	// Settings fields: Width
+	$.fn.column_width_slider = function() {
+
+		var column_width = $( this ).find( '.ac-setting-input-width' );
+
+		var input_width = column_width.find( '.description input' ),
+			input_unit = column_width.find( '.unit-select input' ),
+			unit = input_unit.filter( ':checked' ).val(),
+			width = input_width.val(),
+			slider = column_width.find( '.width-slider' ),
+			indicator = $( this ).find( '.ac-column-header .ac-column-heading-setting--width' );
+
+		// width
+		if ( '%' == unit && width > 100 ) {
+			width = 100;
+		}
+
+		input_width.val( width );
+
+		slider.slider( {
+			range : 'min',
+			min : 0,
+			max : '%' == unit ? 100 : 500,
+			value : width,
+			slide : function( event, ui ) {
+
+				input_width.val( ui.value );
+				indicator.trigger( 'update' );
+				input_width.trigger( 'validate' );
+			}
+		} );
+	};
+
+	$.fn.cpac_column_setting_width = function() {
+
+		$( this ).each( function() {
+			var $column = $( this ).parents( '.ac-column' );
+			$column.column_width_slider();
+
+			// indicator
+			var $width_indicator = $column.find( '.ac-column-header .ac-column-heading-setting--width' );
+
+			$width_indicator.on( 'update', function() {
+				var _width = $column.find( '.ac-setting-input-width .description input' ).val();
+				var _unit = $column.find( '.ac-setting-input-width .description .unit' ).text();
+				if ( _width > 0 ) {
+					$( this ).text( _width + _unit );
+				} else {
+					$( this ).text( '' );
+				}
+			} );
+
+			// unit selector
+			var width_unit_select = $column.find( '.ac-setting-input-width .unit-select label' );
+			width_unit_select.on( 'click', function() {
+
+				$column.find( 'span.unit' ).text( $( this ).find( 'input' ).val() );
+				$column.column_width_slider(); // re-init slider
+				$width_indicator.trigger( 'update' ); // update indicator
+			} );
+
+			// width_input
+			var width_input = $column.find( '.ac-setting-input-width .description input' )
+				.on( 'keyup', function() {
+					$column.column_width_slider(); // re-init slider
+					$( this ).trigger( 'validate' ); // validate input
+					$width_indicator.trigger( 'update' ); // update indicator
+				} )
+
+				// width_input:validate
+				.on( 'validate', function() {
+					var _width = width_input.val();
+					var _new_width = $.trim( _width );
+
+					if ( !$.isNumeric( _new_width ) ) {
+						_new_width = _new_width.replace( /\D/g, '' );
+					}
+					if ( _new_width.length > 3 ) {
+						_new_width = _new_width.substring( 0, 3 );
+					}
+					if ( _new_width <= 0 ) {
+						_new_width = '';
+					}
+					if ( _new_width !== _width ) {
+						width_input.val( _new_width );
+					}
+				} );
+
+		} );
+	};
+
+	$.fn.cpac_column_sub_setting_toggle = function( options ) {
+		var settings = $.extend( {
+			value_show : "on",
+			subfield : '.ac-column-setting'
+		}, options );
+
+		function initState( $setting, $input ) {
+			var value = $input.filter( ':checked' ).val();
+			var $subfields = $setting.find( settings.subfield );
+
+			if ( settings.value_show == value ) {
+				$subfields.show();
+			} else {
+				$subfields.hide();
+			}
+		}
+
+		$( this ).each( function() {
+			var $setting = $( this );
+			var $input = $( this ).find( '.ac-setting-input input[type="radio"]' );
+
+			initState( $setting, $input );
+			$input.on( 'change', function() {
+				initState( $setting, $input );
+			} );
+
+		} );
+	};
+
+	$.fn.cpac_column_setting_date = function() {
+
+		$( this ).each( function() {
+
+			var $container = $( this );
+
+			// Custom input
+			var $radio_custom = $container.find( 'input.custom' );
+			var $input_custom = $container.find( '.ac-setting-input-date__custom' );
+			var $input_value = $container.find( '.ac-setting-input-date__value' );
+			var $example_custom = $container.find( '.ac-setting-input-date__example' );
+			var $selected = $container.find( 'input[type=radio]:checked' );
+			var $help_msg = $container.find( '.help-msg' );
+
+			// Click Event
+			$container.find( 'input[type=radio]' ).on( 'change', function() {
+
+				var $input = $( this );
+				var $input_container = $input.closest( 'label' );
+				var date_format = $input_container.find( 'code' ).text();
+				var description = $input_container.find( '.ac-setting-input-date__more' ).html();
+
+				if ( date_format ) {
+					$input_custom.val( date_format ).trigger( 'change' );
+				}
+
+				if ( $input.hasClass( 'diff' ) ) {
+					$input_custom.val( '' );
+					$example_custom.text( '' );
+				}
+
+				$input_custom.prop( 'disabled', true );
+
+				// Custom input selected
+				if ( $input.hasClass( 'custom' ) ) {
+					$input.val( $input_custom.val() );
+					$input_custom.prop( 'disabled', false );
+					$help_msg.show();
+				}
+
+				// Show more description
+				$help_msg.hide();
+				if ( description ) {
+					$help_msg.html( description ).show();
+				}
+
+				$input_value.val( $input.val() );
+			} );
+
+			// Custom input
+			$input_custom.on( 'change', function() {
+
+				$example_custom.html( '<span class="spinner is-active"></span>' );
+				$radio_custom.val( $input_custom.val() );
+
+				var $custom_value = $( this ).val();
+
+				if ( !$custom_value ) {
+					$example_custom.text( '' );
+					return;
+				}
+
+				$.ajax( {
+					url : ajaxurl,
+					method : 'post',
+					data : {
+						action : 'date_format',
+						date : $custom_value
+					}
+				} ).done( function( date ) {
+					$example_custom.text( date );
+				} );
+
+				$input_value.val( $custom_value );
+			} );
+
+			// Update date example box
+			$selected.trigger( 'change' );
+
+			// Select custom input as a default
+			if ( 0 === $selected.length ) {
+				$radio_custom.trigger( 'click' );
+			}
+
+		} );
+
+	};
+
+	$( document ).on( 'init_settings', function( e, column ) {
+		$( column ).find( '.ac-column-setting--width' ).cpac_column_setting_width();
+		$( column ).find( '.ac-column-setting--date' ).cpac_column_setting_date();
+
+		// TODO: pro?
+		$( column ).find( '.ac-column-setting--filter' ).cpac_column_sub_setting_toggle();
+		$( column ).find( '.ac-column-setting--sort' ).cpac_column_sub_setting_toggle();
+		$( column ).find( '.ac-column-setting--edit' ).cpac_column_sub_setting_toggle();
+	} );
+
+}( jQuery ));

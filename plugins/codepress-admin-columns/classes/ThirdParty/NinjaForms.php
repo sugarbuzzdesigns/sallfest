@@ -1,12 +1,12 @@
 <?php
 
-namespace AC\ThirdParty;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Registrable;
+class AC_ThirdParty_NinjaForms {
 
-class NinjaForms implements Registrable {
-
-	public function register() {
+	public function __construct() {
 		add_filter( 'ac/post_types', array( $this, 'remove_nf_sub' ) );
 	}
 

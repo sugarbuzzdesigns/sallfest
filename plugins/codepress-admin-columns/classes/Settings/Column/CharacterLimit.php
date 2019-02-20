@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class CharacterLimit extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_CharacterLimit extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var int
@@ -24,7 +23,7 @@ class CharacterLimit extends Settings\Column
 		                   ->set_attribute( 'min', 0 )
 		                   ->set_attribute( 'step', 1 );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Character Limit', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Maximum number of characters', 'codepress-admin-columns' ) . '<em>' . __( 'Leave empty for no limit', 'codepress-admin-columns' ) . '</em>',
 			'setting' => $word_limit,

@@ -1,11 +1,10 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class Message extends Settings\Column {
+class AC_Settings_Column_Message extends AC_Settings_Column {
 
 	private $label;
 
@@ -32,7 +31,7 @@ class Message extends Settings\Column {
 	}
 
 	public function create_view() {
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => $this->label,
 			'setting' => $this->message,
 		) );

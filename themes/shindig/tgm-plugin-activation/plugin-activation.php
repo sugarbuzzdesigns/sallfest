@@ -47,12 +47,33 @@ function my_theme_register_required_plugins() {
 			'name' 		=> 'Breadcrumb NavXT',
 			'slug' 		=> 'breadcrumb-navxt',
 			'required' 	=> false,
-		),		
+		),
+		
+        array(
+            'name'                  => 'prettyPhoto Media', // The plugin name
+            'slug'                  => 'prettyphoto-media', // The plugin slug (typically the folder name)
+            'source'                => get_stylesheet_directory() . '/tgm-plugin-activation/plugins/prettyphoto-media.zip', // The plugin source
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+        ),
+		
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
         array(
             'name'                  => 'Light Shortcode', // The plugin name
             'slug'                  => 'light-shortcode', // The plugin slug (typically the folder name)
             'source'                => get_stylesheet_directory() . '/tgm-plugin-activation/plugins/light-shortcode.zip', // The plugin source
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+        ),
+		
+        array(
+            'name'                  => 'Revolution Slider', // The plugin name
+            'slug'                  => 'revslider', // The plugin slug (typically the folder name)
+            'source'                => get_stylesheet_directory() . '/tgm-plugin-activation/plugins/revslider.zip', // The plugin source
             'required'              => false, // If false, the plugin is only 'recommended' instead of required
             'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch

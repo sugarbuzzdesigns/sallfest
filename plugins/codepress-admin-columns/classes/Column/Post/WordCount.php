@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class WordCount extends Column {
+class AC_Column_Post_WordCount extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-word_count' );

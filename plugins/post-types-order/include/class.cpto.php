@@ -150,10 +150,6 @@
                     if($ignore  === TRUE)
                         return $orderBy;
                     
-                    //ignore search
-                    if( $query->is_search()  &&  isset( $query->query['s'] )   &&  ! empty ( $query->query['s'] ) )
-                        return( $orderBy );
-                    
                     if (is_admin())
                             {
                                 
@@ -174,7 +170,11 @@
                                     }
                             }
                         else
-                            {   
+                            {
+                                //ignore search
+                                if($query->is_search())
+                                    return($orderBy);
+                                
                                 $order  =   '';
                                 if ($options['use_query_ASC_DESC'] == "1")
                                     $order  =   isset($query->query_vars['order'])  ?   " " . $query->query_vars['order'] : '';

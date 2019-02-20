@@ -1,13 +1,10 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Form\Element\Select;
-use AC\MetaType;
-use AC\Settings\Column;
-use AC\View;
-
-abstract class Meta extends Column {
+abstract class AC_Settings_Column_Meta extends AC_Settings_Column {
 
 	/**
 	 * @var string
@@ -21,7 +18,7 @@ abstract class Meta extends Column {
 	}
 
 	/**
-	 * @return Select
+	 * @return AC_Form_Element_Select
 	 */
 	protected function get_setting_field() {
 		$setting = $this
@@ -66,10 +63,10 @@ abstract class Meta extends Column {
 	}
 
 	/**
-	 * @return View
+	 * @return AC_View
 	 */
 	public function create_view() {
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Field', 'codepress-admin-columns' ),
 			'setting' => $this->get_setting_field(),
 		) );
@@ -122,7 +119,7 @@ abstract class Meta extends Column {
 		);
 
 		// User only
-		if ( MetaType::USER === $this->get_meta_type() ) {
+		if ( 'user' === $this->get_meta_type() ) {
 
 			if ( is_multisite() ) {
 				foreach ( get_sites() as $site ) {

@@ -8,7 +8,7 @@ function pyre_home_timeline_load_widgets()
 
 class Pyre_timeline_Blog_Media_Widget extends WP_Widget {
 
-	function __construct()
+	function Pyre_timeline_Blog_Media_Widget()
 	{
 		$widget_ops = array('classname' => 'pyre_homepage_testimonails', 'description' => 'Import Timeline Page');
 

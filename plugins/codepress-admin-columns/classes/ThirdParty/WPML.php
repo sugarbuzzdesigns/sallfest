@@ -1,15 +1,15 @@
 <?php
 
-namespace AC\ThirdParty;
-
-use AC\Registrable;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * WPML compatibility
  */
-class WPML implements Registrable {
+class AC_ThirdParty_WPML {
 
-	function register() {
+	function __construct() {
 
 		// display correct flags on the overview screens
 		add_action( 'ac/table/list_screen', array( $this, 'replace_flags' ) );
@@ -21,7 +21,7 @@ class WPML implements Registrable {
 		add_filter( 'ac/headings/label', array( $this, 'register_translated_label' ), 100 );
 	}
 
-	public function replace_flags() {
+	public function replace_flags( $list_screen ) {
 		if ( ! class_exists( 'SitePress', false ) ) {
 			return;
 		}
@@ -36,7 +36,7 @@ class WPML implements Registrable {
 		$post_types['page'] = 1;
 		foreach ( $post_types as $post_type => $value ) {
 			if ( $value ) {
-				new WPMLColumn( $post_type );
+				new AC_ThirdParty_WPMLColumn( $post_type );
 			}
 		}
 	}
@@ -57,6 +57,7 @@ class WPML implements Registrable {
 
 	/**
 	 * @param string $label
+	 * @param AC_Column $column
 	 *
 	 * @return string
 	 */

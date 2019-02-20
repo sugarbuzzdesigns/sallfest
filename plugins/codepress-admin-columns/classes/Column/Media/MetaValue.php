@@ -1,11 +1,13 @@
 <?php
 
-namespace AC\Column\Media;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 4.0.8
  */
-abstract class MetaValue extends Meta {
+abstract class AC_Column_Media_MetaValue extends AC_Column_Media_Meta {
 
 	abstract protected function get_option_name();
 

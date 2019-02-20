@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class Image extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_Image extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string
@@ -36,13 +35,13 @@ class Image extends Settings\Column
 	}
 
 	public function create_view() {
-		$width = new View( array(
+		$width = new AC_View( array(
 			'setting' => $this->create_element( 'number', 'image_size_w' ),
 			'label'   => __( 'Width', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Width in pixels', 'codepress-admin-columns' ),
 		) );
 
-		$height = new View( array(
+		$height = new AC_View( array(
 			'setting' => $this->create_element( 'number', 'image_size_h' ),
 			'label'   => __( 'Height', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Height in pixels', 'codepress-admin-columns' ),
@@ -51,7 +50,7 @@ class Image extends Settings\Column
 		$size = $this->create_element( 'select', 'image_size' )
 		             ->set_options( $this->get_grouped_image_sizes() );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'    => __( 'Image Size', 'codepress-admin-columns' ),
 			'setting'  => $size,
 			'sections' => array( $width, $height ),

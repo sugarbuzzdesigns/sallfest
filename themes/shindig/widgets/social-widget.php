@@ -8,7 +8,7 @@ function pro_social_Media__load_widgets()
 
 class Pro_Social_Featured_Media_Widget extends WP_Widget {
 	
-	function __construct()
+	function Pro_Social_Featured_Media_Widget()
 	{
 		$widget_ops = array('classname' => 'pyre_social_media-feat', 'description' => 'Add your social icons');
 

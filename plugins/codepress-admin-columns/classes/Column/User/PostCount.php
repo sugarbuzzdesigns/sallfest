@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\User;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class PostCount extends Column {
+class AC_Column_User_PostCount extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-user_postcount' );
@@ -17,11 +16,8 @@ class PostCount extends Column {
 
 	/**
 	 * Get count
+	 *
 	 * @since 2.0
-	 *
-	 * @param $user_id
-	 *
-	 * @return string
 	 */
 	public function get_count( $user_id ) {
 		return ac_helper()->user->get_postcount( $user_id, $this->get_option( 'post_type' ) );
@@ -44,7 +40,7 @@ class PostCount extends Column {
 	}
 
 	protected function register_settings() {
-		$this->add_setting( new Settings\Column\PostType( $this ) );
+		$this->add_setting( new AC_Settings_Column_PostType( $this ) );
 	}
 
 }

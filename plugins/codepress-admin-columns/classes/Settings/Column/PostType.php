@@ -1,11 +1,10 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class PostType extends Settings\Column {
+class AC_Settings_Column_PostType extends AC_Settings_Column {
 
 	/**
 	 * @var string
@@ -18,10 +17,9 @@ class PostType extends Settings\Column {
 
 	public function create_view() {
 		$setting = $this->create_element( 'select' )
-		                ->set_attribute( 'data-label', 'update' )
 		                ->set_options( $this->get_post_type_labels() );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Post Type', 'codepress-admin-columns' ),
 			'setting' => $setting,
 		) );
@@ -31,8 +29,7 @@ class PostType extends Settings\Column {
 
 	private function get_post_type_labels() {
 		$options = array();
-
-		$post_types = get_post_types();
+		$post_types = AC()->get_post_types();
 
 		if ( ! is_array( $post_types ) ) {
 			return $options;
@@ -42,8 +39,6 @@ class PostType extends Settings\Column {
 			$post_type_object = get_post_type_object( $post_type );
 			$options[ $post_type ] = $post_type_object->labels->name;
 		}
-
-		natcasesort( $options );
 
 		return $options;
 	}

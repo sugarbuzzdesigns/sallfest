@@ -1,14 +1,14 @@
 <?php
 
-namespace AC\Column\User;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Column;
-
-class RichEditing extends Column {
+class AC_Column_User_RichEditing extends AC_Column {
 
 	public function __construct() {
-		$this->set_type( 'column-rich_editing' )
-		     ->set_label( __( 'Visual Editor', 'codepress-admin-columns' ) );
+		$this->set_type( 'column-rich_editing' );
+		$this->set_label( __( 'Visual Editor', 'codepress-admin-columns' ) );
 	}
 
 	public function get_value( $user_id ) {
@@ -20,7 +20,9 @@ class RichEditing extends Column {
 	}
 
 	private function has_rich_editing( $user_id ) {
-		return 'true' == get_userdata( $user_id )->rich_editing;
+		$userdata = get_userdata( $user_id );
+
+		return $userdata->rich_editing == 'true' ? true : false;
 	}
 
 }

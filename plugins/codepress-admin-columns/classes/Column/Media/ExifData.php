@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class ExifData extends Column\Media\MetaValue {
+class AC_Column_Media_ExifData extends AC_Column_Media_MetaValue {
 
 	public function __construct() {
 		parent::__construct();
@@ -26,7 +25,7 @@ class ExifData extends Column\Media\MetaValue {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\ExifData( $this ) );
+		$this->add_setting( new AC_Settings_Column_ExifData( $this ) );
 	}
 
 }

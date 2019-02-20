@@ -1,11 +1,10 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class Label extends Settings\Column {
+class AC_Settings_Column_Label extends AC_Settings_Column {
 
 	/**
 	 * @var string
@@ -14,8 +13,7 @@ class Label extends Settings\Column {
 
 	protected function define_options() {
 		return array(
-			'label'      => $this->column->get_label(),
-			'label_type' => 'text',
+			'label' => $this->column->get_label(),
 		);
 	}
 
@@ -25,13 +23,11 @@ class Label extends Settings\Column {
 			->create_element( 'text' )
 			->set_attribute( 'placeholder', $this->column->get_label() );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Label', 'codepress-admin-columns' ),
 			'tooltip' => __( 'This is the name which will appear as the column header.', 'codepress-admin-columns' ),
 			'setting' => $setting,
 		) );
-
-		$view->set_template( 'settings/setting-label' );
 
 		return $view;
 	}
@@ -71,6 +67,7 @@ class Label extends Settings\Column {
 	/**
 	 * Encode label with site_url.
 	 * Used when loading the setting from PHP or when a site is migrated to another domain.
+	 *
 	 * @return string
 	 */
 	public function get_encoded_label() {

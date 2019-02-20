@@ -1,32 +1,35 @@
 <?php
 
-namespace AC\Column\Comment;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class ReplyTo extends Column {
+class AC_Column_Comment_ReplyTo extends AC_Column {
 
 	public function __construct() {
-		$this->set_type( 'column-reply_to' )
-		     ->set_label( __( 'In Reply To', 'codepress-admin-columns' ) );
+		$this->set_type( 'column-reply_to' );
+		$this->set_label( __( 'In Reply To', 'codepress-admin-columns' ) );
 	}
 
 	public function get_value( $id ) {
-		$parent_id = $this->get_raw_value( $id );
-		$parent = get_comment( $parent_id );
+		$value = '';
+		$parent = $this->get_raw_value( $id );
+		if ( $parent ) {
+			$parent = get_comment( $parent );
 
-		if ( ! $parent ) {
-			return $this->get_empty_char();
+			$value = ac_helper()->html->link( esc_url( get_comment_link( $parent ) ), get_comment_author( $parent->comment_ID ) );
 		}
 
-		return ac_helper()->html->link( esc_url( get_comment_link( $parent ) ), get_comment_author( $parent->comment_ID ) );
+		return $value;
 	}
 
 	public function get_raw_value( $id ) {
-		return get_comment( $id )->comment_parent;
+		$comment = get_comment( $id );
+
+		return $comment->comment_parent;
 	}
 
 }

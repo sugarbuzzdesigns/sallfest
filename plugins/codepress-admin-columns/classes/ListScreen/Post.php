@@ -1,19 +1,18 @@
 <?php
 
-namespace AC\ListScreen;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\ListScreenPost;
-use WP_Posts_List_Table;
-
-class Post extends ListScreenPost {
+class AC_ListScreen_Post extends AC_ListScreenPost {
 
 	public function __construct( $post_type ) {
 		parent::__construct( $post_type );
 
-		$this->set_screen_base( 'edit' )
-		     ->set_group( 'post' )
-		     ->set_key( $post_type )
-		     ->set_screen_id( $this->get_screen_base() . '-' . $post_type );
+		$this->set_screen_base( 'edit' );
+		$this->set_group( 'post' );
+		$this->set_key( $post_type );
+		$this->set_screen_id( $this->get_screen_base() . '-' . $post_type );
 	}
 
 	/**
@@ -55,21 +54,15 @@ class Post extends ListScreenPost {
 
 	/**
 	 * @since 2.4.7
-	 *
-	 * @param $column_name
-	 * @param $id
 	 */
 	public function manage_value( $column_name, $id ) {
 		echo $this->get_display_value_by_column_name( $column_name, $id );
 	}
 
-	/**
-	 * @throws \ReflectionException
-	 */
 	protected function register_column_types() {
 		parent::register_column_types();
 
-		$this->register_column_types_from_dir( 'AC\Column\Post' );
+		$this->register_column_types_from_dir( AC()->get_plugin_dir() . 'classes/Column/Post', AC()->get_prefix() );
 	}
 
 }

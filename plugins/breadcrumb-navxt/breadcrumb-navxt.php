@@ -3,7 +3,7 @@
 Plugin Name: Breadcrumb NavXT
 Plugin URI: http://mtekk.us/code/breadcrumb-navxt/
 Description: Adds a breadcrumb navigation showing the visitor&#39;s path to their current location. For details on how to use this plugin visit <a href="http://mtekk.us/code/breadcrumb-navxt/">Breadcrumb NavXT</a>. 
-Version: 6.2.1
+Version: 6.0.4
 Author: John Havlik
 Author URI: http://mtekk.us/
 License: GPL2
@@ -61,7 +61,7 @@ $breadcrumb_navxt = null;
 //TODO change to extends mtekk_plugKit
 class breadcrumb_navxt
 {
-	const version = '6.2.1';
+	const version = '6.0.4';
 	protected $name = 'Breadcrumb NavXT';
 	protected $identifier = 'breadcrumb-navxt';
 	protected $unique_prefix = 'bcn';
@@ -69,7 +69,6 @@ class breadcrumb_navxt
 	protected $opt = null;
 	protected $breadcrumb_trail = null;
 	protected $admin = null;
-	protected $rest_controller = null;
 	/**
 	 * Constructor for a new breadcrumb_navxt object
 	 * 
@@ -85,8 +84,7 @@ class breadcrumb_navxt
 		$this->plugin_basename = plugin_basename(__FILE__);
 		//We need to add in the defaults for CPTs and custom taxonomies after all other plugins are loaded
 		add_action('wp_loaded', array($this, 'wp_loaded'), 15);
-		//Run a little later than everyone else
-		add_action('init', array($this, 'init'), 11);
+		add_action('init', array($this, 'init'));
 		//Register the WordPress 2.8 Widget
 		add_action('widgets_init', array($this, 'register_widget'));
 		//Load our network admin if in the network dashboard (yes is_network_admin() doesn't exist)
@@ -106,20 +104,9 @@ class breadcrumb_navxt
 	}
 	public function init()
 	{
-		breadcrumb_navxt::setup_options($this->opt);
-		if(!is_admin() || !isset($_POST[$this->unique_prefix . '_admin_reset']))
-		{
-			$this->get_settings(); //This breaks the reset options script, so only do it if we're not trying to reset the settings
-		}
 		add_filter('bcn_allowed_html', array($this, 'allowed_html'), 1, 1);
 		//We want to run late for using our breadcrumbs
 		add_filter('tha_breadcrumb_navigation', array($this, 'tha_compat'), 99);
-		//Only include the REST API if enabled
-		if(!defined('BCN_DISABLE_REST_API') || !BCN_DISABLE_REST_API)
-		{
-			require_once(dirname(__FILE__) . '/class.bcn_rest_controller.php');
-			$this->rest_controller = new bcn_rest_controller($this->breadcrumb_trail, $this->unique_prefix);
-		}
 	}
 	public function register_widget()
 	{
@@ -255,7 +242,7 @@ class breadcrumb_navxt
 	}
 	public function wp_loaded()
 	{
-
+		breadcrumb_navxt::setup_options($this->opt);
 	}
 	public function uninstall()
 	{
@@ -295,24 +282,11 @@ class breadcrumb_navxt
 					$opts['bpost_' . $post_type->name . '_taxonomy_referer'] = false;
 				}
 				//If the post type does not have settings in the options array yet, we need to load some defaults
-				if(!isset($opts['Hpost_' . $post_type->name . '_template']))
+				if(!isset($opts['Hpost_' . $post_type->name . '_template']) || !$post_type->hierarchical && !isset($opts['Spost_' . $post_type->name . '_hierarchy_type']))
 				{
 					//Add the necessary option array members
 					$opts['Hpost_' . $post_type->name . '_template'] = bcn_breadcrumb::get_default_template();
 					$opts['Hpost_' . $post_type->name . '_template_no_anchor'] = bcn_breadcrumb::default_template_no_anchor;
-				}
-				if(!isset($opts['apost_' . $post_type->name . '_root']))
-				{
-					//Default to not showing a post_root
-					$opts['apost_' . $post_type->name . '_root'] = 0;
-				}
-				if(!isset($opts['bpost_' . $post_type->name . '_hierarchy_display']))
-				{
-					//Default to not displaying a taxonomy
-					$opts['bpost_' . $post_type->name . '_hierarchy_display'] = false;
-				}
-				if(!isset($opts['Spost_' . $post_type->name . '_hierarchy_type']))
-				{
 					if($post_type->has_archive == true || is_string($post_type->has_archive))
 					{
 						$opts['bpost_' . $post_type->name . '_archive_display'] = true;
@@ -321,29 +295,25 @@ class breadcrumb_navxt
 					{
 						$opts['bpost_' . $post_type->name . '_archive_display'] = false;		
 					}
-					if(!$post_type->hierarchical)
+					//Default to not showing a post_root
+					$opts['apost_' . $post_type->name . '_root'] = 0;
+					//Default to not displaying a taxonomy
+					$opts['bpost_' . $post_type->name . '_hierarchy_display'] = false;
+					//Loop through all of the possible taxonomies
+					foreach($wp_taxonomies as $taxonomy)
 					{
-						//Loop through all of the possible taxonomies
-						foreach($wp_taxonomies as $taxonomy)
+						//Check for non-public taxonomies
+						if(!apply_filters('bcn_show_tax_private', $taxonomy->public, $taxonomy->name, $post_type->name))
 						{
-							//Check for non-public taxonomies
-							if(!apply_filters('bcn_show_tax_private', $taxonomy->public, $taxonomy->name, $post_type->name))
-							{
-								continue;
-							}
-							//Activate the first taxonomy valid for this post type and exit the loop
-							if($taxonomy->object_type == $post_type->name || in_array($post_type->name, $taxonomy->object_type))
-							{
-								$opts['bpost_' . $post_type->name . '_hierarchy_display'] = true;
-								$opts['Spost_' . $post_type->name . '_hierarchy_type'] = $taxonomy->name;
-								break;
-							}
+							continue;
 						}
-					}
-					else
-					{
-						$opts['bpost_' . $post_type->name . '_hierarchy_display'] = true;
-						$opts['Spost_' . $post_type->name . '_hierarchy_type'] = 'BCN_PARENT';
+						//Activate the first taxonomy valid for this post type and exit the loop
+						if($taxonomy->object_type == $post_type->name || in_array($post_type->name, $taxonomy->object_type))
+						{
+							$opts['bpost_' . $post_type->name . '_hierarchy_display'] = true;
+							$opts['Spost_' . $post_type->name . '_hierarchy_type'] = $taxonomy->name;
+							break;
+						}
 					}
 					//If there are no valid taxonomies for this type, setup our defaults
 					if(!isset($opts['Spost_' . $post_type->name . '_hierarchy_type']))
@@ -353,12 +323,6 @@ class breadcrumb_navxt
 					//Run through some filters, allowing extensions to directly influence the default hierarchy selection/display
 					$opts['Spost_' . $post_type->name . '_hierarchy_type'] = apply_filters('bcn_default_hierarchy_type', $opts['Spost_' . $post_type->name . '_hierarchy_type'], $post_type->name);
 					$opts['bpost_' . $post_type->name . '_hierarchy_display'] = apply_filters('bcn_default_hierarchy_display', $opts['bpost_' . $post_type->name . '_hierarchy_display'], $post_type->name, $opts['Spost_' . $post_type->name . '_hierarchy_type']);
-				}
-				//New for 6.2
-				if(!isset($opts['bpost_' . $post_type->name . '_hierarchy_parent_first']))
-				{
-					$opts['bpost_' . $post_type->name . '_hierarchy_parent_first'] = false;
-					$opts['bpost_' . $post_type->name . '_hierarchy_parent_first'] = apply_filters('bcn_default_hierarchy_parent_first', $opts['bpost_' . $post_type->name . '_hierarchy_parent_first'], $post_type->name);
 				}
 			}
 		}
@@ -463,6 +427,7 @@ class breadcrumb_navxt
 	 */
 	public function display($return = false, $linked = true, $reverse = false, $force = false, $template = '%1$s%2$s')
 	{
+		$this->get_settings();
 		//If we're being forced to fill the trail, clear it before calling fill
 		if($force)
 		{
@@ -470,17 +435,7 @@ class breadcrumb_navxt
 		}
 		//Generate the breadcrumb trail
 		$this->breadcrumb_trail->fill();
-		$trail_string = $this->breadcrumb_trail->display($linked, $reverse, $template);
-		if($return)
-		{
-			return $trail_string;
-		}
-		else
-		{
-			//Helps track issues, please don't remove it
-			$credits = "<!-- Breadcrumb NavXT " . $this::version . " -->\n";
-			echo $credits . $trail_string;
-		}
+		return $this->breadcrumb_trail->display($return, $linked, $reverse, $template);
 	}
 	/**
 	 * Outputs the breadcrumb trail with each element encapsulated with li tags
@@ -512,6 +467,7 @@ class breadcrumb_navxt
 	 */
 	public function display_json_ld($return = false, $reverse = false, $force = false)
 	{
+		$this->get_settings();
 		//If we're being forced to fill the trail, clear it before calling fill
 		if($force)
 		{
@@ -519,15 +475,7 @@ class breadcrumb_navxt
 		}
 		//Generate the breadcrumb trail
 		$this->breadcrumb_trail->fill();
-		$trail_string = json_encode($this->breadcrumb_trail->display_json_ld($reverse), JSON_UNESCAPED_SLASHES);
-		if($return)
-		{
-			return $trail_string;
-		}
-		else
-		{
-			echo $trail_string;
-		}
+		return $this->breadcrumb_trail->display_json_ld($return, $reverse);
 	}
 }
 //Have to bootstrap our startup so that other plugins can replace the bcn_breadcrumb_trail object if they need to

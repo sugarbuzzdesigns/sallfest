@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class ID extends Column {
+class AC_Column_Post_ID extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-postid' );
@@ -20,7 +19,7 @@ class ID extends Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\BeforeAfter( $this ) );
+		$this->add_setting( new AC_Settings_Column_BeforeAfter( $this ) );
 	}
 
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class Caption extends Column {
+class AC_Column_Media_Caption extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-caption' );

@@ -1,11 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-
-class LinkToMenu extends Settings\Column\Toggle
-	implements Settings\FormatValue {
+class AC_Settings_Column_LinkToMenu extends AC_Settings_Column_Toggle
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string

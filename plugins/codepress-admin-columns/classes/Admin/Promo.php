@@ -1,8 +1,10 @@
 <?php
 
-namespace AC\Admin;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-abstract class Promo {
+abstract class AC_Admin_Promo {
 
 	/**
 	 * @var array
@@ -97,6 +99,7 @@ abstract class Promo {
 
 	/**
 	 * Active date range
+	 *
 	 * @return array|false
 	 */
 	private function get_active_date_range() {
@@ -124,15 +127,15 @@ abstract class Promo {
 	 * Render HTML
 	 */
 	public function display() { ?>
-		<h3>
+        <h3>
 			<?php echo esc_html( $this->get_title() ); ?>
-		</h3>
-		<a target="_blank" href="<?php echo esc_url( $this->get_url() ); ?>" class="acp-button">
-			<?php echo esc_html( sprintf( __( 'Get %s Off!', 'codepress-admin-columns' ), $this->get_discount() . '%' ) ); ?>
-		</a>
-		<p class="nomargin">
+        </h3>
+        <a target="_blank" href="<?php echo esc_url( $this->get_url() ); ?>" class="acp-button">
+			<?php echo esc_html( sprintf( __( 'Get %s Off', 'codepress-admin-columns' ), $this->get_discount() . '%' ) ); ?>
+        </a>
+        <p class="nomargin">
 			<?php echo esc_html( sprintf( __( "Discount is valid until %s", 'codepress-admin-columns' ), $this->end_date() ) ); ?>
-		</p>
+        </p>
 		<?php
 	}
 

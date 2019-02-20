@@ -1,11 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-
-class Time extends Settings\Column\DateTimeFormat
-	implements Settings\FormatValue {
+class AC_Settings_Column_Time extends AC_Settings_Column_DateTimeFormat
+	implements AC_Settings_FormatValueInterface {
 
 	public function create_view() {
 		$view = parent::create_view();

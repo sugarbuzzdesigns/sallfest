@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.4
  */
-class DatePublished extends Column {
+class AC_Column_Post_DatePublished extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-date_published' );
@@ -46,7 +45,7 @@ class DatePublished extends Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\Date( $this ) );
+		$this->add_setting( new AC_Settings_Column_Date( $this ) );
 	}
 
 }

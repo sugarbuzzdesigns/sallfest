@@ -1,10 +1,10 @@
 <?php
 
-namespace AC\Settings\Column\BeforeAfter;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings\Column\BeforeAfter;
-
-class ShutterSpeed extends BeforeAfter {
+class AC_Settings_Column_BeforeAfter_ShutterSpeed extends AC_Settings_Column_BeforeAfter {
 
 	protected function define_options() {
 		return array( 'before' => '', 'after' => 's' );

@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Comment;
-
-use AC;
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.4.2
  */
-class User extends Column {
+class AC_Column_Comment_User extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-user' );
@@ -33,7 +32,7 @@ class User extends Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new AC\Settings\Column\User( $this ) );
+		$this->add_setting( new AC_Settings_Column_User( $this ) );
 	}
 
 }

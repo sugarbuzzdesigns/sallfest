@@ -1,27 +1,8 @@
-#mc_embed_signup form {
-	display:block;
-	position:relative;
-	text-align:center;
-	padding:10px 0 10px 0px;
-}
-#mc_embed_signup form p {
-	text-align: center;
-	line-height: 1.5em;
-}
-#mc_embed_signup form p img {
-	vertical-align: middle;
-}
-#mc_embed_signup h2 img {
-	vertical-align: middle;
-}
-#mc_embed_signup h2 {
-	font-weight:700; 
-	padding:5px 0px; 
-	margin:0px 0; 
-	font-size:1.4em; 
-	text-align: center; 
-	line-height: 1.5em;
-}
+#mc_embed_signup form {display:block; position:relative; text-align:center; padding:10px 0 10px 0px}
+#mc_embed_signup form p {text-align: center;line-height: 1.5em;}
+#mc_embed_signup form p img{vertical-align: middle;}
+#mc_embed_signup h2 img {vertical-align: middle;}
+#mc_embed_signup h2 {font-weight:700; padding:5px 0px; margin:0px 0; font-size:1.4em; text-align: center; line-height: 1.5em;}
 #mc_embed_signup input {border:1px solid #999; -webkit-appearance:none;box-sizing: content-box;}
 #mc_embed_signup input[type=checkbox]{-webkit-appearance:checkbox;}
 #mc_embed_signup input[type=radio]{-webkit-appearance:radio;}

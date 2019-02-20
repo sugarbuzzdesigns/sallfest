@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class PageTemplate extends Column\Meta {
+class AC_Column_Post_PageTemplate extends AC_Column_Meta {
 
 	public function __construct() {
 		$this->set_type( 'column-page_template' );
@@ -19,13 +19,7 @@ class PageTemplate extends Column\Meta {
 	}
 
 	function get_value( $post_id ) {
-		$template = array_search( $this->get_raw_value( $post_id ), $this->get_page_templates() );
-
-		if ( ! $template ) {
-			return $this->get_empty_char();
-		}
-
-		return $template;
+		return array_search( $this->get_raw_value( $post_id ), $this->get_page_templates() );
 	}
 
 	function is_valid() {

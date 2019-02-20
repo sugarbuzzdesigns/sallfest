@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class User extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_User extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string
@@ -24,13 +23,13 @@ class User extends Settings\Column
 	public function get_dependent_settings() {
 		$settings = array();
 
-		$settings[] = new Settings\Column\UserLink( $this->column );
+		$settings[] = new AC_Settings_Column_UserLink( $this->column );
 
 		return $settings;
 	}
 
 	/**
-	 * @return View
+	 * @return AC_View
 	 */
 	public function create_view() {
 		$select = $this->create_element( 'select', 'display_author_as' )
@@ -38,7 +37,7 @@ class User extends Settings\Column
 		               ->set_attribute( 'data-refresh', 'column' )
 		               ->set_options( $this->get_display_options() );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Display', 'codepress-admin-columns' ),
 			'setting' => $select,
 			'for'     => $select->get_id(),

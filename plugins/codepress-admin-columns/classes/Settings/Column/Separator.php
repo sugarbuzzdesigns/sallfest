@@ -1,13 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Collection;
-use AC\Settings;
-use AC\View;
-
-class Separator extends Settings\Column
-	implements Settings\FormatCollection {
+class AC_Settings_Column_Separator extends AC_Settings_Column
+	implements AC_Settings_FormatCollectionInterface {
 
 	/**
 	 * @var string
@@ -29,7 +27,7 @@ class Separator extends Settings\Column
 				'white_space' => __( 'Whitespace', 'codepress-admin-columns' ),
 			) );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Separator', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Select a repeater sub field.', 'codepress-admin-columns' ),
 			'setting' => $element,
@@ -48,7 +46,7 @@ class Separator extends Settings\Column
 		return $this;
 	}
 
-	public function format( Collection $collection, $original_value ) {
+	public function format( AC_Collection $collection, $original_value ) {
 		switch ( $this->separator ) {
 			case 'comma' :
 				$separator = ', ';

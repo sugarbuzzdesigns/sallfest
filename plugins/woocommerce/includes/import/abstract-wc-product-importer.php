@@ -2,6 +2,8 @@
 /**
  * Abstract Product importer
  *
+ * @author   Automattic
+ * @category Admin
  * @package  WooCommerce/Import
  * @version  3.1.0
  */
@@ -84,6 +86,7 @@ abstract class WC_Product_Importer implements WC_Importer_Interface {
 	 * (default value: 0)
 	 *
 	 * @var int
+	 * @access protected
 	 */
 	protected $start_time = 0;
 
@@ -233,7 +236,7 @@ abstract class WC_Product_Importer implements WC_Importer_Interface {
 			}
 
 			if ( 'external' === $object->get_type() ) {
-				unset( $data['manage_stock'], $data['stock_status'], $data['backorders'], $data['low_stock_amount'] );
+				unset( $data['manage_stock'], $data['stock_status'], $data['backorders'] );
 			}
 
 			if ( 'importing' === $object->get_status() ) {
@@ -316,9 +319,8 @@ abstract class WC_Product_Importer implements WC_Importer_Interface {
 	 */
 	protected function set_product_data( &$product, $data ) {
 		if ( isset( $data['raw_attributes'] ) ) {
-			$attributes          = array();
-			$default_attributes  = array();
-			$existing_attributes = $product->get_attributes();
+			$attributes         = array();
+			$default_attributes = array();
 
 			foreach ( $data['raw_attributes'] as $position => $attribute ) {
 				$attribute_id = 0;
@@ -335,22 +337,12 @@ abstract class WC_Product_Importer implements WC_Importer_Interface {
 					$is_visible = 1;
 				}
 
-				// Get name.
-				$attribute_name = $attribute_id ? wc_attribute_taxonomy_name_by_id( $attribute_id ) : $attribute['name'];
-
-				// Set if is a variation attribute based on existing attributes if possible so updates via CSV do not change this.
+				// Set if is a variation attribute.
 				$is_variation = 0;
 
-				if ( $existing_attributes ) {
-					foreach ( $existing_attributes as $existing_attribute ) {
-						if ( $existing_attribute->get_name() === $attribute_name ) {
-							$is_variation = $existing_attribute->get_variation();
-							break;
-						}
-					}
-				}
-
 				if ( $attribute_id ) {
+					$attribute_name = wc_attribute_taxonomy_name_by_id( $attribute_id );
+
 					if ( isset( $attribute['value'] ) ) {
 						$options = array_map( 'wc_sanitize_term_text_based', $attribute['value'] );
 						$options = array_filter( $options, 'strlen' );
@@ -431,11 +423,6 @@ abstract class WC_Product_Importer implements WC_Importer_Interface {
 		// Stop if parent does not exists.
 		if ( ! $parent ) {
 			return new WP_Error( 'woocommerce_product_importer_missing_variation_parent_id', __( 'Variation cannot be imported: Missing parent ID or parent does not exist yet.', 'woocommerce' ), array( 'status' => 401 ) );
-		}
-
-		// Stop if parent is a product variation.
-		if ( $parent->is_type( 'variation' ) ) {
-			return new WP_Error( 'woocommerce_product_importer_parent_set_as_variation', __( 'Variation cannot be imported: Parent product cannot be a product variation', 'woocommerce' ), array( 'status' => 401 ) );
 		}
 
 		if ( isset( $data['raw_attributes'] ) ) {
@@ -765,21 +752,22 @@ abstract class WC_Product_Importer implements WC_Importer_Interface {
 	}
 
 	/**
-	 * The exporter prepends a ' to escape fields that start with =, +, - or @.
-	 * Remove the prepended ' character preceding those characters.
+	 * The exporter prepends a ' to fields that start with a - which causes
+	 * issues with negative numbers. This removes the ' if the input is still a valid
+	 * number after removal.
 	 *
-	 * @since 3.5.2
-	 * @param  string $value A string that may or may not have been escaped with '.
+	 * @since 3.3.0
+	 * @param string $value A numeric string that may or may not have ' prepended.
 	 * @return string
 	 */
-	protected function unescape_data( $value ) {
-		$active_content_triggers = array( "'=", "'+", "'-", "'@" );
-
-		if ( in_array( mb_substr( $value, 0, 2 ), $active_content_triggers, true ) ) {
-			$value = mb_substr( $value, 1 );
+	protected function unescape_negative_number( $value ) {
+		if ( 0 === strpos( $value, "'-" ) ) {
+			$unescaped = substr_replace( $value, '', 0, 1 );
+			if ( is_numeric( $unescaped ) ) {
+				return $unescaped;
+			}
 		}
 
 		return $value;
 	}
-
 }

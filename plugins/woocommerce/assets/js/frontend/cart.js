@@ -93,7 +93,7 @@ jQuery( function( $ ) {
 
 			// Display errors
 			if ( $notices.length > 0 ) {
-				show_notice( $notices );
+				show_notice( $notices, $( '.cart-empty' ).closest( '.woocommerce' ) );
 			}
 		} else {
 			// If the checkout is also displayed on this page, trigger update event.
@@ -125,15 +125,15 @@ jQuery( function( $ ) {
 	};
 
 	/**
-	 * Shows new notices on the page.
+	 * Clear previous notices and shows new one above form.
 	 *
 	 * @param {Object} The Notice HTML Element in string or object form.
 	 */
 	var show_notice = function( html_element, $target ) {
 		if ( ! $target ) {
-			$target = $( '.woocommerce-notices-wrapper:first' ) || $( '.cart-empty' ).closest( '.woocommerce' ) || $( '.woocommerce-cart-form' );
+			$target = $( '.woocommerce-cart-form' );
 		}
-		$target.prepend( html_element );
+		$target.before( html_element );
 	};
 
 
@@ -329,7 +329,6 @@ jQuery( function( $ ) {
 				complete: function() {
 					unblock( $form );
 					unblock( $( 'div.cart_totals' ) );
-					$.scroll_to_notices( $( '[role="alert"]' ) );
 				}
 			} );
 		},
@@ -366,18 +365,8 @@ jQuery( function( $ ) {
 
 			// Catch the enter key and don't let it submit the form.
 			if ( 13 === evt.keyCode ) {
-				var $form = $( evt.currentTarget ).parents( 'form' );
-
-				try {
-					// If there are no validation errors, handle the submit.
-					if ( $form[0].checkValidity() ) {
-						evt.preventDefault();
-						this.cart_submit( evt );
-					}
-				} catch( err ) {
-					evt.preventDefault();
-					this.cart_submit( evt );
-				}
+				evt.preventDefault();
+				this.cart_submit( evt );
 			}
 		},
 
@@ -523,7 +512,6 @@ jQuery( function( $ ) {
 				complete: function() {
 					unblock( $form );
 					unblock( $( 'div.cart_totals' ) );
-					$.scroll_to_notices( $( '[role="alert"]' ) );
 				}
 			} );
 		},
@@ -552,7 +540,6 @@ jQuery( function( $ ) {
 				complete: function() {
 					unblock( $form );
 					unblock( $( 'div.cart_totals' ) );
-					$.scroll_to_notices( $( '[role="alert"]' ) );
 				}
 			} );
 		},

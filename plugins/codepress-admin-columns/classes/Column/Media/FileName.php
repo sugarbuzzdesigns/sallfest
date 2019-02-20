@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class FileName extends Column\Meta {
+class AC_Column_Media_FileName extends AC_Column_Meta {
 
 	public function __construct() {
 		$this->set_type( 'column-file_name' );

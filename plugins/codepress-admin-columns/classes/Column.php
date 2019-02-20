@@ -1,11 +1,13 @@
 <?php
 
-namespace AC;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 3.0
  */
-class Column {
+class AC_Column {
 
 	/**
 	 * @var string Unique Name
@@ -33,28 +35,30 @@ class Column {
 	private $original = false;
 
 	/**
-	 * @var Settings\Column[]
+	 * @var AC_Settings_Column[]
 	 */
 	private $settings;
 
 	/**
-	 * @var Settings\FormatValue[]|Settings\FormatCollection[]
+	 * @var AC_Settings_FormatValueInterface[]|AC_Settings_FormatCollectionInterface[]
 	 */
 	private $formatters;
 
 	/**
-	 * @var ListScreen
+	 * @var AC_ListScreen
 	 */
 	protected $list_screen;
 
 	/**
 	 * The options managed by the settings
+	 *
 	 * @var array
 	 */
 	protected $options = array();
 
 	/**
 	 * Get the unique name of the column
+	 *
 	 * @since 2.3.4
 	 * @return string Column name
 	 */
@@ -75,6 +79,7 @@ class Column {
 
 	/**
 	 * Get the type of the column.
+	 *
 	 * @since 2.3.4
 	 * @return string Type
 	 */
@@ -94,18 +99,18 @@ class Column {
 	}
 
 	/**
-	 * @return ListScreen
+	 * @return AC_ListScreen
 	 */
 	public function get_list_screen() {
 		return $this->list_screen;
 	}
 
 	/**
-	 * @param ListScreen $list_screen
+	 * @param AC_ListScreen $list_screen
 	 *
 	 * @return $this
 	 */
-	public function set_list_screen( ListScreen $list_screen ) {
+	public function set_list_screen( AC_ListScreen $list_screen ) {
 		$this->list_screen = $list_screen;
 
 		return $this;
@@ -113,6 +118,7 @@ class Column {
 
 	/**
 	 * Get the type of the column.
+	 *
 	 * @since 2.4.9
 	 * @return string Label of column's type
 	 */
@@ -179,6 +185,7 @@ class Column {
 	/**
 	 * Return true when a default column has been replaced by a custom column.
 	 * An original column will then use the original label and value.
+	 *
 	 * @since 3.0
 	 */
 	public function is_original() {
@@ -199,7 +206,9 @@ class Column {
 	/**
 	 * Overwrite this function in child class.
 	 * Determine whether this column type should be available
+	 *
 	 * @since 2.2
+	 *
 	 * @return bool Whether the column type should be available
 	 */
 	public function is_valid() {
@@ -207,11 +216,11 @@ class Column {
 	}
 
 	/**
-	 * @param Settings\Column $setting
+	 * @param AC_Settings_Column $setting
 	 *
 	 * @return $this
 	 */
-	public function add_setting( Settings\Column $setting ) {
+	public function add_setting( AC_Settings_Column $setting ) {
 		$setting->set_values( $this->options );
 
 		$this->settings[ $setting->get_name() ] = $setting;
@@ -235,7 +244,7 @@ class Column {
 	/**
 	 * @param string $id
 	 *
-	 * @return Settings\Column|Settings\Column\User|Settings\Column\Separator|Settings\Column\Label
+	 * @return AC_Settings_Column|AC_Settings_Column_User|AC_Settings_Column_Separator|AC_Settings_Column_Label
 	 */
 	public function get_setting( $id ) {
 		return $this->get_settings()->get( $id );
@@ -244,7 +253,7 @@ class Column {
 	public function get_formatters() {
 		if ( null === $this->formatters ) {
 			foreach ( $this->get_settings() as $setting ) {
-				if ( $setting instanceof Settings\FormatValue || $setting instanceof Settings\FormatCollection ) {
+				if ( $setting instanceof AC_Settings_FormatValueInterface || $setting instanceof AC_Settings_FormatCollectionInterface ) {
 					$this->formatters[] = $setting;
 				}
 			}
@@ -254,29 +263,14 @@ class Column {
 	}
 
 	/**
-	 * @since 3.2.5
-	 * @return string
-	 */
-	public function get_custom_label() {
-
-		/**
-		 * @since 3.0
-		 *
-		 * @param string $label
-		 * @param Column $column
-		 */
-		return apply_filters( 'ac/headings/label', $this->get_setting( 'label' )->get_value(), $this );
-	}
-
-	/**
-	 * @return Collection
+	 * @return AC_Collection
 	 */
 	public function get_settings() {
 		if ( null === $this->settings ) {
 			$settings = array(
-				new Settings\Column\Type( $this ),
-				new Settings\Column\Label( $this ),
-				new Settings\Column\Width( $this ),
+				new AC_Settings_Column_Type( $this ),
+				new AC_Settings_Column_Label( $this ),
+				new AC_Settings_Column_Width( $this ),
 			);
 
 			foreach ( $settings as $setting ) {
@@ -288,7 +282,7 @@ class Column {
 			do_action( 'ac/column/settings', $this );
 		}
 
-		return new Collection( $this->settings );
+		return new AC_Collection( $this->settings );
 	}
 
 	/**
@@ -322,6 +316,7 @@ class Column {
 
 	/**
 	 * Get the current options
+	 *
 	 * @return array
 	 */
 	public function get_options() {
@@ -330,9 +325,11 @@ class Column {
 
 	/**
 	 * Enqueue CSS + JavaScript on the admin listings screen!
+	 *
 	 * This action is called in the admin_head action on the listings screen where your column values are displayed.
 	 * Use this action to add CSS + JavaScript
-	 * @since 2.3.4
+	 *
+	 * @since 3.3.4
 	 */
 	public function scripts() {
 		// Overwrite in child class
@@ -356,8 +353,8 @@ class Column {
 		}
 
 		if ( $available > $current ) {
-			$is_collection = $value instanceof Collection;
-			$is_value_formatter = $formatters[ $current ] instanceof Settings\FormatValue;
+			$is_collection = $value instanceof AC_Collection;
+			$is_value_formatter = $formatters[ $current ] instanceof AC_Settings_FormatValueInterface;
 
 			if ( $is_collection && $is_value_formatter ) {
 				foreach ( $value as $k => $v ) {
@@ -365,7 +362,7 @@ class Column {
 				}
 
 				while ( $available > $current ) {
-					if ( $formatters[ $current ] instanceof Settings\FormatCollection ) {
+					if ( $formatters[ $current ] instanceof AC_Settings_FormatCollectionInterface ) {
 						return $this->get_formatted_value( $value, $original_value, $current );
 					}
 
@@ -384,6 +381,7 @@ class Column {
 	/**
 	 * Get the raw, underlying value for the column
 	 * Not suitable for direct display, use get_value() for that
+	 *
 	 * @since 2.0.3
 	 *
 	 * @param int $id
@@ -404,7 +402,7 @@ class Column {
 	public function get_value( $id ) {
 		$value = $this->get_formatted_value( $this->get_raw_value( $id ), $id );
 
-		if ( $value instanceof Collection ) {
+		if ( $value instanceof AC_Collection ) {
 			$value = $value->filter()->implode( $this->get_separator() );
 		}
 

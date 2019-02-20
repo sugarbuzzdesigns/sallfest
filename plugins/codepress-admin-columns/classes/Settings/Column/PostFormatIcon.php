@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class PostFormatIcon extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_PostFormatIcon extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var bool
@@ -25,7 +24,7 @@ class PostFormatIcon extends Settings\Column
 			                ''  => __( 'No' ),
 		                ) );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Use an icon?', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Use an icon instead of text for displaying.', 'codepress-admin-columns' ),
 			'setting' => $setting,
@@ -42,7 +41,7 @@ class PostFormatIcon extends Settings\Column
 	}
 
 	/**
-	 * @param $use_icon
+	 * @param int $use_icons
 	 *
 	 * @return bool
 	 */
@@ -57,8 +56,8 @@ class PostFormatIcon extends Settings\Column
 	}
 
 	/**
-	 * @param     $format
-	 * @param int $post_id
+	 * @param string $status
+	 * @param int    $post_id
 	 *
 	 * @return string
 	 */

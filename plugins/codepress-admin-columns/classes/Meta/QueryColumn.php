@@ -1,18 +1,18 @@
 <?php
 
-namespace AC\Meta;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Column;
-
-class QueryColumn extends Query {
+class AC_Meta_QueryColumn extends AC_Meta_Query {
 
 	/**
-	 * @param Column $column
+	 * @param AC_Column $column
 	 */
-	public function __construct( Column $column ) {
+	public function __construct( AC_Column $column ) {
 		parent::__construct( $column->get_list_screen()->get_meta_type() );
 
-		if ( $column instanceof Column\Meta ) {
+		if ( $column instanceof AC_Column_Meta ) {
 			$this->join_where( 'meta_key', $column->get_meta_key() );
 		}
 

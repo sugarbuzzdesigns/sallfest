@@ -1,13 +1,15 @@
 <?php
 
-namespace AC;
-
-use Iterator;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
+ * Class AC_Collection
+ *
  * Used to hold values from the same type
  */
-class Collection
+class AC_Collection
 	implements Iterator {
 
 	/**
@@ -77,10 +79,11 @@ class Collection
 
 	/**
 	 * Filter collection items
-	 * @return Collection
+	 *
+	 * @return AC_Collection
 	 */
 	public function filter() {
-		return new Collection( ac_helper()->array->filter( $this->items ) );
+		return new AC_Collection( ac_helper()->array->filter( $this->items ) );
 	}
 
 	/**

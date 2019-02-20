@@ -1,11 +1,14 @@
 <?php
 
-namespace AC;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-abstract class Addon {
+abstract class AC_Addon {
 
 	/**
 	 * Return the file from this plugin
+	 *
 	 * @return string
 	 */
 	abstract protected function get_file();
@@ -20,34 +23,15 @@ abstract class Addon {
 	/**
 	 * @return string
 	 */
-	public function get_dir() {
+	public function get_plugin_dir() {
 		return plugin_dir_path( $this->get_file() );
 	}
 
 	/**
 	 * @return string
 	 */
-	public function get_url() {
+	public function get_plugin_url() {
 		return plugin_dir_url( $this->get_file() );
 	}
 
-	/**
-	 * @return string
-	 * @deprecated
-	 */
-	public function get_plugin_url() {
-		_deprecated_function( __METHOD__, '3.2', 'AC\Addon::get_url()' );
-
-		return $this->get_url();
-	}
-
-	/**
-	 * @return string
-	 * @deprecated
-	 */
-	public function get_plugin_dir() {
-		_deprecated_function( __METHOD__, '3.2', 'AC\Addon::get_dir()' );
-
-		return $this->get_dir();
-	}
 }

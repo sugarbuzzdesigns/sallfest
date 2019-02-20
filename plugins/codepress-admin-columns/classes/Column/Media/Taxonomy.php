@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 3.0
  */
-class Taxonomy extends Column\Post\Taxonomy {
-
+class AC_Column_Media_Taxonomy extends AC_Column_Post_Taxonomy {
 }

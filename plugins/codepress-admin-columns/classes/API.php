@@ -1,8 +1,10 @@
 <?php
 
-namespace AC;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class API {
+class AC_API {
 
 	/**
 	 * @var array [
@@ -15,9 +17,9 @@ class API {
 	private $columndata;
 
 	/**
-	 * @param ListScreen $list_screen
+	 * @param AC_ListScreen $list_screen
 	 */
-	public function set_column_settings( ListScreen $list_screen ) {
+	public function set_column_settings( AC_ListScreen $list_screen ) {
 		$settings = $this->get_column_settings( $list_screen );
 
 		if ( ! $settings ) {
@@ -28,11 +30,11 @@ class API {
 	}
 
 	/**
-	 * @param ListScreen $list_screen
+	 * @param AC_ListScreen $list_screen
 	 *
 	 * @return array|false
 	 */
-	public function get_column_settings( ListScreen $list_screen ) {
+	public function get_column_settings( AC_ListScreen $list_screen ) {
 		$columndata = $this->get_columndata( $list_screen->get_key() );
 
 		if ( ! $columndata ) {
@@ -49,7 +51,7 @@ class API {
 	}
 
 	/**
-	 * @param ListScreen $list_screen
+	 * @param AC_ListScreen $list_screen
 	 *
 	 * @return array
 	 */
@@ -69,8 +71,8 @@ class API {
 	}
 
 	/**
-	 * @param $list_screen_keys
-	 * @param $columndata
+	 * @param string|array $list_screen_key List screen key or keys
+	 * @param array        $column_data
 	 */
 	public function load_columndata( $list_screen_keys, $columndata ) {
 		foreach ( (array) $list_screen_keys as $list_screen_key ) {
@@ -80,7 +82,7 @@ class API {
 
 	/**
 	 * @param string $list_screen_key List screen key
-	 * @param        $columndata
+	 * @param array  $column_data
 	 */
 	private function add_columndata( $list_screen_key, $columndata ) {
 		$columndata = $this->convert_old_format_to_current( $columndata );

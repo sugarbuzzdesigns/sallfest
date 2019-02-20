@@ -1,8 +1,10 @@
 <?php
 
-namespace AC\Form\Element;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class Radio extends Checkbox {
+class AC_Form_Element_Radio extends AC_Form_Element_Checkbox {
 
 	protected function get_type() {
 		return 'radio';

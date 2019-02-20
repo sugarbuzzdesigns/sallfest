@@ -1,14 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC;
-use AC\Collection;
-use AC\Settings;
-use AC\View;
-
-class CustomFieldType extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_CustomFieldType extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string
@@ -25,20 +22,20 @@ class CustomFieldType extends Settings\Column
 		switch ( $this->get_field_type() ) {
 
 			case 'date' :
-				$settings[] = new Date( $this->column );
+				$settings[] = new AC_Settings_Column_Date( $this->column );
 
 				break;
 			case 'image' :
 			case 'library_id' :
-				$settings[] = new Image( $this->column );
+				$settings[] = new AC_Settings_Column_Image( $this->column );
 
 				break;
 			case 'excerpt' :
-				$settings[] = new StringLimit( $this->column );
+				$settings[] = new AC_Settings_Column_StringLimit( $this->column );
 
 				break;
 			case 'link' :
-				$settings[] = new LinkLabel( $this->column );
+				$settings[] = new AC_Settings_Column_LinkLabel( $this->column );
 
 				break;
 		}
@@ -59,7 +56,7 @@ class CustomFieldType extends Settings\Column
 			$tooltip .= '<em>' . __( 'Type', 'codepress-admin-columns' ) . ': ' . $this->get_field_type() . '</em>';
 		}
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Field Type', 'codepress-admin-columns' ),
 			'tooltip' => $tooltip,
 			'setting' => $select,
@@ -69,8 +66,8 @@ class CustomFieldType extends Settings\Column
 	}
 
 	private function get_description_object_ids( $input ) {
-		$description = sprintf( __( "Uses one or more %s IDs to display information about it.", 'codepress-admin-columns' ), '<em>' . $input . '</em>' );
-		$description .= ' ' . __( "Multiple IDs should be separated by commas.", 'codepress-admin-columns' );
+		$description = sprintf( __( "Uses the id from a %s to display information about it.", 'codepress-admin-columns' ), '<em>' . $input . '</em>' );
+		$description .= ' ' . __( "Multiple ids should be separated by a comma.", 'codepress-admin-columns' );
 
 		return $description;
 	}
@@ -94,6 +91,7 @@ class CustomFieldType extends Settings\Column
 
 	/**
 	 * Get possible field types
+	 *
 	 * @return array
 	 */
 	protected function get_field_type_options() {
@@ -101,9 +99,9 @@ class CustomFieldType extends Settings\Column
 			'basic'      => array(
 				'color'   => __( 'Color', 'codepress-admin-columns' ),
 				'date'    => __( 'Date', 'codepress-admin-columns' ),
-				'excerpt' => __( 'Excerpt', 'codepress-admin-columns' ),
+				'excerpt' => __( 'Text' ),
 				'image'   => __( 'Image', 'codepress-admin-columns' ),
-				'link'    => __( 'URL', 'codepress-admin-columns' ),
+				'link'    => __( 'Url', 'codepress-admin-columns' ),
 				'numeric' => __( 'Number', 'codepress-admin-columns' ),
 			),
 			'choice'     => array(
@@ -123,6 +121,7 @@ class CustomFieldType extends Settings\Column
 
 		/**
 		 * Filter the available custom field types for the meta (custom field) field
+		 *
 		 * @since 3.0
 		 *
 		 * @param array $field_types Available custom field types ([type] => [label])
@@ -198,8 +197,7 @@ class CustomFieldType extends Settings\Column
 		switch ( $this->get_field_type() ) {
 
 			case 'date' :
-				$timestamp = ac_helper()->date->strtotime( $value );
-				if ( $timestamp ) {
+				if ( $timestamp = ac_helper()->date->strtotime( $value ) ) {
 					$value = date( 'c', $timestamp );
 				}
 
@@ -226,11 +224,11 @@ class CustomFieldType extends Settings\Column
 
 				break;
 			case 'image':
-				$value = new Collection( $this->get_values_from_array_or_string( $value ) );
+				$value = new AC_Collection( $this->get_values_from_array_or_string( $value ) );
 
 				break;
 			case 'library_id' :
-				$value = new Collection( $this->get_ids_from_array_or_string( $value ) );
+				$value = new AC_Collection( $this->get_ids_from_array_or_string( $value ) );
 
 				break;
 			case "checkmark" :
@@ -254,7 +252,7 @@ class CustomFieldType extends Settings\Column
 				break;
 			case "count" :
 
-				if ( $this->column instanceof AC\Column\Meta ) {
+				if ( $this->column instanceof AC_Column_Meta ) {
 					$value = $this->column->get_meta_value( $original_value, $this->column->get_meta_key(), false );
 
 					if ( $value ) {

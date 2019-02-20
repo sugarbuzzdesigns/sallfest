@@ -1,8 +1,10 @@
 <?php
 
-namespace AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-interface AjaxValue {
+interface AC_Column_AjaxValue {
 
 	/**
 	 * @param int $id

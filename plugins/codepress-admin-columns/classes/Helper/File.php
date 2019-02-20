@@ -1,16 +1,18 @@
 <?php
 
-namespace AC\Helper;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class File {
+class AC_Helper_File {
 
 	/**
 	 * Convert file size to readable format
+	 *
 	 * @since 1.4.5
 	 *
-	 * @param      $bytes
-	 * @param int  $decimals
-	 * @param bool $empty_text
+	 * @param string $size Size in bytes
+	 * @param int    $decimals
 	 *
 	 * @return string|false Readable file size
 	 */

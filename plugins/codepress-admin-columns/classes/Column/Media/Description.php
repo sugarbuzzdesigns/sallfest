@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class Description extends Column\Post\Content {
+class AC_Column_Media_Description extends AC_Column_Post_Content {
 
 	public function __construct() {
 		parent::__construct();

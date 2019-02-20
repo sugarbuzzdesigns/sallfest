@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class AvailableSizes extends Column\Media\MetaValue {
+class AC_Column_Media_AvailableSizes extends AC_Column_Media_MetaValue {
 
 	public function __construct() {
 		parent::__construct();
@@ -30,9 +29,7 @@ class AvailableSizes extends Column\Media\MetaValue {
 
 		$paths = array();
 
-		$available_sizes = $this->get_available_sizes( $sizes );
-
-		if ( $available_sizes ) {
+		if ( $available_sizes = $this->get_available_sizes( $sizes ) ) {
 
 			$url = wp_get_attachment_url( $id );
 			$paths[] = ac_helper()->html->tooltip( ac_helper()->html->link( $url, __( 'original', 'codepress-admin-columns' ) ), basename( $url ) );
@@ -49,9 +46,7 @@ class AvailableSizes extends Column\Media\MetaValue {
 		// include missing image sizes?
 		if ( '1' === $this->get_setting( 'include_missing_sizes' )->get_value() ) {
 
-			$missing = $this->get_missing_sizes( $sizes );
-
-			if ( $missing ) {
+			if ( $missing = $this->get_missing_sizes( $sizes ) ) {
 				foreach ( $missing as $size ) {
 					$paths[] = ac_helper()->html->tooltip( $size, sprintf( __( 'Missing image file for size %s.', 'codepress-admin-columns' ), '<em>"' . $size . '"</em>' ), array( 'class' => 'ac-missing-size' ) );
 				}
@@ -93,7 +88,7 @@ class AvailableSizes extends Column\Media\MetaValue {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\MissingImageSize( $this ) );
+		$this->add_setting( new AC_Settings_Column_MissingImageSize( $this ) );
 	}
 
 }

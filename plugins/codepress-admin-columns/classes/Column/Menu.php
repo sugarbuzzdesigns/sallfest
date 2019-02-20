@@ -1,16 +1,16 @@
 <?php
 
-namespace AC\Column;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Column displaying the menus the item is used in. Supported by all object types that
  * can be referenced in menus (i.e. posts).
+ *
  * @since 2.2.5
  */
-abstract class Menu extends Column {
+class AC_Column_Menu extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-used_by_menu' );
@@ -18,25 +18,44 @@ abstract class Menu extends Column {
 	}
 
 	/**
+	 * @see   AC_Column::get_raw_value()
 	 * @since 2.2.5
-	 *
-	 * @param $object_id
-	 *
-	 * @return array
 	 */
 	public function get_raw_value( $object_id ) {
 		return $this->get_menus( $object_id, array( 'fields' => 'ids' ) );
 	}
 
 	/**
-	 * @return string
+	 * @return string Object type: 'post', 'page' or 'user'
 	 */
-	public abstract function get_object_type();
+	public function get_object_type() {
+		$object_type = $this->get_post_type();
+
+		if ( ! $object_type ) {
+			$object_type = $this->get_taxonomy();
+		}
+
+		if ( ! $object_type ) {
+			$object_type = $this->get_list_screen()->get_meta_type();
+		}
+
+		return $object_type;
+	}
 
 	/**
 	 * @return string
 	 */
-	public abstract function get_item_type();
+	public function get_item_type() {
+		$item_type = $this->get_list_screen()->get_meta_type();
+
+		switch ( $item_type ) {
+			case 'post' :
+				$item_type = 'post_type';
+				break;
+		}
+
+		return $item_type;
+	}
 
 	/**
 	 * @param int $object_id
@@ -88,7 +107,11 @@ abstract class Menu extends Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\LinkToMenu( $this ) );
+		$this->add_setting( new AC_Settings_Column_LinkToMenu( $this ) );
+	}
+
+	public function is_valid() {
+		return in_array( $this->get_list_screen()->get_meta_type(), array( 'post', 'user', 'term', 'comment' ) );
 	}
 
 }

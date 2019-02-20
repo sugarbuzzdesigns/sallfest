@@ -1,10 +1,10 @@
 <?php
 
-namespace AC\Form\Element;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Form\Element;
-
-class Input extends Element {
+class AC_Form_Element_Input extends AC_Form_Element {
 
 	protected function is_valid_type( $type ) {
 		$valid_types = array(

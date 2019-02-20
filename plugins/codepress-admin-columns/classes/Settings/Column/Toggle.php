@@ -1,11 +1,10 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-abstract class Toggle extends Settings\Column {
+abstract class AC_Settings_Column_Toggle extends AC_Settings_Column {
 
 	public function create_view() {
 		$setting = $this
@@ -15,7 +14,7 @@ abstract class Toggle extends Settings\Column {
 				'off' => __( 'No' ),
 			) );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'setting' => $setting,
 		) );
 

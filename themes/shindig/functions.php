@@ -96,9 +96,7 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wr
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
 // Display 24 products per page. Goes in functions.php
-add_filter('loop_shop_per_page', function($cols) {
-	return get_theme_mod( "shop_pagination_pro" );
-});
+add_filter('loop_shop_per_page', create_function('$cols', 'return get_theme_mod( "shop_pagination_pro" );;'));
 /* WooCommerce Related Products */
 function woo_related_products_limit() {
   global $product;

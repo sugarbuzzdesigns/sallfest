@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.2.4
  */
-class TitleRaw extends Column {
+class AC_Column_Post_TitleRaw extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-title_raw' );
@@ -20,7 +19,7 @@ class TitleRaw extends Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\PostLink( $this ) );
+		$this->add_setting( new AC_Settings_Column_PostLink( $this ) );
 	}
 
 }

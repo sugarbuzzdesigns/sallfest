@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class WordsPerMinute extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_WordsPerMinute extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var int
@@ -28,7 +27,7 @@ class WordsPerMinute extends Settings\Column
 				'placeholder' => $this->get_words_per_minute(),
 			) );
 
-		$view = new View( array(
+		$view = new AC_View( array(
 			'label'   => __( 'Words per minute', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Estimated reading time in words per minute.', 'codepress-admin-columns' ) . ' ' . sprintf( __( 'By default: %s', 'codepress-admin-columns' ), $this->get_words_per_minute() ),
 			'setting' => $setting,
@@ -93,7 +92,7 @@ class WordsPerMinute extends Settings\Column
 	/**
 	 * Return the seconds required to read this string based on average words per minute
 	 *
-	 * @param $string
+	 * @param string $content
 	 *
 	 * @return int
 	 */

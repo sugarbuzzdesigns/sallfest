@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-use AC\View;
-
-class LinkLabel extends Settings\Column
-	implements Settings\FormatValue {
+class AC_Settings_Column_LinkLabel extends AC_Settings_Column
+	implements AC_Settings_FormatValueInterface {
 
 	/**
 	 * @var string
@@ -18,10 +17,10 @@ class LinkLabel extends Settings\Column
 	}
 
 	public function create_view() {
-		$view = new View( array(
+		$view = new AC_View( array(
 			'setting' => $this->create_element( 'text' ),
 			'label'   => __( 'Link Label', 'codepress-admin-columns' ),
-			'tooltip' => __( 'Leave blank to display the URL', 'codepress-admin-columns' ),
+			'tooltip' => __( 'Leave blank to display the url', 'codepress-admin-columns' ),
 		) );
 
 		return $view;

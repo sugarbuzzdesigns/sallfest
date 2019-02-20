@@ -1,12 +1,11 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 3.0
  */
-class Author extends Column\Post\Author {
-
+class AC_Column_Media_Author extends AC_Column_Post_Author {
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Media;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.0
  */
-class MimeType extends Column {
+class AC_Column_Media_MimeType extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-mime_type' );

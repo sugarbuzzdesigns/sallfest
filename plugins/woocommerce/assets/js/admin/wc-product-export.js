@@ -43,8 +43,7 @@
 		var $this         = this,
 			selected_columns = $( '.woocommerce-exporter-columns' ).val(),
 			export_meta      = $( '#woocommerce-exporter-meta:checked' ).length ? 1: 0,
-			export_types     = $( '.woocommerce-exporter-types' ).val(),
-			export_category  = $( '.woocommerce-exporter-category' ).val();
+			export_types     = $( '.woocommerce-exporter-types' ).val();
 
 		$.ajax( {
 			type: 'POST',
@@ -57,7 +56,6 @@
 				selected_columns : selected_columns,
 				export_meta      : export_meta,
 				export_types     : export_types,
-				export_category  : export_category,
 				filename         : filename,
 				security         : wc_product_export_params.export_nonce
 			},

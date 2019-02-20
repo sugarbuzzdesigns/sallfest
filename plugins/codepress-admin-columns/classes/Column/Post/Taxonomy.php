@@ -1,13 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 3.0
  */
-class Taxonomy extends Column\Taxonomy {
+class AC_Column_Post_Taxonomy extends AC_Column_Taxonomy {
 
 	/**
 	 * @return bool True when post type has associated taxonomies

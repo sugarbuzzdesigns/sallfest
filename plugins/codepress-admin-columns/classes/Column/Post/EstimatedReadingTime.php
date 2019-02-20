@@ -1,14 +1,13 @@
 <?php
 
-namespace AC\Column\Post;
-
-use AC\Column;
-use AC\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @since 2.3.3
  */
-class EstimatedReadingTime extends Column {
+class AC_Column_Post_EstimatedReadingTime extends AC_Column {
 
 	public function __construct() {
 		$this->set_type( 'column-estimated_reading_time' );
@@ -18,8 +17,6 @@ class EstimatedReadingTime extends Column {
 	/**
 	 * Estimate read time in seconds
 	 * @since 2.3.3
-	 *
-	 * @param $post_id
 	 *
 	 * @return string Raw Post Content
 	 */
@@ -32,7 +29,7 @@ class EstimatedReadingTime extends Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new Settings\Column\WordsPerMinute( $this ) );
+		$this->add_setting( new AC_Settings_Column_WordsPerMinute( $this ) );
 	}
 
 }

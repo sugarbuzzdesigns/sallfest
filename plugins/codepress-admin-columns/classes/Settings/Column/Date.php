@@ -1,10 +1,10 @@
 <?php
 
-namespace AC\Settings\Column;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-use AC\Settings;
-
-class Date extends Settings\Column\DateTimeFormat {
+class AC_Settings_Column_Date extends AC_Settings_Column_DateTimeFormat {
 
 	private function get_diff_html_label() {
 		$description = __( 'The difference is returned in a human readable format.', 'codepress-admin-columns' ) . ' <br/>' .
@@ -43,7 +43,6 @@ class Date extends Settings\Column\DateTimeFormat {
 
 	/**
 	 * @param string $date
-	 * @param        $original_value
 	 *
 	 * @return string
 	 */

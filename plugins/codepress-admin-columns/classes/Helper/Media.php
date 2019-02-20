@@ -1,8 +1,10 @@
 <?php
 
-namespace AC\Helper;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class Media {
+class AC_Helper_Media {
 
 	/**
 	 * @param string $image_url
