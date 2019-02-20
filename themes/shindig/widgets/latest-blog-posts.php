@@ -8,7 +8,7 @@ function pyre_homepage_blog_load_widgets()
 
 class Pyre_Latest_Blog_Media_Widget extends WP_Widget {
 
-	function Pyre_Latest_Blog_Media_Widget()
+	function __construct()
 	{
 		$widget_ops = array('classname' => 'pyre_homepage_media', 'description' => 'Latest Blog Posts');
 
