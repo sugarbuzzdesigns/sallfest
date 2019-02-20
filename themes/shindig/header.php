@@ -29,5 +29,9 @@
 	<?php wp_head(); ?>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
-<body <?php body_class(); ?>>
+<?php if ( is_user_logged_in() ) : ?>
+	<body <?php body_class('default'); ?>>
+<?php else : ?>
+	<body <?php body_class('prerelease'); ?>>
+<?php endif; ?>
 

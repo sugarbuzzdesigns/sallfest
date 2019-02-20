@@ -2,12 +2,25 @@ body {
   background-color: #28a9c2;
 }
 
-body.home {
+body.default {
+  background-color: #101D40;
+}
+
+body.prerelease {
   background: #56CCF2;  /* fallback for old browsers */
   background: -webkit-linear-gradient(115deg, #1e6ad0 45%, #56CCF2 75%, #e4d6ae 95%);
   background: linear-gradient(115deg, #1e6ad0 45%, #56CCF2 75%, #e4d6ae 95%);
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.home-bg-img {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.width-container.home-bg {
+  text-align: center;
 }
 
 .centered {

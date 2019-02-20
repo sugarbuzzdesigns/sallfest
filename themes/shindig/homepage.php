@@ -7,8 +7,7 @@
  */
 ?>
 
-	<?php get_header(); ?>
-		<?php
+	<?php
 		if ( is_user_logged_in() ) {
 			get_template_part( 'content', 'homepage' );
 		} else {

@@ -2401,7 +2401,6 @@ body input#submit {
 	display: inline-block;
 	width: auto;
 	margin: 0px 6px 6px 0px;
-	text-shadow: none !important;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -2446,7 +2445,6 @@ body #single-product-pro button.single_add_to_cart_button {
 	display: inline-block;
 	width: auto;
 	margin: 0px 0px 6px 0px;
-	text-shadow: none !important;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -3474,7 +3472,6 @@ ul.sub-menu  .sf-sub-indicator i {
 	cursor: pointer;
 	display: inline-block;
 	width: auto;
-	text-shadow: none !important;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -3502,8 +3499,8 @@ ul.sub-menu  .sf-sub-indicator i {
 }
 
 .pro-button-right a:hover {
-	border-color: #2399b6;
-	background: #2399b6;
+	border-color: #ca8c00;;
+	background: #ca8c00;;
 	color: #ffffff;
 }
 

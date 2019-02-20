@@ -5,13 +5,11 @@
  * @package progression
  */
 ?>
-<div class="stretch">
-  <div>
-    <img class="logo--home" src="<?php echo get_template_directory_uri(); ?>/images/SALLatSEA_Logo_web.png" alt="">
-  </div>
-</div>
-
-<div class="width-container">
+<?php get_header(); ?>
+<div class="width-container home-bg">
+	<div class="home-bg-img">
+		<img src="<?php echo get_template_directory_uri(); ?>/images/SALL-2019_web.jpg" alt="">
+	</div>
 
 	<?php if( is_page_template('homepage.php') ): ?>
 		<?php if ( is_active_sidebar( 'homepage-widgets' ) ) : ?>

@@ -1078,7 +1078,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('button_bg_progression', array(
-	    'default'     => '#26afd1',
+	    'default'     => '#032d58;',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1093,7 +1093,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('button_hover_bg_progression', array(
-	    'default'     => '#2399b6',
+	    'default'     => '#0a3c6f;',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1223,7 +1223,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('body_link_progression', array(
-	    'default'     => '#26afd1',
+	    'default'     => '#032d58;',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1237,7 +1237,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('body_link_hover_progression', array(
-	    'default'     => '#26afd1',
+	    'default'     => '#032d58;',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1457,8 +1457,8 @@ function progression_customize_css()
 	body.post-type-archive-timeline #main, body.tax-timeline_day #main { background:<?php echo get_theme_mod('timeline_bg_color_pro', '#061d3d'); ?>; }
 	body, .woocommerce-container-pro a, .woocommerce-container-pro a:hover { color:<?php echo get_theme_mod('body_font_progression', '#535353'); ?>; }
 	#page-title h1 { color:<?php echo get_theme_mod('page_font_progression', '#ffffff'); ?>; border:2px solid <?php echo get_theme_mod('page_font_progression', '#ffffff'); ?>; }
-	a, .comments-pro-blog, body #main ul li.product .amount, body #main .entry-summary .amount, .star-rating, body .main-text-widgetpro ul li.product .amount, body .main-text-widgetpro .entry-summary .amount { color:<?php echo get_theme_mod('body_link_progression', '#26afd1'); ?>; }
-	a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:<?php echo get_theme_mod('body_link_hover_progression', '#26afd1'); ?>; }
+	a, .comments-pro-blog, body #main ul li.product .amount, body #main .entry-summary .amount, .star-rating, body .main-text-widgetpro ul li.product .amount, body .main-text-widgetpro .entry-summary .amount { color:<?php echo get_theme_mod('body_link_progression', '#032d58;'); ?>; }
+	a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:<?php echo get_theme_mod('body_link_hover_progression', '#032d58;'); ?>; }
 	.sf-menu li.sfHover li a, .sf-menu li.sfHover li a:visited, .sf-menu li.sfHover li li a, .sf-menu li.sfHover li li a:visited, .sf-menu li.sfHover li li li a, .sf-menu li.sfHover li li li a:visited, .sf-menu li.sfHover li li li li a, .sf-menu li.sfHover li li li li a:visited{ color:<?php echo get_theme_mod('sub_font_color', '#ffffff'); ?>; }
 	.sf-menu li li:hover, .sf-menu li li.sfHover, .sf-menu li li a:focus, .sf-menu li li a:hover, .sf-menu li li a:active, .sf-menu li li.sfHover a, .sf-menu li.sfHover li a:visited:hover, .sf-menu li li:hover a:visited,
 	.sf-menu li li li:hover, .sf-menu li li li.sfHover, .sf-menu li li li a:focus, .sf-menu li li li a:hover, .sf-menu li li li a:active, .sf-menu li li li.sfHover a, .sf-menu li li.sfHover li a:visited:hover, .sf-menu li li li:hover a:visited,
@@ -1471,24 +1471,24 @@ function progression_customize_css()
 	/* Default Button */
 	body #main input.wpcf7-submit, body a.ls-sc-button.default,
 	a.progression-button, a.more-link, body input#submit {
-		background:<?php echo get_theme_mod('button_bg_progression', '#26afd1'); ?>;
+		background:<?php echo get_theme_mod('button_bg_progression', '#032d58;'); ?>;
 		color:<?php echo get_theme_mod('button_font_pro', '#ffffff'); ?>;
 	}
 	body a.ls-sc-button.default span { color:<?php echo get_theme_mod('button_font_pro', '#ffffff'); ?>;  }
 	body #main input.wpcf7-submit:hover,   body a.ls-sc-button.default:hover,
 	a.progression-button:hover, a.more-link:hover, body input#submit:hover {
-		background:<?php echo get_theme_mod('button_hover_bg_progression', '#2399b6'); ?>;
+		background:<?php echo get_theme_mod('button_hover_bg_progression', '#0a3c6f;'); ?>;
 		color:<?php echo get_theme_mod('button_hover_font_pro', '#ffffff'); ?>;
 	}
 	body a.ls-sc-button.default:hover span { color:<?php echo get_theme_mod('button_hover_font_pro', '#ffffff'); ?>; }
 	.pro-button-right a {
-		background:<?php echo get_theme_mod('button_bg_progression', '#26afd1'); ?>;
-		border:2px solid <?php echo get_theme_mod('button_bg_progression', '#26afd1'); ?>;
+		background:<?php echo get_theme_mod('button_bg_progression', '#032d58;'); ?>;
+		border:2px solid <?php echo get_theme_mod('button_bg_progression', '#032d58;'); ?>;
 		color:<?php echo get_theme_mod('button_hover_font_pro', '#ffffff'); ?>;
 	}
 	.pro-button-right a:hover {
-		border-color:<?php echo get_theme_mod('button_hover_bg_progression', '#2399b6'); ?>;
-		background:<?php echo get_theme_mod('button_hover_bg_progression', '#2399b6'); ?>;
+		border-color:<?php echo get_theme_mod('button_hover_bg_progression', '#0a3c6f;'); ?>;
+		background:<?php echo get_theme_mod('button_hover_bg_progression', '#0a3c6f;'); ?>;
 		color:<?php echo get_theme_mod('button_hover_font_pro', '#ffffff'); ?>;
 	}
 	/* Second Button */

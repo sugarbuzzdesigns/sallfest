@@ -7,6 +7,7 @@ body {
 	background: #e6e3d1;
 	background-position: center;
 	background-size: cover;
+	-webkit-font-smoothing: antialiased;
 }
 
 #home-logo {
@@ -25,8 +26,8 @@ body {
 
 footer {
 	margin-top: 40px;
-	padding: 0;
-	background-color: #253e46;
+	padding: 10px 0;
+	background-color: #07284e;
 }
 
 footer .widget-container-footer {
@@ -57,6 +58,11 @@ footer .social-ico {
 
 .width-container {
 	padding: 0;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
 }
 
 .width-container .width-container {
@@ -159,7 +165,7 @@ p.demo_store.woocommerce-store-notice {
 }
 
 .sale-price {
-	color: #26afd1;
+	color: #07284e;
 }
 
 .reg-price {
@@ -223,7 +229,7 @@ body #taxonomy_navigation_pro .current-cat a {
 	-webkit-box-shadow: none;
 	   -moz-box-shadow: none;
 	        box-shadow: none;
-	text-shadow: none !important;
+
 }
 
 .width-container .donate span,

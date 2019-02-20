@@ -5,6 +5,7 @@
  * @package progression
  */
 ?>
+<?php get_header('save-the-date'); ?>
 <div class="stretch">
   <div>
     <div class="save-the-date-text">save the date</div>
