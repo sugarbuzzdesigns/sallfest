@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Form\Element;
 
-class AC_Form_Element_Checkbox extends AC_Form_Element {
+use AC\Form\Element;
+
+class Checkbox extends Element {
 
 	/**
 	 * @var bool
@@ -57,7 +57,7 @@ class AC_Form_Element_Checkbox extends AC_Form_Element {
 		$value = (array) $this->get_value();
 
 		foreach ( $options as $key => $label ) {
-			$input = new AC_Form_Element_Input( $this->get_name() );
+			$input = new Input( $this->get_name() );
 
 			$input->set_value( $key )
 			      ->set_type( $this->get_type() )
@@ -69,7 +69,7 @@ class AC_Form_Element_Checkbox extends AC_Form_Element {
 
 			$attributes = $this->get_attributes();
 
-			$elements[] = sprintf( '<label %s>%s%s</label>', $this->get_attributes_as_string( $attributes ), $input->render(), esc_html( $label ) );
+			$elements[] = sprintf( '<label %s>%s%s</label>', $this->get_attributes_as_string( $attributes ), $input->render(), $label );
 		}
 
 		if ( $description = $this->render_description() ) {

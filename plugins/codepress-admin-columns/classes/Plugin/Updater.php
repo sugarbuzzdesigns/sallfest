@@ -1,10 +1,12 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Plugin;
 
-class AC_Plugin_Updater {
+use AC\Capabilities;
+use AC\Message;
+use AC\Plugin;
+
+class Updater {
 
 	/**
 	 * @var self
@@ -22,35 +24,34 @@ class AC_Plugin_Updater {
 	protected $apply_updates;
 
 	/**
-	 * @var AC_Plugin_Update[]
+	 * @var Update[]
 	 */
 	protected $updates;
 
 	/**
-	 * @var AC_Plugin
+	 * @var Plugin
 	 */
 	protected $plugin;
 
 	/**
-	 * @param AC_Plugin $plugin
+	 * @param Plugin $plugin
 	 */
-	public function __construct( AC_Plugin $plugin ) {
+	public function __construct( Plugin $plugin ) {
 		$this->plugin = $plugin;
 		// TODO: https://github.com/codepress/admin-columns-issues/issues/982
 		//$this->apply_updates = 'true' === filter_input( INPUT_GET, 'ac_do_update' );
 		$this->apply_updates = true;
 	}
 
-	public function add_update( AC_Plugin_Update $update ) {
+	public function add_update( Update $update ) {
 		$this->updates[ $update->get_version() ] = $update;
 	}
 
 	/**
 	 * Checks conditions like user permissions
-	 *
 	 */
 	public function check_update_conditions() {
-		if ( ! AC()->user_can_manage_admin_columns() ) {
+		if ( ! current_user_can( Capabilities::MANAGE ) ) {
 			return false;
 		}
 
@@ -73,9 +74,10 @@ class AC_Plugin_Updater {
 			return;
 		}
 
-		krsort( $this->updates, SORT_NUMERIC );
+		// Sort by version number
+		uksort( $this->updates, 'version_compare' );
 
-		/* @var AC_Plugin_Update $update */
+		/* @var Update $update */
 		foreach ( $this->updates as $update ) {
 			if ( $update->needs_update() ) {
 				if ( ! $this->apply_updates ) {
@@ -104,11 +106,12 @@ class AC_Plugin_Updater {
 			esc_html__( 'Your database is up to date. You are awesome.', 'codepress-admin-columns' )
 		);
 
-		AC()->notice( $message );
+		$notice = new Message\Notice( $message );
+		$notice->register();
 	}
 
 	protected function show_update_notice() {
-		$url = add_query_arg( array( 'ac_do_update' => 'true' ), AC()->admin()->get_settings_url() );
+		$url = add_query_arg( array( 'ac_do_update' => 'true' ), ac_get_admin_url( 'settings' ) );
 
 		$message = sprintf( '<strong>%s</strong> &ndash; %s <a href="%s" class="button ac-update-now">%s</a>',
 			esc_html__( 'Admin Columns', 'codepress-admin-columns' ),
@@ -117,7 +120,10 @@ class AC_Plugin_Updater {
 			esc_html__( 'Run the updater', 'codepress-admin-columns' )
 		);
 
-		AC()->notice( $message, 'notice-info' );
+		$notice = new Message\Notice( $message );
+		$notice
+			->set_type( $notice::INFO )
+			->register();
 	}
 
 }

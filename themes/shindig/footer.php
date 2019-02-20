@@ -31,9 +31,11 @@
 	<?php get_template_part( 'social', 'icons-footer' ); ?>
 	<div class="clearfix"></div>
 
-	<?php if (get_theme_mod( 'copyright_textbox', '2015 All Rights Reserved. Developed by ProgressionStudios' )) : ?>
+	<?php if (get_theme_mod( 'copyright_textbox' )) : ?>
 		<div id="copyright">
-			<div class="width-container"><?php echo get_theme_mod( 'copyright_textbox', '2017 All Rights Reserved. Developed by SugarbuzzDesigns' ); ?><div class="clearfix"></div></div>
+			<div class="width-container">
+				<?php echo get_theme_mod( 'copyright_textbox'); ?>
+			</div>
 		</div>
 	<?php endif; ?>
 </footer>
