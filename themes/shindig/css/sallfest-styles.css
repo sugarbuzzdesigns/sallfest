@@ -1,3 +1,7 @@
+body * {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #28a9c2;
 }
@@ -17,6 +21,20 @@ body.prerelease {
 .home-bg-img {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.lee-oscar-badge {
+	overflow: hidden;
+	border-radius: 50%;
+	height: 120px;
+	width: 120px;
+	position: absolute;
+	top: -35px;
+	left: -35px;
+	z-index: 1;
+	padding: 10px;
+	background: #fff;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
 .width-container.home-bg {
@@ -302,6 +320,7 @@ div.product-addon {
   display: none;
 }
 
+body .homepage-widget-blog .width-container .columns-4 li.product,
 body .homepage-widget-blog .width-container .columns-3 li.product {
   background: #fff;
   padding: 10px;
@@ -313,8 +332,32 @@ body .homepage-widget-blog .width-container .columns-3 li.product {
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
 .woocommerce ul.products li.product h3 {
   font-size: 2em;
+  line-height: 1;
 }
 
+.woocommerce ul.products li.product .woocommerce-loop-category__title .flex-item,
+.woocommerce ul.products li.product .woocommerce-loop-product__title .flex-item,
+.woocommerce ul.products li.product h3 .flex-item {
+  flex: 1;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  min-height: 78px;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  background: rgba(15, 27, 65, 0.5);  
+}
+
+.img-title {
+  margin-bottom: 5px;
+  position: relative;
+}
 
 .woocommerce #respond input#submit.alt.disabled,
 .woocommerce #respond input#submit.alt.disabled:hover,

@@ -2457,8 +2457,8 @@ body #single-product-pro button.single_add_to_cart_button {
 	font-weight: 600;
 	padding: 15px 22px;
 	background: #ffffff;
-	border: 2px solid #29b0d1;
-	color: #29b0d1;
+	border: 2px solid #292b5a;
+	color: #292b5a;
 }
 
 body .homepage-widget-blog button.single_add_to_cart_button:hover,
@@ -2474,7 +2474,7 @@ body.woocommerce-cart #main td.actions  input.button.checkout-button:hover,
 body #main button.button:hover,
 body #main a.button:hover,
 body #single-product-pro button.single_add_to_cart_button:hover {
-	background: #29b0d1;
+	background: #292b5a;
 	color: #ffffff;
 }
 
@@ -2939,16 +2939,7 @@ ul#schedule-content-progression  li.schedule4column-pro {
 
 .woocommerce ul.products li.product .price {
 	font-size: 1.157em;
-}
-
-a,
-.comments-pro-blog,
-body #main ul li.product .amount,
-body #main .entry-summary .amount,
-.star-rating,
-body .main-text-widgetpro ul li.product .amount,
-body .main-text-widgetpro .entry-summary .amount {
-
+	color: #d26b29;
 }
 
 body #main h3.product-title-index-pro,

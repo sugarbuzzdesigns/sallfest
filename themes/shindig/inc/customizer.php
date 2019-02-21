@@ -953,7 +953,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('nav_hvr_bg', array(
-	    'default'     => '#29b0d1',
+	    'default'     => '#292b5a',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -974,7 +974,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('pro_sub_nav_bg', array(
-	    'default'     => '#29b0d1',
+	    'default'     => '#292b5a',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1031,7 +1031,7 @@ $wp_customize->add_control(
 	)));
 
 	$wp_customize->add_setting('sidebar_header_border_progression', array(
-	    'default'     => '#29b0d1',
+	    'default'     => '#292b5a',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1124,7 +1124,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('second_border_bg_progression', array(
-	    'default'     => '#29b0d1',
+	    'default'     => '#292b5a',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1138,7 +1138,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('second_hover_bg_progression', array(
-	    'default'     => '#29b0d1',
+	    'default'     => '#292b5a',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1355,7 +1355,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('secondary_button_font_pro', array(
-	    'default'     => '#29b0d1',
+	    'default'     => '#292b5a',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1439,19 +1439,19 @@ function progression_customize_css()
 	nav { background-color:<?php echo get_theme_mod('nav_bg_main', '#061d3d'); ?>; }
 	#gradient-header-pro, #gradient-mobile-pro { background-image: linear-gradient(<?php echo get_theme_mod('nav_bg_main', '#061d3d'); ?>, transparent); }
 	.sidebar-item {background:<?php echo get_theme_mod('sidebar_bg_progression', '#ffffff'); ?>;}
-	#sidebar h5 { border-bottom:2px solid <?php echo get_theme_mod('sidebar_header_border_progression', '#29b0d1'); ?>; }
+	#sidebar h5 { border-bottom:2px solid <?php echo get_theme_mod('sidebar_header_border_progression', '#292b5a'); ?>; }
 	#content-container-pro, .container-blog, #post-nav-progression, body #main .gallery-caption, body .homepage-widget-blog .gallery-caption, .image-navigation. .container-sponsor, .woocommerce-container-pro, .container-single-pro, body #main  .woocommerce-tabs .tabs li, .single-container-reviews-pro { background:<?php echo get_theme_mod('container_bg_pro', '#ffffff'); ?>; }
-	.sf-menu ul { background:<?php echo get_theme_mod('pro_sub_nav_bg', '#29b0d1'); ?>; }
+	.sf-menu ul { background:<?php echo get_theme_mod('pro_sub_nav_bg', '#292b5a'); ?>; }
 	body #taxonomy_navigation_pro li {background: #061d3d;}
 	body #taxonomy_navigation_pro li.current-cat, body #taxonomy_navigation_pro li:hover { background:<?php echo get_theme_mod('schedule_nav_hvr_bg_pro', '#1fa1c9'); ?>; }
 	.sf-menu a {color:<?php echo get_theme_mod('navigation_menu_color', '#e1e4e7'); ?>; }
-	.sf-menu li.current-menu-item a { border-top:2px solid <?php echo get_theme_mod('nav_hvr_bg', '#29b0d1'); ?>; }
+	.sf-menu li.current-menu-item a { border-top:2px solid <?php echo get_theme_mod('nav_hvr_bg', '#292b5a'); ?>; }
 	.sf-menu li.current-menu-item a:hover,
 	.sf-menu a:hover, .sf-menu a:hover, .sf-menu li a:hover, .sf-menu a:hover,
 	.sf-menu a:visited:hover, .sf-menu li.sfHover a, .sf-menu li.sfHover a:visited {
 		color:<?php echo get_theme_mod('navigation_hvr_menu_color', '#ffffff'); ?>;
-		background:<?php echo get_theme_mod('nav_hvr_bg', '#29b0d1'); ?>;
-		border-color:<?php echo get_theme_mod('nav_hvr_bg', '#29b0d1'); ?>;
+		background:<?php echo get_theme_mod('nav_hvr_bg', '#292b5a'); ?>;
+		border-color:<?php echo get_theme_mod('nav_hvr_bg', '#292b5a'); ?>;
 	}
 	#footer-gradient-header-pro { background-image: linear-gradient(<?php echo get_theme_mod('footer_bg_progression', '#061d3d'); ?>, transparent); }
 	body.post-type-archive-timeline #main, body.tax-timeline_day #main { background:<?php echo get_theme_mod('timeline_bg_color_pro', '#061d3d'); ?>; }
@@ -1497,15 +1497,15 @@ function progression_customize_css()
 	input#submit-pro, body #main button.single_add_to_cart_button, body #main input.button, body.woocommerce-cart #main td.actions  input.button.checkout-button,
 	body #main button.button, body #main a.button, body #single-product-pro button.single_add_to_cart_button {
 		background:<?php echo get_theme_mod('second_button_bg_progression', '#ffffff'); ?>;
-		border:2px solid <?php echo get_theme_mod('second_border_bg_progression', '#29b0d1'); ?>;
-		color:<?php echo get_theme_mod('secondary_button_font_pro', '#29b0d1'); ?>;
+		border:2px solid <?php echo get_theme_mod('second_border_bg_progression', '#292b5a'); ?>;
+		color:<?php echo get_theme_mod('secondary_button_font_pro', '#292b5a'); ?>;
 	}
 	ul.post-categories li a:hover, body .homepage-widget-blog button.single_add_to_cart_button:hover, body .homepage-widget-blog input.button:hover, body.woocommerce-cart .homepage-widget-blog td.actions  input.button.checkout-button:hover,
 	body .homepage-widget-blog button.button:hover, body .homepage-widget-blog a.button:hover, body #single-product-pro button.single_add_to_cart_button:hover
 	input#submit-pro:hover, body #main button.single_add_to_cart_button:hover, body #main input.button:hover, body.woocommerce-cart #main td.actions  input.button.checkout-button:hover,
 	body #main button.button:hover, body #main a.button:hover, body #single-product-pro button.single_add_to_cart_button:hover {
-		background:<?php echo get_theme_mod('second_hover_bg_progression', '#29b0d1'); ?>;
-		border-color:<?php echo get_theme_mod('second_hover_bg_progression', '#29b0d1'); ?>;
+		background:<?php echo get_theme_mod('second_hover_bg_progression', '#292b5a'); ?>;
+		border-color:<?php echo get_theme_mod('second_hover_bg_progression', '#292b5a'); ?>;
 		color:<?php echo get_theme_mod('secondary_nhvrbutton_font_pro', '#ffffff'); ?>;
 	}
 	<?php if (get_theme_mod( 'comment_progression')) : ?><?php else: ?>body.page #comments {display:none;}<?php endif ?>

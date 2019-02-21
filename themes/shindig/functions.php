@@ -398,7 +398,7 @@ function generatewp_quickedit_fields( $column_name, $post_type ) {
 	</fieldset>
 	<?php
 }
-add_action( 'quick_edit_custom_box', 'generatewp_quickedit_fields', 10, 2 );
+// add_action( 'quick_edit_custom_box', 'generatewp_quickedit_fields', 10, 2 );
 
 function generatewp_quickedit_save_post( $post_id, $post ) {
 	// if called by autosave, then bail here
@@ -529,14 +529,6 @@ function custom_variation_price( $price, $product ) { ?>
      return $price;
 }
 
-add_filter('woocommerce_sale_flash', 'vs_change_sale_content', 10, 3);
-
-function vs_change_sale_content($content, $post, $product){
-   $content = '<span class="onsale">'.__( 'Early Bird', 'woocommerce' ).'</span>';
-   return $content;
-}
-
-
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 
 function woo_remove_product_tabs( $tabs ) {
@@ -555,9 +547,9 @@ function wc_empty_cart_redirect_url() {
 add_filter( 'woocommerce_return_to_shop_redirect', 'wc_empty_cart_redirect_url' );
 
 // add badge when tickets are sold out
-// add_action( 'woocommerce_before_shop_loop_item_title', function() {
-// 	global $product;
-// 	if ( !$product->is_in_stock() ) {
-// 			echo '<span class="soldout">Sold out</span>';
-// 	}
-// });
+add_action( 'woocommerce_before_shop_loop_item_title', function() {
+	global $product;
+	if ( !$product->is_in_stock() ) {
+			echo '<span class="soldout">Sold out</span>';
+	}
+});

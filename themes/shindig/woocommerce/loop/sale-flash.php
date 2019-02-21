@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post, $product;
 
 ?>
-<?php if ( $product->is_on_sale() ) : ?>
+<?php if ( $product->is_on_sale() && $product->is_in_stock()) : ?>
 
 	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale loop">' . esc_html__( 'Early Bird', 'woocommerce' ) . '</span>', $post, $product ); ?>
 
