@@ -500,7 +500,7 @@ function woocommerce_clear_cart_url() {
 add_filter('post_row_actions', 'generatewp_quickedit_set_data', 10, 2);
 
 
-add_filter('woocommerce_variable_price_html', 'custom_variation_price', 10, 2);
+// add_filter('woocommerce_variable_price_html', 'custom_variation_price', 10, 2);
 
 function custom_variation_price( $price, $product ) { ?>
 
@@ -553,3 +553,5 @@ add_action( 'woocommerce_before_shop_loop_item_title', function() {
 			echo '<span class="soldout">Sold out</span>';
 	}
 });
+
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
