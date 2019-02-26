@@ -190,6 +190,7 @@ function progression_scripts() {
 
 	wp_enqueue_style( 'progression-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css', array( 'progression-style' ) );
+	wp_enqueue_style( 'woo-overrides', get_template_directory_uri() . '/css/woocommerce-overrides.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom-styles.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'sallfest', get_template_directory_uri() . '/css/sallfest-styles.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic|Khula:400,300,600|Hind:500,600,700', array( 'progression-style' ) );
@@ -257,13 +258,10 @@ require get_template_directory() . '/inc/shop-report-page.php';
  */
 require get_template_directory() . '/tgm-plugin-activation/plugin-activation.php';
 
-
-
-// define the woocommerce_after_single_product callback
-function action_woocommerce_after_single_product(  )
-{
-	echo 'hey from functions';
-};
+/**	
+ * Load Woocommerce Customizations
+ */
+require get_template_directory() . '/inc/custom/woocommerce.php';
 
 // add the action
 add_action( 'woocommerce_product_after_variable_attributes', 'action_woocommerce_after_single_product', 10, 0 );
