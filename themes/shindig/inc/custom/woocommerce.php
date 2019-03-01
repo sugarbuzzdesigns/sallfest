@@ -92,3 +92,17 @@ function check_birth_date() {
     }
   }
 }
+
+add_filter( 'woocommerce_billing_fields', 'add_birth_date_billing_field', 20, 1 );
+function add_birth_date_billing_field($billing_fields) {
+
+  $billing_fields['billing_birth_date'] = array(
+      'type'        => 'date',
+      'label'       => __('Birth date'),
+      'class'       => array('form-row-wide'),
+      'priority'    => 25,
+      'required'    => true,
+      'clear'       => true,
+  );
+  return $billing_fields;
+}
