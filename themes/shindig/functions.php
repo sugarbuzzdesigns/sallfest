@@ -193,7 +193,7 @@ function progression_scripts() {
 	wp_enqueue_style( 'woo-overrides', get_template_directory_uri() . '/css/woocommerce-overrides.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom-styles.css', array( 'progression-style' ) );
 	wp_enqueue_style( 'sallfest', get_template_directory_uri() . '/css/sallfest-styles.css', array( 'progression-style' ) );
-	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic|Khula:400,300,600|Hind:500,600,700', array( 'progression-style' ) );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic|Khula:400,300,600|Hind:500,600,700', array( 'progression-style' ) );
 
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/src/libs/modernizr-2.6.2.min.js', false, '20120206', false );
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . $scripts_location, array( 'jquery' ), '20120206', true );
