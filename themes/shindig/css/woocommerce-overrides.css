@@ -63,10 +63,6 @@ h3.addon-name {
   background-color: #fff;
 }
 
-.woocommerce-variation-add-to-cart {
-  display: flex;
-}
-
 .woocommerce div.product {
   padding: 20px;
   overflow: hidden;

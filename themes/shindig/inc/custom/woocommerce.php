@@ -1,15 +1,38 @@
 <?php
+
 add_filter( 'woocommerce_billing_fields', 'add_birth_date_billing_field', 20, 1 );
 function add_birth_date_billing_field($billing_fields) {
+    unset( $billing_fields['billing_company'] );
 
-    $billing_fields['billing_birth_date'] = array(
-        'type'        => 'date',
-        'label'       => __('Birth date'),
-        'class'       => array('form-row-wide'),
-        'priority'    => 25,
-        'required'    => true,
-        'clear'       => true,
-    );
+    $cart_items = WC()->cart->get_cart_item_quantities();
+
+    $total = 0;
+
+    foreach ($cart_items as $cart_item) {
+        $total += $cart_item;
+    }
+
+    for($i = 1; $i < $total; ++$i) {
+        echo 'guest_' . $i . '_name';
+        $billing_fields['traveler_' . $i . '_name'] = array(
+            'type'        => 'text',
+            'label'       => __('Additional Guest ' . $i . ' Full Name'),
+            'class'       => array('form-text flex-item'),
+            'priority'    => 20 + $i,
+            'required'    => true,
+            'clear'       => true,
+          ); 
+          
+          $billing_fields['traveler_' . $i . '_shirt_size'] = array(
+            'type'        => 'text',
+            'label'       => __('Guest ' . $i . ' Shirt Size'),
+            'class'       => array('form-text flex-item'),
+            'priority'    => 20 + $i,
+            'required'    => true,
+            'clear'       => true,
+          );           
+    }   
+
     return $billing_fields;
 }
 

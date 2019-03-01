@@ -2980,7 +2980,7 @@ body #main mark {
 
 /* Single Shop Post */
 .related.products {
-	display: none;
+	/* display: none; */
 }
 
 body #main div.quantity input.input-text {
