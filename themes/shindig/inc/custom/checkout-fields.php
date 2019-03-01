@@ -24,7 +24,7 @@ function additional_passenger_info( $checkout ) {
       'class'         => array('my-field-class form-row-wide'),
       'required'      => true,
       'label'         => __('Name'),
-      'placeholder'   => __('Enter something'),
+      'placeholder'   => __('First Last'),
     ), $checkout->get_value( 'passenger_' . $i )); 
     
     woocommerce_form_field( 'passenger_shirt_size_' . $i, array(
