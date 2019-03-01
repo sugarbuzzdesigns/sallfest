@@ -9,7 +9,7 @@ require get_template_directory() . '/inc/custom/checkout-fields.php';
 add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
 
 function my_custom_checkout_field_display_admin_order_meta($order){
-  echo '<p><strong>'.__('My Field').':</strong> ' . get_post_meta( $order->id, 'My Field', true ) . '</p>';
+  echo '<p><strong>'.__('DOB: ').'</strong> ' . get_post_meta( $order->get_id(), '_billing_birth_date', true ) . '</p>';
 }
 
 add_action( 'woocommerce_email_order_meta', 'add_email_order_meta', 10, 3 );
@@ -76,22 +76,6 @@ function misha_view_order_and_thankyou_page( $order ){
 	</table>
 <?php }
 
-// Check customer age
-add_action('woocommerce_checkout_process', 'check_birth_date');
-function check_birth_date() {
-  // Check billing city 2 field
-  if( isset($_POST['billing_birth_date']) && ! empty($_POST['billing_birth_date']) ){
-    // Get customer age from birthdate
-    $age = date_diff(date_create($_POST['billing_birth_date']), date_create('now'))->y;
-    
-    // Checking age and display an error notice avoiding checkout (and emptying cart)
-    if( $age < 18 ){
-      wc_add_notice( __( "You need at least to be 18 years old, to be able to checkout." ), "error" );
-      
-      WC()->cart->empty_cart(); // <== Empty cart (optional)
-    }
-  }
-}
 
 add_filter( 'woocommerce_billing_fields', 'add_birth_date_billing_field', 20, 1 );
 function add_birth_date_billing_field($billing_fields) {
@@ -105,4 +89,26 @@ function add_birth_date_billing_field($billing_fields) {
       'clear'       => true,
   );
   return $billing_fields;
+}
+// Check customer age
+add_action('woocommerce_checkout_process', 'check_birth_date');
+function check_birth_date() {
+  // Check billing city 2 field
+  if( isset($_POST['billing_birth_date']) && ! empty($_POST['billing_birth_date']) ){
+    // Get customer age from birthdate
+    $age = date_diff(date_create($_POST['billing_birth_date']), date_create('now'))->y;
+    // Checking age and display an error notice avoiding checkout (and emptying cart)
+    if( $age < 18 ){
+      wc_add_notice( __( "You need at least to be 18 years old, to be able to checkout." ), "error" );
+    }
+  }
+}
+
+
+// add the action 
+add_action( 'woocommerce_order_item_meta_start', 'action_woocommerce_order_item_meta_start', 10, 3 ); 
+function action_woocommerce_order_item_meta_start( $item_id, $item, $order ) { 
+  $dob = get_post_meta( $order->get_order_number(), '_billing_birth_date', true );
+
+  echo '<div><strong>DOB</strong>: ' . $dob . '</div>';
 }
