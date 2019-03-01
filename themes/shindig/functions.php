@@ -108,7 +108,7 @@ function woo_related_products_limit() {
 		'no_found_rows'    		=> 1,
 		'posts_per_page'   		=> $col_count_progression,
 		'ignore_sticky_posts' 	=> 1,
-		'post__not_in'        	=> array($product->id)
+		'post__not_in'        	=> array($product->get_id())
 	);
 	return $args;
 }
@@ -552,3 +552,12 @@ add_action( 'woocommerce_before_shop_loop_item_title', function() {
 	}
 });
 
+function get_total_items_in_cart($cart_items){
+	$total = 0;
+
+	foreach ($cart_items as $cart_item) {
+			$total += $cart_item;
+	}
+
+	return $total;
+}

@@ -268,3 +268,9 @@ body .homepage-widget-blog .width-container .columns-3 li.product {
 .woocommerce div.product .woocommerce-tabs ul.tabs::before {
   border: none;
 }
+
+/*  Checkout Page  */
+.woocommerce-checkout h3 {
+  margin-bottom: 0;
+  padding-left: 0;
+}

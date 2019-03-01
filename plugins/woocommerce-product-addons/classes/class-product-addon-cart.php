@@ -50,18 +50,18 @@ class Product_Addon_Cart {
 	 */
 	public function add_cart_item( $cart_item ) {
 		// Adjust price if addons are set
-		if ( ! empty( $cart_item['addons'] ) && apply_filters( 'woocommerce_product_addons_adjust_price', true, $cart_item ) ) {
+		// if ( ! empty( $cart_item['addons'] ) && apply_filters( 'woocommerce_product_addons_adjust_price', true, $cart_item ) ) {
 
-			$extra_cost = 0;
+		// 	$extra_cost = 0;
 
-			foreach ( $cart_item['addons'] as $addon ) {
-				if ( $addon['price'] > 0 ) {
-					$extra_cost += $addon['price'];
-				}
-			}
+		// 	foreach ( $cart_item['addons'] as $addon ) {
+		// 		if ( $addon['price'] > 0 ) {
+		// 			$extra_cost += $addon['price'];
+		// 		}
+		// 	}
 
-			$cart_item['data']->adjust_price( $extra_cost );
-		}
+		// 	$cart_item['data']->adjust_price( $extra_cost );
+		// }
 
 		return $cart_item;
 	}
