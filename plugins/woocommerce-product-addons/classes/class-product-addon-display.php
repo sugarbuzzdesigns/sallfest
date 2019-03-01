@@ -22,7 +22,7 @@ class Product_Addon_Display {
 		add_action( 'wc_quick_view_enqueue_scripts', array( $this, 'addon_scripts' ) );
 
 		// Addon display
-		add_action( 'woocommerce_before_add_to_cart_button', array( $this, 'display' ), 10 );
+		add_action( 'woocommerce_after_add_to_cart_button', array( $this, 'display' ), 10 );
 		add_action( 'woocommerce-product-addons_end', array( $this, 'totals' ), 10 );
 
 		// Change buttons/cart urls
@@ -30,7 +30,7 @@ class Product_Addon_Display {
 		add_filter( 'woocommerce_product_add_to_cart_text', array( $this, 'add_to_cart_text'), 15 );
 		add_filter( 'woocommerce_add_to_cart_url', array( $this, 'add_to_cart_url' ), 10, 1 );
 		add_filter( 'woocommerce_product_add_to_cart_url', array( $this, 'add_to_cart_url' ), 10, 1 );
-		add_filter( 'woocommerce_is_purchasable', array( $this, 'prevent_purchase_at_grouped_level' ), 10, 2 );
+		// add_filter( 'woocommerce_is_purchasable', array( $this, 'prevent_purchase_at_grouped_level' ), 10, 2 );
 
 		// View order
 		add_filter( 'woocommerce_order_item_display_meta_value', array( $this, 'fix_file_uploaded_display' ) );
@@ -129,7 +129,7 @@ class Product_Addon_Display {
 				if ( ! isset( $addon['field-name'] ) )
 					continue;
 
-				woocommerce_get_template( 'addons/addon-start.php', array(
+				wc_get_template( 'addons/addon-start.php', array(
 						'addon'       => $addon,
 						'required'    => $addon['required'],
 						'name'        => $addon['name'],
@@ -139,7 +139,7 @@ class Product_Addon_Display {
 
 				echo $this->get_addon_html( $addon );
 
-				woocommerce_get_template( 'addons/addon-end.php', array(
+				wc_get_template( 'addons/addon-end.php', array(
 						'addon'    => $addon,
 					), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 			}
@@ -157,7 +157,7 @@ class Product_Addon_Display {
 	public function totals( $post_id ) {
 		global $product;
 
-		if ( ! isset( $product ) || $product->id != $post_id ) {
+		if ( ! isset( $product ) || $product->get_id() != $post_id ) {
 			$the_product = get_product( $post_id );
 		} else {
 			$the_product = $product;
@@ -165,12 +165,12 @@ class Product_Addon_Display {
 
 		if ( is_object( $the_product ) ) {
 			$tax_display_mode = get_option( 'woocommerce_tax_display_shop' );
-			$display_price    = $tax_display_mode == 'incl' ? $the_product->get_price_including_tax() : $the_product->get_price_excluding_tax();
+			$display_price    = $tax_display_mode == 'incl' ? wc_get_price_including_tax($the_product) : wc_get_price_excluding_tax($the_product);
 		} else {
 			$display_price    = '';
 		}
 
-		echo '<div id="product-addons-total" data-show-grand-total="' . ( apply_filters( 'woocommerce_product_addons_show_grand_total', true, $the_product ) ? 1 : 0 ) . '" data-type="' . esc_attr( $the_product->product_type ) . '" data-price="' . esc_attr( $display_price )  . '"></div>';
+		echo '<div id="product-addons-total" data-show-grand-total="' . ( apply_filters( 'woocommerce_product_addons_show_grand_total', true, $the_product ) ? 1 : 0 ) . '" data-type="' . esc_attr( $the_product->get_type() ) . '" data-price="' . esc_attr( $display_price )  . '"></div>';
 	}
 
 	/**
@@ -201,7 +201,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_checkbox_html( $addon ) {
-		woocommerce_get_template( 'addons/checkbox.php', array(
+		wc_get_template( 'addons/checkbox.php', array(
 				'addon' => $addon,
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 	}
@@ -214,7 +214,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_radiobutton_html( $addon ) {
-		woocommerce_get_template( 'addons/radiobutton.php', array(
+		wc_get_template( 'addons/radiobutton.php', array(
 				'addon' => $addon,
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 	}
@@ -226,7 +226,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_select_html( $addon ) {
-		woocommerce_get_template( 'addons/select.php', array(
+		wc_get_template( 'addons/select.php', array(
 				'addon' => $addon,
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 	}
@@ -238,7 +238,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_custom_html( $addon ) {
-		woocommerce_get_template( 'addons/custom.php', array(
+		wc_get_template( 'addons/custom.php', array(
 				'addon' => $addon,
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 	}
@@ -250,7 +250,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_custom_textarea_html( $addon ) {
-		woocommerce_get_template( 'addons/custom_textarea.php', array(
+		wc_get_template( 'addons/custom_textarea.php', array(
 				'addon' => $addon,
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 	}
@@ -262,7 +262,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_file_upload_html( $addon ) {
-		woocommerce_get_template( 'addons/file_upload.php', array(
+		wc_get_template( 'addons/file_upload.php', array(
 				'addon'    => $addon,
 				'max_size' => size_format( wp_max_upload_size() ),
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
@@ -275,7 +275,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_custom_price_html( $addon ) {
-		woocommerce_get_template( 'addons/custom_price.php', array(
+		wc_get_template( 'addons/custom_price.php', array(
 				'addon' => $addon,
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 	}
@@ -287,7 +287,7 @@ class Product_Addon_Display {
 	 * @return void
 	 */
 	public function get_input_multiplier_html( $addon ) {
-		woocommerce_get_template( 'addons/input_multiplier.php', array(
+		wc_get_template( 'addons/input_multiplier.php', array(
 				'addon' => $addon,
 			), 'woocommerce-product-addons', $this->plugin_path() . '/templates/' );
 	}
@@ -323,9 +323,8 @@ class Product_Addon_Display {
 	public function add_to_cart_text( $text ) {
 		global $product;
 
-		if ( ! is_single( $product->id ) ) {
-			if ( $this->check_required_addons( $product->id ) ) {
-				$product->product_type = 'addons';
+		if ( ! is_single( $product->get_id() ) ) {
+			if ( $this->check_required_addons( $product->get_id() ) ) {
 				$text = apply_filters( 'addons_add_to_cart_text', __( 'Select options', 'woocommerce-product-addons' ) );
 			}
 		}
@@ -342,11 +341,13 @@ class Product_Addon_Display {
 	 */
 	public function add_to_cart_url( $url ) {
 		global $product;
+		$product_id = $product->get_id();
+		$product_type = $product->get_type();
 
-		if ( ! is_single( $product->id ) && in_array( $product->product_type, array( 'subscription', 'simple' ) ) && ( ! isset( $_GET['wc-api'] ) || $_GET['wc-api'] !== 'WC_Quick_View' ) ) {
-			if ( $this->check_required_addons( $product->id ) ) {
-				$product->product_type = 'addons';
-				$url = apply_filters( 'addons_add_to_cart_url', get_permalink( $product->id ) );
+		if ( ! is_single( $product_id ) && in_array( $product->get_type(), array( 'subscription', 'simple' ) ) && ( ! isset( $_GET['wc-api'] ) || $_GET['wc-api'] !== 'WC_Quick_View' ) ) {
+			if ( $this->check_required_addons( $product_id ) ) {
+				$product_type = 'addons';
+				$url = apply_filters( 'addons_add_to_cart_url', get_permalink( $product_id ) );
 			}
 		}
 
@@ -360,7 +361,9 @@ class Product_Addon_Display {
 	 * @return bool
 	 */
 	public function prevent_purchase_at_grouped_level( $purchasable, $product ) {
-		if ( $product && $product->get_parent() && is_single( $product->get_parent() ) && $this->check_required_addons( $product->id ) ) {
+		$product_id = $product->get_id();
+
+		if ( $product && $product->get_parent() && is_single( $product->get_parent() ) && $this->check_required_addons( $product_id) ) {
 			$purchasable = false;
 		}
 		return $purchasable;
