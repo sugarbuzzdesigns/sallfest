@@ -19,8 +19,21 @@ body.prerelease {
 }
 
 .home-bg-img {
-  max-width: 1000px;
-  margin: 0 auto -220px;
+  position: relative;
+}
+
+.text-logo {
+  width: 46%;
+  position: absolute;
+  top: 29%;
+  left: 6%;
+}
+
+.text-date {
+  position: absolute;
+  left: 16%;
+  bottom: 16%;
+  width: 18%;  
 }
 
 .lee-oscar-badge {
@@ -159,7 +172,7 @@ body.prerelease {
     padding: 20px 0;
     width: 60%;
   }
-
+  
   .background-image--home {
     padding-bottom: 50px;
   }
