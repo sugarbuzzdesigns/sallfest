@@ -22,34 +22,7 @@ h3.addon-name {
   margin: 40px auto 0;
 }
 
-.ship-images {
-  margin: 0 0 20px 0;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
 
-.ship-disclaimer {
-  margin-bottom: 0;
-}
-
-.ship-images p {
-  margin: 0;
-  color: #061d3d;
-}
-
-.ship-images li {
-  list-style: none;
-  max-width: 500px;
-  width: 30%;
-}
-
-.ship-images li img {
-  border: solid 4px #fff;
-  box-sizing: border-box;
-  display: block;
-}
 /* Woocommerce - Product Page */
 /* tabs */
 .tab-content {
