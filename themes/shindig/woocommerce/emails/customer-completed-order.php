@@ -25,8 +25,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
 <p><?php printf( __( "Thank you for your order!. Your order details are shown below for your reference:", 'woocommerce' ), get_option( 'blogname' ) ); ?></p>
-<p><strong>IMPORTANT! The booking process is not complete until you have booked a room or rooms on the cruise. You will be contacted within the next 24 hours by our Travel Agent Partners within 24 hours.</strong></p>
+<p><strong>IMPORTANT! The booking process is not complete until you have booked a room or rooms on the cruise. Click <a href="">HERE</a> to book your cruise now.</strong></p>
 <p>
+  <strong>For Booking Questions Contact Valerie</strong><br>
   Booking Agent: Valerie Carpenter<br>
   Email: valerie.carpenter@cruiseplanners.com<br>
   Phone: 772-879-3221

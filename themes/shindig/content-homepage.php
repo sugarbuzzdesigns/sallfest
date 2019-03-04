@@ -11,13 +11,20 @@
 		<img src="<?php echo get_template_directory_uri(); ?>/images/SALL-2019_web.jpg" alt="">
 	</div>
 
-	<?php while(have_posts()): the_post(); ?>
-	<?php if($post->post_content=="") : ?><?php else : ?>
-		<div class="homepage-content main-description">
-			<?php the_content(); ?>
-		</div>
-	<?php endif; ?>
-	<?php endwhile; ?>
+	<div class="video-grid grid">
+		<div class="video-column">
+			<h3>1. Booking</h3>
+			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/BookSALLToday.mp4"]'); ?>
+		</div>		
+		<div class="video-column">
+			<h3>2. Pre-stay</h3>
+			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/PreStaySALL.mp4"]'); ?>
+		</div>		
+		<div class="video-column">
+			<h3>3. Destinations</h3>
+			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/DestinationsSALL.mp4"]'); ?>
+		</div>		
+	</div>	
 
 	<?php if( is_page_template('homepage.php') ): ?>
 		<?php if ( is_active_sidebar( 'homepage-widgets' ) ) : ?>

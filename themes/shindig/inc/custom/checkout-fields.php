@@ -88,3 +88,21 @@ function additional_passenger_info_update_order_meta( $order_id ) {
     }  
   }
 }
+
+
+add_action('woocommerce_checkout_after_terms_and_conditions', 'add_custom_terms_and_conditions');
+function add_custom_terms_and_conditions(){ ?>
+    <div>
+    <strong>-Disclaimer for credit card authorization:</strong>
+    <p>
+      By submitting payment via this website, you are authorizing payment to both Shine A Little Love Fest, LLC and Cruise Planners DBA Custom Tours & Cruises, Inc. You are agreeing to pay both the Shine A Little Love Fest event ticket, along with cruise payment. Cruise payment includes both deposit made via the website and final payment made directly with the travel agency before or on the final payment due date. 
+    </p>
+    </div>
+    <div>
+    <strong>- Refund Disclaimer</strong>
+    <p>
+      *No Refunds on SALLFEST Event Ticket after 90 days prior to the event
+    </p>
+    </div>
+    <?php
+}
