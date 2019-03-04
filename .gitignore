@@ -53,6 +53,7 @@ temp/
 ._*
 .Trashes
 node_modules
+.mp4
 
 .svn
 
