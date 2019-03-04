@@ -15,15 +15,15 @@
 	<div class="video-grid grid">
 		<div class="video-column">
 			<h3>1. Booking</h3>
-			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/BookSALLToday.mp4" poster="' . get_template_directory_uri() . '/images/video-poster.jpg"]'); ?>
+			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/BookSALLToday.mp4" poster="' . get_template_directory_uri() . '/images/video-poster.jpg" preload="metadata"]'); ?>
 		</div>		
 		<div class="video-column">
 			<h3>2. Pre-stay</h3>
-			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/PreStaySALL.mp4" poster="' . get_template_directory_uri() . '/images/video-poster.jpg"]'); ?>
+			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/PreStaySALL.mp4" poster="' . get_template_directory_uri() . '/images/video-poster.jpg" preload="metadata"]'); ?>
 		</div>		
 		<div class="video-column">
 			<h3>3. Destinations</h3>
-			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/DestinationsSALL.mp4" poster="' . get_template_directory_uri() . '/images/video-poster.jpg"]'); ?>
+			<?php echo do_shortcode('[videojs_video url="' . get_template_directory_uri() . '/video/DestinationsSALL.mp4" poster="' . get_template_directory_uri() . '/images/video-poster.jpg" preload="metadata"]'); ?>
 		</div>
 	</div>	
 
