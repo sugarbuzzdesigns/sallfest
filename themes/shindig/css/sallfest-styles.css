@@ -175,3 +175,7 @@ body.prerelease {
   margin: 0;
   font-size: 30px;
 }
+
+.gallery-icon {
+  border: solid 5px #fff;
+}
