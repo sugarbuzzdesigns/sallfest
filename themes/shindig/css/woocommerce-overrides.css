@@ -26,6 +26,10 @@ h3.addon-name {
 
 /* Woocommerce - Product Page */
 /* tabs */
+.wc-tabs {
+  display: none;
+}
+
 .tab-content {
   padding: 0 20px 20px;
 }
