@@ -17,7 +17,8 @@ function additional_passenger_info( $checkout ) {
   
   for($i = 1; $i < $total_items; ++$i) { ?>
     <div class="passenger">
-    <strong><?php echo 'Passenger ' . $i; ?></strong>
+      <?php $num = $i + 1; ?>
+    <strong><?php echo 'Passenger ' . $num; ?></strong>
     <?php
     woocommerce_form_field( 'passenger_name_' . $i, array(
       'type'          => 'text',
