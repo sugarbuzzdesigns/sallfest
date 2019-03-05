@@ -49,7 +49,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
     <?php echo  woocommerce_get_product_thumbnail(); ?>
     <h2 class="woocommerce-loop-product__title">
       <div class="flex-item">
-        <?php echo get_the_title(); ?>
+        <?php echo get_the_title(); //the_excerpt();?>
       </div>
     </h2>
   </div>

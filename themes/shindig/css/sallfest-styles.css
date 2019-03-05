@@ -215,11 +215,22 @@ body.prerelease {
   width: 100%;
 }
 
+#lee-oskar-experience {
+  color: #fff;
+  text-align: left;
+  align-items: center;
+  font-size: 20px;
+}
+
 @media only screen and (min-width: 767px){
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 20px;
+  }
+
+  .grid.col-2 {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
