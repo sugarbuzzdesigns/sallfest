@@ -206,8 +206,12 @@ body.prerelease {
   grid-template-columns: 1fr;
 }
 
+#gallery-1 {
+  width: 100%;
+}
+
 .video-column,
-.widget_media_gallery .gallery {
+.widget_media_gallery .gallery-item {
   max-width: 400px;  
 }
 
