@@ -219,6 +219,10 @@ body.prerelease {
   width: 100%;
 }
 
+.video-column h3, .title-homepage {
+  color: #fff;
+}
+
 #lee-oskar-experience {
   color: #fff;
   text-align: left;
