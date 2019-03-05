@@ -68,7 +68,7 @@ class Pyre_Latest_Foot_Featured_Media_Widget extends WP_Widget {
 
 			<div class="main-text-widgetpro"><?php if($main_text_pro): ?><?php echo do_shortcode( $main_text_pro ); ?><?php endif; ?></div>
 
-			<?php if($link_text): ?><div class="aligncenter"><a href="<?php echo esc_attr( $link_link ); ?>" class="progression-button"><?php echo esc_attr(  $link_text ); ?><?php if($link_icon): ?><i class="ls-sc-button-icon-right fa <?php echo esc_attr( $link_icon ); ?>"></i><?php endif; ?></a></div><?php endif; ?>
+			<?php if($link_text): ?><div class="aligncenter"><a target="_blank" href="<?php echo esc_attr( $link_link ); ?>" class="progression-button"><?php echo esc_attr(  $link_text ); ?><?php if($link_icon): ?><i class="ls-sc-button-icon-right fa <?php echo esc_attr( $link_icon ); ?>"></i><?php endif; ?></a></div><?php endif; ?>
 
 
 

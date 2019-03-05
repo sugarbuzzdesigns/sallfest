@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
 <p><?php printf( __( "Thank you for your order!. Your order details are shown below for your reference:", 'woocommerce' ), get_option( 'blogname' ) ); ?></p>
-<p><strong>IMPORTANT! The booking process is not complete until you have booked a room or rooms on the cruise. Click <a href="">HERE</a> to book your cruise now.</strong></p>
+<p><strong>IMPORTANT! The booking process is not complete until you have booked a room or rooms on the cruise. Click <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1550859559027&key=GRP&app=resvlink">HERE</a> to book your cruise now.</strong></p>
 <p>
   <strong>For Booking Questions Contact Valerie</strong><br>
   Booking Agent: Valerie Carpenter<br>
