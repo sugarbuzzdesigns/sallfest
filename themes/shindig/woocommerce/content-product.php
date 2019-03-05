@@ -49,10 +49,10 @@ if ( empty( $product ) || ! $product->is_visible() ) {
     <?php echo  woocommerce_get_product_thumbnail(); ?>
     <h2 class="woocommerce-loop-product__title">
       <div class="flex-item">
-        <?php echo get_the_title(); //the_excerpt();?>
+        <?php echo get_the_title(); ?>
       </div>
     </h2>
-  </div>
+	</div>
   <?php
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
@@ -60,8 +60,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_rating - 5
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
-
+	do_action( 'woocommerce_after_shop_loop_item_title' ); 
+	
+	?>
+	
+	<div class="product-short-desc"><?php the_excerpt(); ?></div>
+	
+	<?php
 	/**
 	 * Hook: woocommerce_after_shop_loop_item.
 	 *
