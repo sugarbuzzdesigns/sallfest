@@ -252,3 +252,8 @@ body .homepage-widget-blog .width-container .columns-3 li.product {
   margin-bottom: 0;
   padding-left: 0;
 }
+
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+  background: #fff;
+}

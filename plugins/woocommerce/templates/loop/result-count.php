@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<p class="woocommerce-result-count">
+<!-- <p class="woocommerce-result-count">
 	<?php
 	if ( $total <= $per_page || -1 === $per_page ) {
 		/* translators: %d: total results */
@@ -34,4 +34,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 		printf( _nx( 'Showing the single result', 'Showing %1$d&ndash;%2$d of %3$d results', $total, 'with first and last result', 'woocommerce' ), $first, $last, $total );
 	}
 	?>
-</p>
+</p> -->

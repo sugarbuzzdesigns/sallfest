@@ -2920,7 +2920,14 @@ ul#schedule-content-progression  li.schedule4column-pro {
 /*
 =============================================== 16. WOOCOMMERCE STYLES ===============================================
 */
-.woocommerce-breadcrumb,
+
+.woocommerce .woocommerce-breadcrumb a,
+.woocommerce .woocommerce-breadcrumb {
+	color: #fff;
+	font-size: 16px;
+	padding: 10px 0;
+}
+
 .woocommerce-container-pro .star-rating {
 	display: none !important;
 }
