@@ -24,7 +24,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 		$('.qty.text[type="number"]').addClass('disabled').prop("disabled", true);
 	});
 </script>
-<p><strong>*Each ticket includes $100 deposit</strong><br><strong>**no refunds offered on SALLFEST tickets 90 days prior to the event</strong></p>
+<p>
+	<strong>*Each ticket includes $100 deposit</strong>
+	<br>
+	<strong>**no refunds offered on SALLFEST tickets 90 days prior to the event</strong>
+	<br>
+	<br>
+	<strong>You will be contacted by our Cruise Planners to complete your cabin booking 24-48 hours after ticket purchase.</strong>
+</p>
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 

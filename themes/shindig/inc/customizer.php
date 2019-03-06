@@ -1456,7 +1456,7 @@ function progression_customize_css()
 	#footer-gradient-header-pro { background-image: linear-gradient(<?php echo get_theme_mod('footer_bg_progression', '#061d3d'); ?>, transparent); }
 	body.post-type-archive-timeline #main, body.tax-timeline_day #main { background:<?php echo get_theme_mod('timeline_bg_color_pro', '#061d3d'); ?>; }
 	body, .woocommerce-container-pro a, .woocommerce-container-pro a:hover { color:<?php echo get_theme_mod('body_font_progression', '#535353'); ?>; }
-	#page-title h1 { color:<?php echo get_theme_mod('page_font_progression', '#ffffff'); ?>; border:2px solid <?php echo get_theme_mod('page_font_progression', '#ffffff'); ?>; }
+	#page-title h1 { border:2px solid <?php echo get_theme_mod('page_font_progression', '#ffffff'); ?>; }
 	a, .comments-pro-blog, body #main ul li.product .amount, body #main .entry-summary .amount, .star-rating, body .main-text-widgetpro ul li.product .amount, body .main-text-widgetpro .entry-summary .amount { color:<?php echo get_theme_mod('body_link_progression', '#032d58;'); ?>; }
 	a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:<?php echo get_theme_mod('body_link_hover_progression', '#032d58;'); ?>; }
 	.sf-menu li.sfHover li a, .sf-menu li.sfHover li a:visited, .sf-menu li.sfHover li li a, .sf-menu li.sfHover li li a:visited, .sf-menu li.sfHover li li li a, .sf-menu li.sfHover li li li a:visited, .sf-menu li.sfHover li li li li a, .sf-menu li.sfHover li li li li a:visited{ color:<?php echo get_theme_mod('sub_font_color', '#ffffff'); ?>; }
