@@ -18,6 +18,10 @@ body.prerelease {
   background-attachment: fixed;
 }
 
+.main-text-widgetpro a {
+  color: #fff !important;
+}
+
 .home-bg-img {
   position: relative;
 }

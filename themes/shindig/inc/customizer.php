@@ -1223,7 +1223,7 @@ $wp_customize->add_control(
 
 
 	$wp_customize->add_setting('body_link_progression', array(
-	    'default'     => '#032d58;',
+	    'default'     => '#fff;',
 		'sanitize_callback' => 'progression_sanitize_text',
 	));
 
@@ -1457,8 +1457,8 @@ function progression_customize_css()
 	body.post-type-archive-timeline #main, body.tax-timeline_day #main { background:<?php echo get_theme_mod('timeline_bg_color_pro', '#061d3d'); ?>; }
 	body, .woocommerce-container-pro a, .woocommerce-container-pro a:hover { color:<?php echo get_theme_mod('body_font_progression', '#535353'); ?>; }
 	#page-title h1 { border:2px solid <?php echo get_theme_mod('page_font_progression', '#ffffff'); ?>; }
-	a, .comments-pro-blog, body #main ul li.product .amount, body #main .entry-summary .amount, .star-rating, body .main-text-widgetpro ul li.product .amount, body .main-text-widgetpro .entry-summary .amount { color:<?php echo get_theme_mod('body_link_progression', '#032d58;'); ?>; }
-	a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:<?php echo get_theme_mod('body_link_hover_progression', '#032d58;'); ?>; }
+	.comments-pro-blog, body #main ul li.product .amount, body #main .entry-summary .amount, .star-rating, body .main-text-widgetpro ul li.product .amount, body .main-text-widgetpro .entry-summary .amount { color:<?php echo get_theme_mod('body_link_progression', '#032d58;'); ?>; }
+	h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:<?php echo get_theme_mod('body_link_hover_progression', '#032d58;'); ?>; }
 	.sf-menu li.sfHover li a, .sf-menu li.sfHover li a:visited, .sf-menu li.sfHover li li a, .sf-menu li.sfHover li li a:visited, .sf-menu li.sfHover li li li a, .sf-menu li.sfHover li li li a:visited, .sf-menu li.sfHover li li li li a, .sf-menu li.sfHover li li li li a:visited{ color:<?php echo get_theme_mod('sub_font_color', '#ffffff'); ?>; }
 	.sf-menu li li:hover, .sf-menu li li.sfHover, .sf-menu li li a:focus, .sf-menu li li a:hover, .sf-menu li li a:active, .sf-menu li li.sfHover a, .sf-menu li.sfHover li a:visited:hover, .sf-menu li li:hover a:visited,
 	.sf-menu li li li:hover, .sf-menu li li li.sfHover, .sf-menu li li li a:focus, .sf-menu li li li a:hover, .sf-menu li li li a:active, .sf-menu li li li.sfHover a, .sf-menu li li.sfHover li a:visited:hover, .sf-menu li li li:hover a:visited,
