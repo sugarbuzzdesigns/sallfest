@@ -32,6 +32,7 @@
 <?php if ( is_user_logged_in() ) : ?>
 	<body <?php body_class('default'); ?>>
 <?php else : ?>
-	<body <?php body_class('prerelease'); ?>>
+	<body <?php body_class(''); ?>>
+	<body <?php //body_class('prerelease'); ?>>
 <?php endif; ?>
 

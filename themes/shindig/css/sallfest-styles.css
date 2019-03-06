@@ -231,7 +231,9 @@ body.prerelease {
 }
 
 @media only screen and (min-width: 767px){
-  .grid {
+  .grid,
+  .widget_media_gallery,
+  .ship-images {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 20px;
