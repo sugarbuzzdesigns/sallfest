@@ -7,7 +7,7 @@
 ?>
 <?php get_header(); ?>
 <div class="home-bg-img">
-	<img src="<?php echo get_template_directory_uri(); ?>/images/SALL2019_Logo_updated.png" alt="" class="text-logo">
+	<img src="https://www.sallfest.com/wp-content/uploads/2019/03/SALL2019_Logo_updated.png" alt="" class="text-logo">
 	<img src="<?php echo get_template_directory_uri(); ?>/images/SALL2019_Splash_Wide_web.jpg" alt="" class="logo-bg">
 	<img src="<?php echo get_template_directory_uri(); ?>/images/date-text-2019.png" alt="" class="text-date">
 </div>
