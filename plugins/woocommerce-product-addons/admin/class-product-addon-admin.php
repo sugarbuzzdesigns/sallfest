@@ -18,7 +18,7 @@ class Product_Addon_Admin {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
 		add_filter( 'woocommerce_screen_ids', array( $this, 'add_screen_id' ) );
 		add_action( 'woocommerce_product_write_panel_tabs', array( $this, 'tab' ) );
-		add_action( 'woocommerce_product_write_panels', array( $this, 'panel' ) );
+		add_action( 'woocommerce_product_data_panels', array( $this, 'panel' ) );
 		add_action( 'woocommerce_process_product_meta', array( $this, 'process_meta_box' ), 1 );
 	}
 
