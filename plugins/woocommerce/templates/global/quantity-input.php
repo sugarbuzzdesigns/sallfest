@@ -29,6 +29,7 @@ if ( $max_value && $min_value === $max_value ) {
 	?>
 	<div class="quantity">
 		<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php esc_html_e( 'Quantitysss', 'woocommerce' ); ?></label>
+		<label class="product-qty" for="<?php echo esc_attr( $input_id ); ?>"><?php esc_html_e( 'QTY', 'woocommerce' ); ?></label>
 		<input
 			type="number"
 			id="<?php echo esc_attr( $input_id ); ?>"

@@ -199,7 +199,7 @@ body.prerelease {
 }
 
 .grid ,
-.widget_media_gallery,
+#gallery-1,
 .ship-images {
   display: grid;
   justify-items: center;
@@ -230,9 +230,18 @@ body.prerelease {
   font-size: 20px;
 }
 
+#gallery-1 .gallery-item {
+  float: none !important;
+  width: 100% !important;
+}
+
+.product-qty {
+  margin-right: 10px;
+}
+
 @media only screen and (min-width: 767px){
   .grid,
-  .widget_media_gallery,
+  #gallery-1,
   .ship-images {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
