@@ -11,11 +11,20 @@ function additional_passenger_info( $checkout ) {
   
   $total_items = get_total_items_in_cart($cart_items);
   
-  
+  $unique_product_count = 0;
+
+  foreach ( WC()->cart->get_cart() as $cart_item ) {
+    $product = $cart_item['data'];
+    if(!empty($product)){
+        $unique_product_count ++;
+    }
+  }
+
+  $total_items = $total_items - $unique_product_count;
   
   echo '<div id="additional_passenger_info"><h3>' . __('Additional Passenger Info') . '</h2>';
   
-  for($i = 1; $i < $total_items; ++$i) { ?>
+  for($i = 0; $i < $total_items; ++$i) { ?>
     <div class="passenger">
       <?php $num = $i + 1; ?>
     <strong><?php echo 'Passenger ' . $num; ?></strong>

@@ -19,11 +19,11 @@ add_action( 'woocommerce_email_order_meta', 'add_email_order_meta', 10, 3 );
 * @param $plain_text HTML or Plain text (can be configured in WooCommerce > Settings > Emails)
 */
 function add_email_order_meta( $order_obj, $sent_to_admin, $plain_text ){
-  $items = $order_obj->get_item_count();
+  $item_count = $order_obj->get_item_count();
   
   echo '<div class="additional-passenger-info">';
 
-  for($i = 1; $i < $items; ++$i) {
+  for($i = 1; $i < $item_count; ++$i) {
     $name = get_post_meta( $order_obj->get_order_number(), 'Passenger ' . $i . ' name', true );
     $shirt_size = get_post_meta( $order_obj->get_order_number(), 'Passenger ' . $i . ' shirt size', true );
 
@@ -44,7 +44,7 @@ function add_email_order_meta( $order_obj, $sent_to_admin, $plain_text ){
 add_action( 'woocommerce_order_details_after_order_table', 'misha_view_order_and_thankyou_page', 20 );
 
 function misha_view_order_and_thankyou_page( $order ){  
-  $items = $order->get_item_count();
+  $item_count = $order->get_item_count();
 
   ?>
 
@@ -59,7 +59,7 @@ function misha_view_order_and_thankyou_page( $order ){
 		</thead>
 
 		<tbody>
-      <?php for($i = 1; $i < $items; ++$i) { 
+      <?php for($i = 1; $i < $item_count; ++$i) { 
             $name = get_post_meta( $order->get_order_number(), 'Passenger ' . $i . ' name', true );
             $shirt_size = get_post_meta( $order->get_order_number(), 'Passenger ' . $i . ' shirt size', true );
       ?>
@@ -128,3 +128,11 @@ function custom_woocommerce_auto_complete_order( $order_id ) {
 
 // remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+/** 
+ * remove on single product panel 'Additional Information' since it already says it on tab.
+ */
+add_filter('woocommerce_enable_order_notes_field', 'isa_product_additional_information_heading');
+ 
+function isa_product_additional_information_heading() {
+    echo '';
+}
