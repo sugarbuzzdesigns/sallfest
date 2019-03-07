@@ -11,7 +11,7 @@
 		<footer>
 			<div class="width-container flex-container">
 				<div id="copyright flex-item">
-					Contact: <a href="mailto:contact@sallfest.com">contact@sallfest.com</a>
+					Contact: <a href="mailto:sallfestival@gmail.com">sallfestival@gmail.com</a>
 				</div>
 
 				<div id="copyright flex-item">
