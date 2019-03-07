@@ -20,13 +20,13 @@ function additional_passenger_info( $checkout ) {
     }
   }
 
-  $total_items = $total_items - $unique_product_count;
+  $total_items = $total_items - 1;
   
   echo '<div id="additional_passenger_info"><h3>' . __('Additional Passenger Info') . '</h2>';
   
   for($i = 0; $i < $total_items; ++$i) { ?>
     <div class="passenger">
-      <?php $num = $i + 1; ?>
+      <?php $num = $i + 2; ?>
     <strong><?php echo 'Passenger ' . $num; ?></strong>
     <?php
     woocommerce_form_field( 'passenger_name_' . $i, array(
