@@ -59,7 +59,7 @@ function misha_view_order_and_thankyou_page( $order ){
 		</thead>
 
 		<tbody>
-      <?php for($i = 1; $i < $item_count; ++$i) { 
+      <?php for($i = 0; $i < $item_count; ++$i) { 
             $name = get_post_meta( $order->get_order_number(), 'Passenger ' . $i . ' name', true );
             $shirt_size = get_post_meta( $order->get_order_number(), 'Passenger ' . $i . ' shirt size', true );
       ?>
