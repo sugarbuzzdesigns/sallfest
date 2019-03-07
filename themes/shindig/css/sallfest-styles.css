@@ -19,7 +19,11 @@ body.prerelease {
 }
 
 .main-text-widgetpro a {
-  color: #fff !important;
+  color: #fff;
+}
+
+.main-text-widgetpro a p {
+  color: #292b5a;
 }
 
 .home-bg-img {
