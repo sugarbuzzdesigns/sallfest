@@ -13,10 +13,10 @@ function additional_passenger_info( $checkout ) {
   
   echo '<div id="additional_passenger_info"><h3>' . __('Additional Passenger Info') . '</h2>';
   
-  for($i = 0; $i < $total_items; ++$i) { ?>
+  for($i = 1; $i <= $total_items; ++$i) { ?>
     <div class="passenger">
-      <?php $num = $i + 1; ?>
-    <strong><?php echo 'Passenger ' . $num; ?></strong>
+
+    <strong><?php echo 'Passenger ' . $i; ?></strong>
     <?php
     woocommerce_form_field( 'passenger_name_' . $i, array(
       'type'          => 'text',
@@ -58,7 +58,7 @@ function additional_passenger_info_process() {
   $cart_items = WC()->cart->get_cart_item_quantities();
   $total_items = get_total_items_in_cart($cart_items);
   // Check if set, if its not set add an error.
-  for($i = 0; $i < $total_items; ++$i) {
+  for($i = 1; $i <= $total_items; ++$i) {
     if ( ! $_POST['passenger_name_' . $i] )
     wc_add_notice( __( 'Please enter a name for passenger ' . $i ), 'error' );
     
@@ -77,7 +77,7 @@ function additional_passenger_info_update_order_meta( $order_id ) {
   $cart_items = WC()->cart->get_cart_item_quantities();
   $total_items = get_total_items_in_cart($cart_items);
     
-  for($i = 0; $i < $total_items; ++$i) {
+  for($i = 1; $i <= $total_items; ++$i) {
     if ( ! empty( $_POST['passenger_name_' . $i] ) ) {
       update_post_meta( $order_id, 'Passenger ' . $i . ' name', sanitize_text_field( $_POST['passenger_name_' . $i] ) );
     }
