@@ -62,9 +62,7 @@ body {
 }
 
 #template_header {
-	background-color: <?php echo esc_attr( $base ); ?>;
 	border-radius: 3px 3px 0 0 !important;
-	color: <?php echo esc_attr( $base_text ); ?>;
 	border-bottom: 0;
 	font-weight: bold;
 	line-height: 100%;
@@ -74,7 +72,7 @@ body {
 
 #template_header h1,
 #template_header h1 a {
-	color: <?php echo esc_attr( $base_text ); ?>;
+	color: #252525;
 }
 
 #template_footer td {
@@ -163,14 +161,13 @@ body {
 }
 
 h1 {
-	color: <?php echo esc_attr( $base ); ?>;
+	color: #252525;
 	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 	font-size: 30px;
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 150%;
 	margin: 0;
 	text-align: <?php echo is_rtl() ? 'right' : 'left'; ?>;
-	text-shadow: 0 1px 0 <?php echo esc_attr( $base_lighter_20 ); ?>;
 }
 
 h2 {
@@ -211,6 +208,5 @@ img {
 	text-decoration: none;
 	text-transform: capitalize;
 	vertical-align: middle;
-	margin-<?php echo is_rtl() ? 'left' : 'right'; ?>: 10px;
 }
 <?php

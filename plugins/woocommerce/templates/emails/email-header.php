@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div id="template_header_image">
 							<?php
 								if ( $img = get_option( 'woocommerce_email_header_image' ) ) {
-									echo '<p style="margin-top:0;"><img src="' . esc_url( $img ) . '" alt="' . get_bloginfo( 'name', 'display' ) . '" /></p>';
+									echo '<p style="margin-top:0;"><img style="width:250px;margin:0;" src="' . esc_url( $img ) . '" alt="' . get_bloginfo( 'name', 'display' ) . '" /></p>';
 								}
 							?>
 						</div>
@@ -44,6 +44,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<td align="center" valign="top">
 									<!-- Header -->
 									<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_header">
+										<tr>
+											<td>
+												<img style="width:600px;margin:0;" src="https://www.sallfest.com/wp-content/uploads/2019/03/woo-email-header-e1552105556465.jpg" alt="SF 2019">
+											</td>
+										</tr>
 										<tr>
 											<td id="header_wrapper">
 												<h1><?php echo $email_heading; ?></h1>
@@ -60,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<tr>
 											<td valign="top" id="body_content">
 												<!-- Content -->
-												<table border="0" cellpadding="20" cellspacing="0" width="100%">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
 													<tr>
 														<td valign="top">
 															<div id="body_content_inner">

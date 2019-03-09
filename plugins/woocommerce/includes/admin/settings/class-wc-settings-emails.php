@@ -118,7 +118,7 @@ class WC_Settings_Emails extends WC_Settings_Page {
 					'desc'        => __( 'URL to an image you want to show in the email header. Upload images using the media uploader (Admin > Media).', 'woocommerce' ),
 					'id'          => 'woocommerce_email_header_image',
 					'type'        => 'text',
-					'css'         => 'min-width:300px;',
+
 					'placeholder' => __( 'N/A', 'woocommerce' ),
 					'default'     => '',
 					'autoload'    => false,
