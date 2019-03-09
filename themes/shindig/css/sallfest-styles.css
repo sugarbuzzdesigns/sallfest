@@ -38,10 +38,15 @@ body.prerelease {
 }
 
 .text-date {
+  color: #fff;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: bold;
   position: absolute;
   left: 16%;
-  bottom: 16%;
+  bottom: 15%;
   width: 18%;  
+  line-height: 1;
 }
 
 .lee-oscar-badge {
