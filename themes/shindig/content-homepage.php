@@ -9,7 +9,7 @@
 <div class="home-bg-img">
 	<img src="https://www.sallfest.com/wp-content/uploads/2019/03/SALL2019_Logo_updated.png" alt="" class="text-logo">
 	<img src="<?php echo get_template_directory_uri(); ?>/images/SALL2019_Splash_Wide_web.jpg" alt="" class="logo-bg">
-	<div class="text-date">November 14-17</div>
+	<div class="text-date">November 15-18</div>
 </div>
 <div class="width-container home-bg">
 	<div class="video-grid grid">
