@@ -42,7 +42,7 @@ body.prerelease {
   text-transform: uppercase;
   font-weight: bold;
   position: absolute;
-  left: 16%;
+  padding-left: 16%;
   bottom: 11%;
   width: 100%;  
   line-height: 1;
@@ -218,12 +218,14 @@ body.prerelease {
   display: block;
 }
 
-.grid ,
+.grid,
 #gallery-1,
-.ship-images {
+.ship-images {  
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
+  padding-left: 0;
+  margin-left: 0;  
 }
 
 #gallery-1 {

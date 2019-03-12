@@ -37,7 +37,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <p>
   <strong>
-    Click <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1550859559027&key=GRP&app=resvlink">here</a> to make your reservation for your hotel stay for the Pre-Party event on 
+    Click <a href="https://www.marriott.com/events/start.mi?id=1552323004774&key=GRP">here</a> to make your reservation for your hotel stay for the Pre-Party event on 
     November 14th using Sallfest at Sea’s discounted group rate.
   </strong>
 </p>
